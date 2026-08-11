@@ -4,6 +4,47 @@ const spectrumCanvas = $('spectrumCanvas');
 const wctx = waveCanvas.getContext('2d');
 const sctx = spectrumCanvas.getContext('2d');
 
+const TRANSLATIONS = {
+  en: {
+    metronomeControls:'Metronome controls',metro:'METRO',off:'OFF',metronomeBpm:'Metronome BPM',beats:'BEATS',beatsPerMeasure:'Beats per measure',division:'DIVISION',beatDivision:'Beat division',click:'CLICK',metronomeClickSound:'Metronome click sound',digital:'DIGITAL',wood:'WOOD',soft:'SOFT',
+    switchLanguage:'切換為繁體中文',micIdle:'MIC IDLE',micLive:'MIC LIVE',micDenied:'MIC ACCESS DENIED',startInput:'START INPUT',stopInput:'STOP INPUT',microphoneAlert:'Microphone access is unavailable. Allow microphone permission and open this page through localhost or HTTPS.',
+    noiseGateControls:'Noise gate controls',gate:'GATE',noiseFloor:'NOISE FLOOR',autoProfile:'AUTO PROFILE',recordNoise:'RECORD NOISE 5s',rerecordNoise:'RE-RECORD NOISE 5s',manual:'MANUAL',waitingInput:'WAITING FOR INPUT',profileRequired:'PROFILE REQUIRED · RECORD ROOM TONE',pleaseQuiet:'PLEASE STAY QUIET',calibrating:'CALIBRATING {seconds}s',locked:'LOCKED · {values} dB',manualStatus:'MANUAL · {value} dB',
+    signalHistory:'Signal history',threeBandColors:'Three band waveform colors',theme:'THEME',threeBandTheme:'Three band color theme',cyberpunk:'CYBERPUNK',modernDark:'MODERN DARK',neonGlow:'NEON GLOW',custom:'CUSTOM',lowColor:'Low frequency color',midColor:'Mid frequency color',highColor:'High frequency color',bandOrder:'OUT L · M · H IN',waveformCanvas:'Live three-band waveform',past:'PAST',now:'NOW',
+    liveReadout:'Live readout',detectedNote:'DETECTED NOTE',listening:'LISTENING',unpitched:'UNPITCHED',cents:'{value} CENTS',spectralFullness:'SPECTRAL FULLNESS',startMeasure:'Start input to measure frequency coverage.',recordingRoom:'Recording 5 seconds of room tone…',noiseProfileRequired:'Noise profile required',full:'FULL',moderate:'MODERATE',limited:'LIMITED',fullnessDetail:'STRICT ONE-SHOT · Active bands {count}/3{bands} · {mode} thresholds',profileMode:'profile',manualMode:'manual',
+    lows:'LOWS',mids:'MIDS',highs:'HIGHS',low:'LOW',mid:'MID',high:'HIGH',balanceEmpty:'BALANCE —',balanceEven:'BALANCE · EVENLY DISTRIBUTED',balanceForward:'BALANCE · {band} FORWARD',
+    frequencySpectrum:'Frequency spectrum',ranges:'RANGES',spectrumColor:'Spectrum color',color:'COLOR',peak:'PEAK',blue:'Blue',purple:'Purple',yellow:'Yellow',orange:'Orange',green:'Green',blueSpectrum:'Blue spectrum',purpleSpectrum:'Purple spectrum',yellowSpectrum:'Yellow spectrum',orangeSpectrum:'Orange spectrum',greenSpectrum:'Green spectrum',spectrumCanvas:'20 Hz to 20 kHz live audio spectrum; click to lock frequency and dB reading',microphoneInput:'MICROPHONE INPUT',startHint:'Press Start Input, then make a sound.',cursorLocked:'LOCKED',cursorLive:'LIVE',methodSummary:'20 Hz — 20 kHz · −110 TO 0 dBFS · FULLNESS: STRICT ONE-SHOT · METRONOME INDEPENDENT',creditsMethod:'CREDITS & METHOD',
+    methodText:'<b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. The history is one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Spectral Fullness is a strict live one-shot reading: each band must independently cross its sound threshold before it counts as active, and all three must cross to show Full. It is a descriptive frequency-coverage indicator, not a quality score. The metronome is an independent practice aid and does not alter the Fullness result. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.',
+    wingCredit:'WING · Beatbox spectrum-analysis inspiration (YouTube)',webAudioCredit:'W3C · Web Audio API',filterCredit:'MDN · Standard audio filter types',rekordboxCredit:'rekordbox · 3Band waveform reference',copyrightCredit:'U.S. Copyright Office · Coloration guidance',frequencyCredit:'MDN · Frequency data',noiseSuppressionCredit:'MDN · Browser noise suppression',noiseGateCredit:'Audacity · Noise gate method',lowNoiseCredit:'Low-frequency noise · 20–200 Hz',praatCredit:'Praat · GPL license',formantCredit:'JASA · LPC & formants',beatboxCredit:'Human beatbox analysis'
+  },
+  'zh-Hant': {
+    metronomeControls:'節拍器控制',metro:'節拍器',off:'關閉',metronomeBpm:'節拍器速度（BPM）',beats:'拍數',beatsPerMeasure:'每小節拍數',division:'拍值',beatDivision:'拍子音符時值',click:'節拍音',metronomeClickSound:'節拍器音色',digital:'數位',wood:'木質',soft:'柔和',
+    switchLanguage:'Switch to English',micIdle:'麥克風待機',micLive:'麥克風收音中',micDenied:'麥克風權限遭拒',startInput:'開始輸入',stopInput:'停止輸入',microphoneAlert:'無法使用麥克風。請允許此網站的麥克風權限，並使用 localhost 或 HTTPS 開啟。',
+    noiseGateControls:'底噪閘門控制',gate:'閘門',noiseFloor:'底噪',autoProfile:'自動取樣',recordNoise:'錄製底噪 5秒',rerecordNoise:'重新錄製底噪 5秒',manual:'手動',waitingInput:'等待輸入',profileRequired:'需要底噪樣本 · 請錄製環境底噪',pleaseQuiet:'請保持安靜',calibrating:'校正中 {seconds}秒',locked:'已鎖定 · {values} dB',manualStatus:'手動 · {value} dB',
+    signalHistory:'訊號歷史',threeBandColors:'三頻段聲波顏色',theme:'主題',threeBandTheme:'三頻段配色主題',cyberpunk:'賽博朋克',modernDark:'現代暗黑',neonGlow:'熱情霓虹',custom:'自訂',lowColor:'低頻顏色',midColor:'中頻顏色',highColor:'高頻顏色',bandOrder:'外層 低 · 中 · 高 內層',waveformCanvas:'即時三頻段彩色聲波',past:'過去',now:'現在',
+    liveReadout:'即時讀值',detectedNote:'偵測音高',listening:'聆聽中',unpitched:'無明確音高',cents:'{value} 音分',spectralFullness:'頻譜飽滿度',startMeasure:'開始輸入以測量頻率涵蓋範圍。',recordingRoom:'正在錄製 5 秒環境底噪…',noiseProfileRequired:'需要先建立底噪樣本',full:'飽滿',moderate:'中等',limited:'有限',fullnessDetail:'嚴格單次判定 · 啟用頻段 {count}/3{bands} · {mode}閾值',profileMode:'自動取樣',manualMode:'手動',
+    lows:'低頻',mids:'中頻',highs:'高頻',low:'低頻',mid:'中頻',high:'高頻',balanceEmpty:'頻段平衡 —',balanceEven:'頻段平衡 · 分布均勻',balanceForward:'頻段平衡 · {band}突出',
+    frequencySpectrum:'頻率頻譜',ranges:'共振區',spectrumColor:'頻譜顏色',color:'顏色',peak:'峰值',blue:'藍色',purple:'紫色',yellow:'黃色',orange:'橘色',green:'綠色',blueSpectrum:'藍色頻譜',purpleSpectrum:'紫色頻譜',yellowSpectrum:'黃色頻譜',orangeSpectrum:'橘色頻譜',greenSpectrum:'綠色頻譜',spectrumCanvas:'20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值',microphoneInput:'麥克風輸入',startHint:'按下「開始輸入」，然後發出聲音。',cursorLocked:'已鎖定',cursorLive:'即時',methodSummary:'20 Hz — 20 kHz · −110 至 0 dBFS · 飽滿度：嚴格單次判定 · 節拍器獨立運作',creditsMethod:'製作資訊與方法',
+    methodText:'<b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。訊號歷史採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。',
+    wingCredit:'WING · Beatbox 頻譜分析靈感（YouTube）',webAudioCredit:'W3C · Web Audio API 規範',filterCredit:'MDN · 標準音訊濾波器類型',rekordboxCredit:'rekordbox · 三頻段聲波參考',copyrightCredit:'美國著作權局 · 配色指引',frequencyCredit:'MDN · 頻率資料',noiseSuppressionCredit:'MDN · 瀏覽器降噪',noiseGateCredit:'Audacity · 噪音閘門方法',lowNoiseCredit:'低頻噪音 · 20–200 Hz',praatCredit:'Praat · GPL 授權',formantCredit:'JASA · LPC 與共振峰',beatboxCredit:'人聲 Beatbox 分析'
+  }
+};
+let currentLanguage=localStorage.getItem('beatbox-language')==='en'?'en':'zh-Hant';
+function t(key,vars={}){let value=TRANSLATIONS[currentLanguage][key]??TRANSLATIONS.en[key]??key;Object.entries(vars).forEach(([name,replacement])=>value=value.replace(`{${name}}`,replacement));return value;}
+function setStatusText(key){$('statusText').innerHTML=`<i></i> ${t(key)}`;}
+function applyLanguage(language){
+  currentLanguage=language==='en'?'en':'zh-Hant';document.documentElement.lang=currentLanguage;localStorage.setItem('beatbox-language',currentLanguage);
+  document.querySelectorAll('[data-i18n]').forEach(node=>node.textContent=t(node.dataset.i18n));
+  document.querySelectorAll('[data-i18n-html]').forEach(node=>node.innerHTML=t(node.dataset.i18nHtml));
+  document.querySelectorAll('[data-i18n-aria]').forEach(node=>node.setAttribute('aria-label',t(node.dataset.i18nAria)));
+  document.querySelectorAll('[data-i18n-title]').forEach(node=>node.title=t(node.dataset.i18nTitle));
+  $('languageButton').textContent=currentLanguage==='zh-Hant'?'EN':'繁中';$('languageButton').setAttribute('aria-label',t('switchLanguage'));
+  if(!metronomeRunning)$('metronomePosition').textContent=t('off');
+  $('recordLabel').textContent=t(running?'stopInput':'startInput');setStatusText(running?'micLive':'micIdle');
+  $('calibrateButton').textContent=calibrationEndsAt?t('calibrating',{seconds:Math.max(0,(calibrationEndsAt-performance.now())/1000).toFixed(1)}):t(profileReady?'rerecordNoise':'recordNoise');
+  updateGateModeUi();
+  if(!running){$('noteCents').textContent=t('listening');$('fullnessDetail').textContent=t('startMeasure');$('balanceText').textContent=t('balanceEmpty');}
+}
+
 let audioContext, analyser, transientAnalyser, source, stream, animationId;
 let running = false, startedAt = 0, waveform = [], lastFrame = 0;
 let timeData, freqData, waveTimeData, waveFreqData, peaks = [];
@@ -94,7 +135,7 @@ function restartMetronomeClock() {
 
 function toggleMetronome() {
   if(metronomeRunning){
-    metronomeRunning=false;clearInterval(metronomeTimer);metronomeTimer=null;$('metronomeButton').classList.remove('active');$('metronomeButton').setAttribute('aria-pressed','false');$('metronomePosition').textContent='OFF';metronomeContext?.suspend().catch(()=>{});return;
+    metronomeRunning=false;clearInterval(metronomeTimer);metronomeTimer=null;$('metronomeButton').classList.remove('active');$('metronomeButton').setAttribute('aria-pressed','false');$('metronomePosition').textContent=t('off');metronomeContext?.suspend().catch(()=>{});return;
   }
   metronomeContext??=new (window.AudioContext||window.webkitAudioContext)();metronomeRunning=true;$('metronomeButton').classList.add('active');$('metronomeButton').setAttribute('aria-pressed','true');restartMetronomeClock();metronomeContext.resume().catch(()=>{});
 }
@@ -142,15 +183,15 @@ async function toggleInput() {
     peaks = new Float32Array(freqData.length).fill(MIN_DB);
     currentGates=[0,0,0];resonanceBands=[];
     running = true; startedAt = performance.now(); lastFrame = startedAt; waveform = [];
-    $('recordButton').classList.add('active'); $('recordLabel').textContent = 'STOP INPUT';
-    $('statusText').classList.add('live'); $('statusText').innerHTML = '<i></i> MIC LIVE';
+    $('recordButton').classList.add('active'); $('recordLabel').textContent = t('stopInput');
+    $('statusText').classList.add('live'); setStatusText('micLive');
     $('calibrateButton').disabled=false;
     $('emptyState').classList.add('hidden');
     updateGateModeUi();
     draw();
   } catch (error) {
-    $('statusText').textContent = 'MIC ACCESS DENIED';
-    alert('無法使用麥克風。請允許此網站的麥克風權限，並使用 localhost 或 HTTPS 開啟。');
+    $('statusText').textContent = t('micDenied');
+    alert(t('microphoneAlert'));
   }
 }
 
@@ -159,9 +200,9 @@ function stopInput() {
   stream?.getTracks().forEach(track => track.stop());
   audioContext?.close();
   const cancelledCalibration=Boolean(calibrationEndsAt);calibrationEndsAt=0;$('calibrateButton').disabled=true;
-  if(cancelledCalibration&&!profileReady){$('calibrateButton').textContent='RECORD NOISE 5s';setGateStatus('WAITING FOR INPUT');}
-  $('recordButton').classList.remove('active'); $('recordLabel').textContent = 'START INPUT';
-  $('statusText').classList.remove('live'); $('statusText').innerHTML = '<i></i> MIC IDLE';
+  if(cancelledCalibration&&!profileReady){$('calibrateButton').textContent=t('recordNoise');setGateStatus(t('waitingInput'));}
+  $('recordButton').classList.remove('active'); $('recordLabel').textContent = t('startInput');
+  $('statusText').classList.remove('live'); setStatusText('micIdle');
 }
 
 function bandEnergy(lo, hi, data=freqData, node=analyser) {
@@ -191,19 +232,19 @@ function setGateStatus(text,state='') {
 function startNoiseCalibration() {
   if(!running)return;
   gateMode='profile';$('profileMode').checked=true;profileReady=false;calibrationSamples=[[],[],[]];calibrationRmsSamples=[];calibrationEndsAt=performance.now()+5000;currentGates=[0,0,0];
-  $('calibrateButton').textContent='CALIBRATING 5.0s';setGateStatus('PLEASE STAY QUIET','calibrating');
+  $('calibrateButton').textContent=t('calibrating',{seconds:'5.0'});setGateStatus(t('pleaseQuiet'),'calibrating');
 }
 
 function finishNoiseCalibration() {
   noiseFloor=calibrationSamples.map(samples=>percentile(samples,.9));rmsNoiseFloor=percentile(calibrationRmsSamples,.9);profileReady=true;calibrationEndsAt=0;currentGates=[0,0,0];
-  $('calibrateButton').textContent='RE-RECORD NOISE 5s';setGateStatus(`LOCKED · ${noiseFloor.map(v=>Math.round(v)).join(' / ')} dB`,'ready');
+  $('calibrateButton').textContent=t('rerecordNoise');setGateStatus(t('locked',{values:noiseFloor.map(v=>Math.round(v)).join(' / ')}),'ready');
 }
 
 function updateGateModeUi() {
   $('gateThreshold').disabled=gateMode!=='manual';
-  if(gateMode==='manual')setGateStatus(`MANUAL · ${manualThreshold} dB`,'ready');
-  else if(profileReady)setGateStatus(`LOCKED · ${noiseFloor.map(v=>Math.round(v)).join(' / ')} dB`,'ready');
-  else setGateStatus(running?'PROFILE REQUIRED · RECORD ROOM TONE':'WAITING FOR INPUT');
+  if(gateMode==='manual')setGateStatus(t('manualStatus',{value:manualThreshold}),'ready');
+  else if(profileReady)setGateStatus(t('locked',{values:noiseFloor.map(v=>Math.round(v)).join(' / ')}),'ready');
+  else setGateStatus(t(running?'profileRequired':'waitingInput'));
 }
 
 function updateVisualGate() {
@@ -214,7 +255,7 @@ function updateVisualGate() {
     dbs.forEach((db,i)=>calibrationSamples[i].push(db));
     calibrationRmsSamples.push(rmsDb);
     const remaining=Math.max(0,(calibrationEndsAt-performance.now())/1000);
-    $('calibrateButton').textContent=`CALIBRATING ${remaining.toFixed(1)}s`;
+    $('calibrateButton').textContent=t('calibrating',{seconds:remaining.toFixed(1)});
     if(remaining<=0) finishNoiseCalibration();
     currentGates=[0,0,0];
     return {dbs,gates:currentGates,rmsDb,active:[false,false,false],calibrating:true};
@@ -242,12 +283,12 @@ function detectPitch(buffer, sampleRate) {
 }
 
 function updateNote(freq) {
-  if (!freq) { $('noteName').textContent = '—'; $('noteCents').textContent = 'UNPITCHED'; $('noteHz').textContent = '— Hz'; return; }
+  if (!freq) { $('noteName').textContent = '—'; $('noteCents').textContent = t('unpitched'); $('noteHz').textContent = '— Hz'; return; }
   const midi = 69 + 12 * Math.log2(freq / 440), nearest = Math.round(midi);
   const notes = ['C','C♯','D','E♭','E','F','F♯','G','A♭','A','B♭','B'];
   $('noteName').textContent = notes[(nearest % 12 + 12) % 12] + (Math.floor(nearest / 12) - 1);
   const cents = Math.round((midi - nearest) * 100);
-  $('noteCents').textContent = `${cents >= 0 ? '+' : ''}${cents} CENTS`;
+  $('noteCents').textContent = t('cents',{value:`${cents >= 0 ? '+' : ''}${cents}`});
   $('noteHz').textContent = `${freq.toFixed(1)} Hz`;
 }
 
@@ -264,17 +305,17 @@ function updateMetrics(gateState) {
   const low = bandEnergy(20, 250), mid = bandEnergy(250, 4000), high = bandEnergy(4000, MAX_FREQ);
   const values = [low, mid, high], levels = values.map(dbToLevel);
   ['lowValue','midValue','highValue'].forEach((id,i)=>$(id).textContent=`${Math.round(values[i])} dB`);
-  if(gateState.calibrating||gateState.profileMissing){$('fullnessLabel').textContent='—';$('fullnessMeter').style.width='0%';$('fullnessDetail').textContent=gateState.calibrating?'Recording 5 seconds of room tone…':'Noise profile required';return{low,mid,high,level:0,score:0,centroid:spectralCentroid()};}
+  if(gateState.calibrating||gateState.profileMissing){$('fullnessLabel').textContent='—';$('fullnessMeter').style.width='0%';$('fullnessDetail').textContent=t(gateState.calibrating?'recordingRoom':'noiseProfileRequired');return{low,mid,high,level:0,score:0,centroid:spectralCentroid()};}
   const thresholds=gateMode==='profile'
     ? noiseFloor.map((floor,i)=>floor+FULLNESS_PROFILE_MARGINS[i])
     : FULLNESS_MANUAL_OFFSETS.map(offset=>manualThreshold+offset);
   const active=gateState.dbs.map((db,i)=>db>=thresholds[i]),activeCount=active.filter(Boolean).length,score=Math.round(activeCount/3*100);
-  const label=activeCount===3?'Full':activeCount>0?'Moderate':'Limited';
+  const label=t(activeCount===3?'full':activeCount>0?'moderate':'limited');
   $('fullnessLabel').textContent=label;$('fullnessMeter').style.width=`${score}%`;
-  const activeNames=['LOW','MID','HIGH'].filter((_,i)=>active[i]);
-  $('fullnessDetail').textContent=`STRICT ONE-SHOT · Active bands ${activeCount}/3${activeNames.length?' · '+activeNames.join(' + '):''} · ${gateMode} thresholds`;
-  const names=['LOWS','MIDS','HIGHS'], max=Math.max(...levels), min=Math.min(...levels);
-  $('balanceText').textContent = max-min < .12 ? 'BALANCE · EVENLY DISTRIBUTED' : `BALANCE · ${names[levels.indexOf(max)]} FORWARD`;
+  const activeNames=['low','mid','high'].filter((_,i)=>active[i]).map(t);
+  $('fullnessDetail').textContent=t('fullnessDetail',{count:activeCount,bands:activeNames.length?' · '+activeNames.join(' + '):'',mode:t(gateMode==='profile'?'profileMode':'manualMode')});
+  const names=['lows','mids','highs'].map(t), max=Math.max(...levels), min=Math.min(...levels);
+  $('balanceText').textContent = max-min < .12 ? t('balanceEven') : t('balanceForward',{band:names[levels.indexOf(max)]});
   return { low, mid, high, level: Math.max(...levels), score, centroid:spectralCentroid() };
 }
 
@@ -386,7 +427,7 @@ function updateSpectrumCursor(clientX, locked=cursorLocked) {
   const cursor=$('spectrumCursor'); cursor.style.setProperty('--cursor-x',`${x}px`); cursor.style.setProperty('--cursor-y',`${y}px`);
   cursor.classList.add('visible'); cursor.classList.toggle('locked',locked);
   const freqText=freq>=1000?`${(freq/1000).toFixed(2)} kHz`:`${Math.round(freq)} Hz`;
-  $('spectrumReadout').textContent=`${locked?'LOCKED':'LIVE'} · ${freqText} · ${Number.isFinite(db)?db.toFixed(1):'≤ −100'} dBFS`;
+  $('spectrumReadout').textContent=`${t(locked?'cursorLocked':'cursorLive')} · ${freqText} · ${Number.isFinite(db)?db.toFixed(1):'≤ −100'} dBFS`;
 }
 
 function draw(now=performance.now()) {
@@ -398,6 +439,7 @@ function draw(now=performance.now()) {
 
 function formatTime(ms){const total=ms/1000,m=Math.floor(total/60),s=Math.floor(total%60),t=Math.floor((total%1)*10);return`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${t}`}
 $('recordButton').addEventListener('click',toggleInput);
+$('languageButton').addEventListener('click',()=>applyLanguage(currentLanguage==='zh-Hant'?'en':'zh-Hant'));
 $('metronomeButton').addEventListener('click',toggleMetronome);
 $('bpmInput').addEventListener('change',event=>{event.target.value=metronomeBpm();restartMetronomeClock();});
 $('meterBeats').addEventListener('change',normalizeMeterInputs);
@@ -405,7 +447,7 @@ $('meterDivision').addEventListener('change',normalizeMeterInputs);
 $('calibrateButton').addEventListener('click',startNoiseCalibration);
 document.querySelectorAll('input[name="gateMode"]').forEach(input=>input.addEventListener('change',event=>{
   gateMode=event.target.value;
-  if(gateMode==='manual'&&calibrationEndsAt){calibrationEndsAt=0;$('calibrateButton').textContent='RECORD NOISE 5s';}
+  if(gateMode==='manual'&&calibrationEndsAt){calibrationEndsAt=0;$('calibrateButton').textContent=t('recordNoise');}
   updateGateModeUi();
 }));
 $('gateThreshold').addEventListener('input',event=>{manualThreshold=Number(event.target.value);gateMode='manual';$('manualMode').checked=true;$('gateThresholdValue').textContent=`${manualThreshold} dB`;updateGateModeUi();});
@@ -426,3 +468,4 @@ resizeCanvas(waveCanvas);resizeCanvas(spectrumCanvas);
 updateGateModeUi();
 restoreBandTheme();
 const savedSpectrumInput=document.querySelector(`input[name="spectrumColor"][value="${spectrumColor}"]`);if(savedSpectrumInput)savedSpectrumInput.checked=true;
+applyLanguage(currentLanguage);

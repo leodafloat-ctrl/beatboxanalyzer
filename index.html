@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08080b" />
     <title>Beatbox Analyzer</title>
-    <link rel="stylesheet" href="styles.css?v=10" />
+    <link rel="stylesheet" href="styles.css?v=11" />
   </head>
   <body>
     <main class="app-shell">
@@ -15,33 +15,36 @@
           <div class="brand-line"><h1>BEATBOX<br />ANALYZER<span>.</span></h1><p class="byline">BY LEO DAFLOAT</p></div>
         </div>
         <div class="transport">
-          <div class="metronome-controls" aria-label="Metronome controls">
-            <button id="metronomeButton" type="button" aria-pressed="false"><span>METRO</span><b id="metronomePosition">OFF</b></button>
-            <label>BPM <input id="bpmInput" type="number" min="40" max="240" step="1" value="100" aria-label="Metronome BPM" /></label>
-            <label>BEATS <input id="meterBeats" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beats per measure" /></label>
-            <span class="meter-slash" aria-hidden="true">/</span>
-            <label>DIVISION <input id="meterDivision" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beat division" /></label>
-            <label>CLICK
-              <select id="clickSound" aria-label="Metronome click sound">
-                <option value="digital">DIGITAL</option>
-                <option value="wood">WOOD</option>
-                <option value="soft">SOFT</option>
+          <div class="metronome-controls" aria-label="Metronome controls" data-i18n-aria="metronomeControls">
+            <button id="metronomeButton" type="button" aria-pressed="false"><span data-i18n="metro">節拍器</span><b id="metronomePosition">關閉</b></button>
+            <label>BPM <input id="bpmInput" type="number" min="40" max="240" step="1" value="100" aria-label="Metronome BPM" data-i18n-aria="metronomeBpm" /></label>
+            <label><span data-i18n="beats">拍數</span> <input id="meterBeats" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beats per measure" data-i18n-aria="beatsPerMeasure" /></label>
+            <span class="meter-divider" aria-hidden="true"></span>
+            <label><span data-i18n="division">拍值</span> <input id="meterDivision" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beat division" data-i18n-aria="beatDivision" /></label>
+            <label><span data-i18n="click">節拍音</span>
+              <select id="clickSound" aria-label="Metronome click sound" data-i18n-aria="metronomeClickSound">
+                <option value="digital" data-i18n="digital">數位</option>
+                <option value="wood" data-i18n="wood">木質</option>
+                <option value="soft" data-i18n="soft">柔和</option>
               </select>
             </label>
           </div>
-          <span id="statusText" class="status"><i></i> MIC IDLE</span>
+          <span id="statusText" class="status"><i></i> 麥克風待機</span>
           <span id="timer" class="timer">00:00.0</span>
-          <button id="recordButton" class="record-button" type="button">
-            <span class="record-icon"></span><span id="recordLabel">START INPUT</span>
-          </button>
+          <div class="record-cluster">
+            <button id="languageButton" class="language-button" type="button" aria-label="Switch to English">EN</button>
+            <button id="recordButton" class="record-button" type="button">
+              <span class="record-icon"></span><span id="recordLabel">開始輸入</span>
+            </button>
+          </div>
         </div>
       </header>
 
-      <section class="gate-strip" aria-label="Noise gate controls">
-        <div class="gate-title"><span class="index">GATE</span><strong>NOISE FLOOR</strong><b id="gateStatus">WAITING FOR INPUT</b></div>
-        <label class="gate-mode"><input id="profileMode" type="radio" name="gateMode" value="profile" checked /><span>AUTO PROFILE</span></label>
-        <button id="calibrateButton" type="button" disabled>RECORD NOISE 5s</button>
-        <label class="gate-mode"><input id="manualMode" type="radio" name="gateMode" value="manual" /><span>MANUAL</span></label>
+      <section class="gate-strip" aria-label="Noise gate controls" data-i18n-aria="noiseGateControls">
+        <div class="gate-title"><span class="index" data-i18n="gate">閘門</span><strong data-i18n="noiseFloor">底噪</strong><b id="gateStatus">等待輸入</b></div>
+        <label class="gate-mode"><input id="profileMode" type="radio" name="gateMode" value="profile" checked /><span data-i18n="autoProfile">自動取樣</span></label>
+        <button id="calibrateButton" type="button" disabled data-i18n="recordNoise">錄製底噪 5秒</button>
+        <label class="gate-mode"><input id="manualMode" type="radio" name="gateMode" value="manual" /><span data-i18n="manual">手動</span></label>
         <label class="threshold-control">
           <input id="gateThreshold" type="range" min="-100" max="-30" step="1" value="-70" />
           <b id="gateThresholdValue">−70 dB</b>
@@ -51,72 +54,72 @@
       <section class="top-grid">
         <article class="panel waveform-panel">
           <div class="panel-heading">
-            <div><span class="index">01</span><h2>Signal history</h2></div>
-            <div class="band-controls" aria-label="Three band waveform colors">
-              <label>THEME
-                <select id="bandTheme" aria-label="Three band color theme">
-                  <option value="cyberpunk">CYBERPUNK</option>
-                  <option value="modernDark">MODERN DARK</option>
-                  <option value="neonGlow">NEON GLOW</option>
-                  <option value="custom">CUSTOM</option>
+            <div><span class="index">01</span><h2 data-i18n="signalHistory">訊號歷史</h2></div>
+            <div class="band-controls" aria-label="Three band waveform colors" data-i18n-aria="threeBandColors">
+              <label><span data-i18n="theme">主題</span>
+                <select id="bandTheme" aria-label="Three band color theme" data-i18n-aria="threeBandTheme">
+                  <option value="cyberpunk" data-i18n="cyberpunk">賽博朋克</option>
+                  <option value="modernDark" data-i18n="modernDark">現代暗黑</option>
+                  <option value="neonGlow" data-i18n="neonGlow">熱情霓虹</option>
+                  <option value="custom" data-i18n="custom">自訂</option>
                 </select>
               </label>
               <span id="bandGradient" class="rgb-gradient" aria-hidden="true"></span>
-              <label title="Low frequency color">L <input id="lowBandColor" type="color" value="#4d00ff" aria-label="Low frequency color" /></label>
-              <label title="Mid frequency color">M <input id="midBandColor" type="color" value="#00ff66" aria-label="Mid frequency color" /></label>
-              <label title="High frequency color">H <input id="highBandColor" type="color" value="#ff007f" aria-label="High frequency color" /></label>
-              <em>OUT L · M · H IN</em>
+              <label title="Low frequency color" data-i18n-title="lowColor">L <input id="lowBandColor" type="color" value="#4d00ff" aria-label="Low frequency color" data-i18n-aria="lowColor" /></label>
+              <label title="Mid frequency color" data-i18n-title="midColor">M <input id="midBandColor" type="color" value="#00ff66" aria-label="Mid frequency color" data-i18n-aria="midColor" /></label>
+              <label title="High frequency color" data-i18n-title="highColor">H <input id="highBandColor" type="color" value="#ff007f" aria-label="High frequency color" data-i18n-aria="highColor" /></label>
+              <em data-i18n="bandOrder">外層 低 · 中 · 高 內層</em>
             </div>
           </div>
           <div class="canvas-wrap">
-            <canvas id="waveformCanvas" aria-label="即時彩色聲波"></canvas>
+            <canvas id="waveformCanvas" aria-label="即時彩色聲波" data-i18n-aria="waveformCanvas"></canvas>
             <div class="playhead"></div>
-            <div class="time-axis"><span>PAST</span><span>NOW</span></div>
+            <div class="time-axis"><span data-i18n="past">過去</span><span data-i18n="now">現在</span></div>
           </div>
         </article>
 
         <aside class="panel metrics-panel">
           <div class="panel-heading">
-            <div><span class="index">02</span><h2>Live readout</h2></div>
+            <div><span class="index">02</span><h2 data-i18n="liveReadout">即時讀值</h2></div>
           </div>
           <div class="note-block">
-            <span class="metric-label">DETECTED NOTE</span>
-            <div><strong id="noteName">—</strong><sup id="noteCents">LISTENING</sup></div>
+            <span class="metric-label" data-i18n="detectedNote">偵測音高</span>
+            <div><strong id="noteName">—</strong><sup id="noteCents">聆聽中</sup></div>
             <span id="noteHz" class="metric-sub">— Hz</span>
           </div>
           <div class="fullness-block">
-            <span class="metric-label">SPECTRAL FULLNESS</span>
+            <span class="metric-label" data-i18n="spectralFullness">頻譜飽滿度</span>
             <strong id="fullnessLabel">—</strong>
             <div class="meter"><i id="fullnessMeter"></i></div>
-            <p id="fullnessDetail">Start input to measure frequency coverage.</p>
+            <p id="fullnessDetail">開始輸入以測量頻率涵蓋範圍。</p>
           </div>
           <div class="bands">
-            <div><span>LOWS</span><b id="lowValue">—</b></div>
-            <div><span>MIDS</span><b id="midValue">—</b></div>
-            <div><span>HIGHS</span><b id="highValue">—</b></div>
+            <div><span data-i18n="lows">低頻</span><b id="lowValue">—</b></div>
+            <div><span data-i18n="mids">中頻</span><b id="midValue">—</b></div>
+            <div><span data-i18n="highs">高頻</span><b id="highValue">—</b></div>
           </div>
-          <p id="balanceText" class="balance">BALANCE —</p>
+          <p id="balanceText" class="balance">頻段平衡 —</p>
         </aside>
       </section>
 
       <section class="panel spectrum-panel">
         <div class="panel-heading spectrum-heading">
-          <div><span class="index">03</span><h2>Frequency spectrum</h2></div>
+          <div><span class="index">03</span><h2 data-i18n="frequencySpectrum">頻率頻譜</h2></div>
           <div class="controls">
-            <label class="formant-control">RANGES <input id="formantCount" type="range" min="5" max="10" step="1" value="5" /><b id="formantCountValue">5</b></label>
-            <fieldset class="spectrum-colors" aria-label="Spectrum color">
-              <legend>COLOR</legend>
-              <label title="Blue"><input type="radio" name="spectrumColor" value="#18aaff" aria-label="Blue spectrum" checked /><i style="--swatch:#18aaff"></i></label>
-              <label title="Purple"><input type="radio" name="spectrumColor" value="#8b5cf6" aria-label="Purple spectrum" /><i style="--swatch:#8b5cf6"></i></label>
-              <label title="Yellow"><input type="radio" name="spectrumColor" value="#f4d03f" aria-label="Yellow spectrum" /><i style="--swatch:#f4d03f"></i></label>
-              <label title="Orange"><input type="radio" name="spectrumColor" value="#ff8a24" aria-label="Orange spectrum" /><i style="--swatch:#ff8a24"></i></label>
-              <label title="Green"><input type="radio" name="spectrumColor" value="#20d875" aria-label="Green spectrum" /><i style="--swatch:#20d875"></i></label>
+            <label class="formant-control"><span data-i18n="ranges">共振區</span> <input id="formantCount" type="range" min="5" max="10" step="1" value="5" /><b id="formantCountValue">5</b></label>
+            <fieldset class="spectrum-colors" aria-label="Spectrum color" data-i18n-aria="spectrumColor">
+              <legend data-i18n="color">顏色</legend>
+              <label title="Blue" data-i18n-title="blue"><input type="radio" name="spectrumColor" value="#18aaff" aria-label="Blue spectrum" data-i18n-aria="blueSpectrum" checked /><i style="--swatch:#18aaff"></i></label>
+              <label title="Purple" data-i18n-title="purple"><input type="radio" name="spectrumColor" value="#8b5cf6" aria-label="Purple spectrum" data-i18n-aria="purpleSpectrum" /><i style="--swatch:#8b5cf6"></i></label>
+              <label title="Yellow" data-i18n-title="yellow"><input type="radio" name="spectrumColor" value="#f4d03f" aria-label="Yellow spectrum" data-i18n-aria="yellowSpectrum" /><i style="--swatch:#f4d03f"></i></label>
+              <label title="Orange" data-i18n-title="orange"><input type="radio" name="spectrumColor" value="#ff8a24" aria-label="Orange spectrum" data-i18n-aria="orangeSpectrum" /><i style="--swatch:#ff8a24"></i></label>
+              <label title="Green" data-i18n-title="green"><input type="radio" name="spectrumColor" value="#20d875" aria-label="Green spectrum" data-i18n-aria="greenSpectrum" /><i style="--swatch:#20d875"></i></label>
             </fieldset>
-            <span class="fixed-peak">PEAK <i></i></span>
+            <span class="fixed-peak"><span data-i18n="peak">峰值</span> <i></i></span>
           </div>
         </div>
         <div class="spectrum-wrap">
-          <canvas id="spectrumCanvas" aria-label="20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值"></canvas>
+          <canvas id="spectrumCanvas" aria-label="20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值" data-i18n-aria="spectrumCanvas"></canvas>
           <div id="spectrumCursor" class="spectrum-cursor" aria-hidden="true">
             <i class="cursor-x"></i><i class="cursor-y"></i><b id="spectrumReadout">—</b>
           </div>
@@ -127,37 +130,37 @@
             <span style="left:90%">10k</span><span style="left:100%">20k Hz</span>
           </div>
           <div class="level-axis"><span>0</span><span>−20</span><span>−40</span><span>−60</span><span>−80</span><span>−100 dBFS</span></div>
-          <div class="range-label low-range">LOW</div>
-          <div class="range-label mid-range">MID</div>
-          <div class="range-label high-range">HIGH</div>
+          <div class="range-label low-range" data-i18n="low">低頻</div>
+          <div class="range-label mid-range" data-i18n="mid">中頻</div>
+          <div class="range-label high-range" data-i18n="high">高頻</div>
           <div id="emptyState" class="empty-state">
-            <span>MICROPHONE INPUT</span>
-            <p>Press Start Input, then make a sound.</p>
+            <span data-i18n="microphoneInput">麥克風輸入</span>
+            <p data-i18n="startHint">按下「開始輸入」，然後發出聲音。</p>
           </div>
         </div>
         <footer class="credits">
-          <span>20 Hz — 20 kHz · −110 TO 0 dBFS · FULLNESS: STRICT ONE-SHOT · METRONOME INDEPENDENT</span>
+          <span data-i18n="methodSummary">20 Hz — 20 kHz · −110 至 0 dBFS · 飽滿度：嚴格單次判定 · 節拍器獨立運作</span>
           <details>
-            <summary>CREDITS &amp; METHOD</summary>
+            <summary data-i18n="creditsMethod">製作資訊與方法</summary>
             <div class="credit-card">
-              <p><b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. The history is one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Spectral Fullness is a strict live one-shot reading: each band must independently cross its sound threshold before it counts as active, and all three must cross to show Full. It is a descriptive frequency-coverage indicator, not a quality score. The metronome is an independent practice aid and does not alter the Fullness result. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.</p>
-              <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer">WING · Beatbox spectrum-analysis inspiration (YouTube)</a>
-              <a href="https://www.w3.org/TR/webaudio-1.1/" target="_blank" rel="noreferrer">W3C · Web Audio API</a>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type" target="_blank" rel="noreferrer">MDN · Standard audio filter types</a>
-              <a href="https://cdn.rekordbox.com/files/20240509141437/rekordbox7.0.0_manual_EN.pdf" target="_blank" rel="noreferrer">rekordbox · 3Band waveform reference</a>
-              <a href="https://www.copyright.gov/comp3/redlines/chap900.pdf" target="_blank" rel="noreferrer">U.S. Copyright Office · Coloration guidance</a>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatFrequencyData" target="_blank" rel="noreferrer">MDN · Frequency data</a>
-              <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/noiseSuppression" target="_blank" rel="noreferrer">MDN · Browser noise suppression</a>
-              <a href="https://manual.audacityteam.org/man/noise_gate.html" target="_blank" rel="noreferrer">Audacity · Noise gate method</a>
-              <a href="https://swepub.kb.se/bib/swepub%3Aoai%3Agup.ub.gu.se/137471?language=en" target="_blank" rel="noreferrer">Low-frequency noise · 20–200 Hz</a>
-              <a href="https://praat.org/manual/License.html" target="_blank" rel="noreferrer">Praat · GPL license</a>
-              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7056453/" target="_blank" rel="noreferrer">JASA · LPC &amp; formants</a>
-              <a href="https://citeseerx.ist.psu.edu/document?doi=248ea123fb0412b733f09087aa2f538026abe270&repid=rep1&type=pdf" target="_blank" rel="noreferrer">Human beatbox analysis</a>
+              <p data-i18n-html="methodText"><b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。訊號歷史採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。</p>
+              <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer" data-i18n="wingCredit">WING · Beatbox 頻譜分析靈感（YouTube）</a>
+              <a href="https://www.w3.org/TR/webaudio-1.1/" target="_blank" rel="noreferrer" data-i18n="webAudioCredit">W3C · Web Audio API 規範</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type" target="_blank" rel="noreferrer" data-i18n="filterCredit">MDN · 標準音訊濾波器類型</a>
+              <a href="https://cdn.rekordbox.com/files/20240509141437/rekordbox7.0.0_manual_EN.pdf" target="_blank" rel="noreferrer" data-i18n="rekordboxCredit">rekordbox · 三頻段聲波參考</a>
+              <a href="https://www.copyright.gov/comp3/redlines/chap900.pdf" target="_blank" rel="noreferrer" data-i18n="copyrightCredit">美國著作權局 · 配色指引</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatFrequencyData" target="_blank" rel="noreferrer" data-i18n="frequencyCredit">MDN · 頻率資料</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/noiseSuppression" target="_blank" rel="noreferrer" data-i18n="noiseSuppressionCredit">MDN · 瀏覽器降噪</a>
+              <a href="https://manual.audacityteam.org/man/noise_gate.html" target="_blank" rel="noreferrer" data-i18n="noiseGateCredit">Audacity · 噪音閘門方法</a>
+              <a href="https://swepub.kb.se/bib/swepub%3Aoai%3Agup.ub.gu.se/137471?language=en" target="_blank" rel="noreferrer" data-i18n="lowNoiseCredit">低頻噪音 · 20–200 Hz</a>
+              <a href="https://praat.org/manual/License.html" target="_blank" rel="noreferrer" data-i18n="praatCredit">Praat · GPL 授權</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7056453/" target="_blank" rel="noreferrer" data-i18n="formantCredit">JASA · LPC 與共振峰</a>
+              <a href="https://citeseerx.ist.psu.edu/document?doi=248ea123fb0412b733f09087aa2f538026abe270&repid=rep1&type=pdf" target="_blank" rel="noreferrer" data-i18n="beatboxCredit">人聲 Beatbox 分析</a>
             </div>
           </details>
         </footer>
       </section>
     </main>
-    <script src="app.js?v=11"></script>
+    <script src="app.js?v=12"></script>
   </body>
 </html>
