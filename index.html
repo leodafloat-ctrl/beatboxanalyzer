@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08080b" />
+    <title>Beatbox Analyzer</title>
+    <link rel="stylesheet" href="styles.css?v=10" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="masthead">
+        <div class="brand-lockup">
+          <p class="eyebrow">LIVE AUDIO LAB</p>
+          <div class="brand-line"><h1>BEATBOX<br />ANALYZER<span>.</span></h1><p class="byline">BY LEO DAFLOAT</p></div>
+        </div>
+        <div class="transport">
+          <div class="metronome-controls" aria-label="Metronome controls">
+            <button id="metronomeButton" type="button" aria-pressed="false"><span>METRO</span><b id="metronomePosition">OFF</b></button>
+            <label>BPM <input id="bpmInput" type="number" min="40" max="240" step="1" value="100" aria-label="Metronome BPM" /></label>
+            <label>BEATS <input id="meterBeats" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beats per measure" /></label>
+            <span class="meter-slash" aria-hidden="true">/</span>
+            <label>DIVISION <input id="meterDivision" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beat division" /></label>
+            <label>CLICK
+              <select id="clickSound" aria-label="Metronome click sound">
+                <option value="digital">DIGITAL</option>
+                <option value="wood">WOOD</option>
+                <option value="soft">SOFT</option>
+              </select>
+            </label>
+          </div>
+          <span id="statusText" class="status"><i></i> MIC IDLE</span>
+          <span id="timer" class="timer">00:00.0</span>
+          <button id="recordButton" class="record-button" type="button">
+            <span class="record-icon"></span><span id="recordLabel">START INPUT</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="gate-strip" aria-label="Noise gate controls">
+        <div class="gate-title"><span class="index">GATE</span><strong>NOISE FLOOR</strong><b id="gateStatus">WAITING FOR INPUT</b></div>
+        <label class="gate-mode"><input id="profileMode" type="radio" name="gateMode" value="profile" checked /><span>AUTO PROFILE</span></label>
+        <button id="calibrateButton" type="button" disabled>RECORD NOISE 5s</button>
+        <label class="gate-mode"><input id="manualMode" type="radio" name="gateMode" value="manual" /><span>MANUAL</span></label>
+        <label class="threshold-control">
+          <input id="gateThreshold" type="range" min="-100" max="-30" step="1" value="-70" />
+          <b id="gateThresholdValue">−70 dB</b>
+        </label>
+      </section>
+
+      <section class="top-grid">
+        <article class="panel waveform-panel">
+          <div class="panel-heading">
+            <div><span class="index">01</span><h2>Signal history</h2></div>
+            <div class="band-controls" aria-label="Three band waveform colors">
+              <label>THEME
+                <select id="bandTheme" aria-label="Three band color theme">
+                  <option value="cyberpunk">CYBERPUNK</option>
+                  <option value="modernDark">MODERN DARK</option>
+                  <option value="neonGlow">NEON GLOW</option>
+                  <option value="custom">CUSTOM</option>
+                </select>
+              </label>
+              <span id="bandGradient" class="rgb-gradient" aria-hidden="true"></span>
+              <label title="Low frequency color">L <input id="lowBandColor" type="color" value="#4d00ff" aria-label="Low frequency color" /></label>
+              <label title="Mid frequency color">M <input id="midBandColor" type="color" value="#00ff66" aria-label="Mid frequency color" /></label>
+              <label title="High frequency color">H <input id="highBandColor" type="color" value="#ff007f" aria-label="High frequency color" /></label>
+              <em>OUT L · M · H IN</em>
+            </div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="waveformCanvas" aria-label="即時彩色聲波"></canvas>
+            <div class="playhead"></div>
+            <div class="time-axis"><span>PAST</span><span>NOW</span></div>
+          </div>
+        </article>
+
+        <aside class="panel metrics-panel">
+          <div class="panel-heading">
+            <div><span class="index">02</span><h2>Live readout</h2></div>
+          </div>
+          <div class="note-block">
+            <span class="metric-label">DETECTED NOTE</span>
+            <div><strong id="noteName">—</strong><sup id="noteCents">LISTENING</sup></div>
+            <span id="noteHz" class="metric-sub">— Hz</span>
+          </div>
+          <div class="fullness-block">
+            <span class="metric-label">SPECTRAL FULLNESS</span>
+            <strong id="fullnessLabel">—</strong>
+            <div class="meter"><i id="fullnessMeter"></i></div>
+            <p id="fullnessDetail">Start input to measure frequency coverage.</p>
+          </div>
+          <div class="bands">
+            <div><span>LOWS</span><b id="lowValue">—</b></div>
+            <div><span>MIDS</span><b id="midValue">—</b></div>
+            <div><span>HIGHS</span><b id="highValue">—</b></div>
+          </div>
+          <p id="balanceText" class="balance">BALANCE —</p>
+        </aside>
+      </section>
+
+      <section class="panel spectrum-panel">
+        <div class="panel-heading spectrum-heading">
+          <div><span class="index">03</span><h2>Frequency spectrum</h2></div>
+          <div class="controls">
+            <label class="formant-control">RANGES <input id="formantCount" type="range" min="5" max="10" step="1" value="5" /><b id="formantCountValue">5</b></label>
+            <fieldset class="spectrum-colors" aria-label="Spectrum color">
+              <legend>COLOR</legend>
+              <label title="Blue"><input type="radio" name="spectrumColor" value="#18aaff" aria-label="Blue spectrum" checked /><i style="--swatch:#18aaff"></i></label>
+              <label title="Purple"><input type="radio" name="spectrumColor" value="#8b5cf6" aria-label="Purple spectrum" /><i style="--swatch:#8b5cf6"></i></label>
+              <label title="Yellow"><input type="radio" name="spectrumColor" value="#f4d03f" aria-label="Yellow spectrum" /><i style="--swatch:#f4d03f"></i></label>
+              <label title="Orange"><input type="radio" name="spectrumColor" value="#ff8a24" aria-label="Orange spectrum" /><i style="--swatch:#ff8a24"></i></label>
+              <label title="Green"><input type="radio" name="spectrumColor" value="#20d875" aria-label="Green spectrum" /><i style="--swatch:#20d875"></i></label>
+            </fieldset>
+            <span class="fixed-peak">PEAK <i></i></span>
+          </div>
+        </div>
+        <div class="spectrum-wrap">
+          <canvas id="spectrumCanvas" aria-label="20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值"></canvas>
+          <div id="spectrumCursor" class="spectrum-cursor" aria-hidden="true">
+            <i class="cursor-x"></i><i class="cursor-y"></i><b id="spectrumReadout">—</b>
+          </div>
+          <div class="frequency-axis">
+            <span style="left:0%">20</span><span style="left:15.9%">60</span>
+            <span style="left:33.3%">200</span><span style="left:49.2%">600</span>
+            <span style="left:66.7%">2k</span><span style="left:79.9%">5k</span>
+            <span style="left:90%">10k</span><span style="left:100%">20k Hz</span>
+          </div>
+          <div class="level-axis"><span>0</span><span>−20</span><span>−40</span><span>−60</span><span>−80</span><span>−100 dBFS</span></div>
+          <div class="range-label low-range">LOW</div>
+          <div class="range-label mid-range">MID</div>
+          <div class="range-label high-range">HIGH</div>
+          <div id="emptyState" class="empty-state">
+            <span>MICROPHONE INPUT</span>
+            <p>Press Start Input, then make a sound.</p>
+          </div>
+        </div>
+        <footer class="credits">
+          <span>20 Hz — 20 kHz · −110 TO 0 dBFS · FULLNESS: STRICT ONE-SHOT · METRONOME INDEPENDENT</span>
+          <details>
+            <summary>CREDITS &amp; METHOD</summary>
+            <div class="credit-card">
+              <p><b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. The history is one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Spectral Fullness is a strict live one-shot reading: each band must independently cross its sound threshold before it counts as active, and all three must cross to show Full. It is a descriptive frequency-coverage indicator, not a quality score. The metronome is an independent practice aid and does not alter the Fullness result. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.</p>
+              <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer">WING · Beatbox spectrum-analysis inspiration (YouTube)</a>
+              <a href="https://www.w3.org/TR/webaudio-1.1/" target="_blank" rel="noreferrer">W3C · Web Audio API</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type" target="_blank" rel="noreferrer">MDN · Standard audio filter types</a>
+              <a href="https://cdn.rekordbox.com/files/20240509141437/rekordbox7.0.0_manual_EN.pdf" target="_blank" rel="noreferrer">rekordbox · 3Band waveform reference</a>
+              <a href="https://www.copyright.gov/comp3/redlines/chap900.pdf" target="_blank" rel="noreferrer">U.S. Copyright Office · Coloration guidance</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatFrequencyData" target="_blank" rel="noreferrer">MDN · Frequency data</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/noiseSuppression" target="_blank" rel="noreferrer">MDN · Browser noise suppression</a>
+              <a href="https://manual.audacityteam.org/man/noise_gate.html" target="_blank" rel="noreferrer">Audacity · Noise gate method</a>
+              <a href="https://swepub.kb.se/bib/swepub%3Aoai%3Agup.ub.gu.se/137471?language=en" target="_blank" rel="noreferrer">Low-frequency noise · 20–200 Hz</a>
+              <a href="https://praat.org/manual/License.html" target="_blank" rel="noreferrer">Praat · GPL license</a>
+              <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7056453/" target="_blank" rel="noreferrer">JASA · LPC &amp; formants</a>
+              <a href="https://citeseerx.ist.psu.edu/document?doi=248ea123fb0412b733f09087aa2f538026abe270&repid=rep1&type=pdf" target="_blank" rel="noreferrer">Human beatbox analysis</a>
+            </div>
+          </details>
+        </footer>
+      </section>
+    </main>
+    <script src="app.js?v=11"></script>
+  </body>
+</html>
