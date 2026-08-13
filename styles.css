@@ -38,7 +38,7 @@ h1 span { color: var(--acid); }
 .gate-mode { display:flex;align-items:center;gap:6px;color:var(--muted);font:800 8px/1 monospace;letter-spacing:.07em;white-space:nowrap}.gate-mode input{accent-color:var(--acid)}.gate-mode:has(input:checked){color:#fff}
 .threshold-control { display:grid; grid-template-columns:1fr 54px; align-items:center; gap:10px; color:var(--muted); font:700 8px/1 monospace; letter-spacing:.08em; }.threshold-control input{width:100%;accent-color:var(--acid)}.threshold-control b{color:#fff;text-align:right}
 .panel { background: var(--panel); border: 1px solid var(--line); min-width: 0; }
-.top-grid { flex: 0 0 clamp(266px, 25vh, 330px); min-height: 266px; display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.top-grid { flex: 0 0 clamp(314px, 29vh, 350px); min-height: 314px; display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
 .panel-heading { height: 42px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px; border-bottom: 1px solid var(--line); }
 .panel-heading > div:first-child { display: flex; align-items: center; gap: 12px; }
 .panel-heading h2 { margin: 0; text-transform: uppercase; font: 700 11px/1 monospace; letter-spacing: .12em; }
