@@ -7,24 +7,26 @@ const sctx = spectrumCanvas.getContext('2d');
 const TRANSLATIONS = {
   en: {
     metronomeControls:'Metronome controls',metro:'METRO',off:'OFF',metronomeBpm:'Metronome BPM',beats:'BEATS',beatsPerMeasure:'Beats per measure',division:'DIVISION',beatDivision:'Beat division',click:'CLICK',metronomeClickSound:'Metronome click sound',digital:'DIGITAL',wood:'WOOD',soft:'SOFT',
-    switchLanguage:'切換為繁體中文',micIdle:'MIC IDLE',micLive:'MIC LIVE',micDenied:'MIC ACCESS DENIED',startInput:'START INPUT',stopInput:'STOP INPUT',microphoneAlert:'Microphone access is unavailable. Allow microphone permission and open this page through localhost or HTTPS.',
+    switchLanguage:'切換為繁體中文',micIdle:'MIC IDLE',micLive:'MIC LIVE',micDenied:'MIC ACCESS DENIED',startInput:'START INPUT',stopInput:'STOP INPUT',microphoneAlert:'Microphone access is unavailable. Allow microphone permission and open this page through localhost or HTTPS.',localStarts:'LOCAL {count} STARTS',localStartsLabel:'Starts saved on this device',
     noiseGateControls:'Noise gate controls',gate:'GATE',noiseFloor:'NOISE FLOOR',autoProfile:'AUTO PROFILE',recordNoise:'RECORD NOISE 5s',rerecordNoise:'RE-RECORD NOISE 5s',manual:'MANUAL',waitingInput:'WAITING FOR INPUT',profileRequired:'PROFILE REQUIRED · RECORD ROOM TONE',pleaseQuiet:'PLEASE STAY QUIET',calibrating:'CALIBRATING {seconds}s',locked:'LOCKED · {values} dB',manualStatus:'MANUAL · {value} dB',
     signalHistory:'Signal history',threeBandColors:'Waveform display and colors',displayMode:'MODE',waveDisplayModeLabel:'Signal history display mode',threeBand:'THREE BAND',soundWave:'SOUND WAVE',theme:'THEME',threeBandTheme:'Three band color theme',cyberpunk:'CYBERPUNK',modernDark:'MODERN DARK',neonGlow:'NEON GLOW',custom:'CUSTOM',lowColor:'Low frequency color',midColor:'Mid frequency color',highColor:'High frequency color',bandOrder:'OUT L · M · H IN',waveformCanvas:'Live waveform history',past:'PAST',now:'NOW',historyZoomLabel:'Signal history zoom',historySeconds:'Displayed history window',resetZoom:'Reset zoom',seconds:'{value}s',milliseconds:'{value} ms',
     liveReadout:'Live readout',pitchMode:'NOTE MODE',pitchModeLabel:'Pitch detection mode',oneNote:'ONE NOTE',polyphonicBeta:'POLYPHONIC EXPERIMENT (BETA)',detectedNote:'DETECTED NOTE',listening:'LISTENING',unpitched:'UNPITCHED',cents:'{value} CENTS',secondaryPitch:'SECONDARY PITCH',enhancedOvertone:'ENHANCED OVERTONE',waitingStable:'WAITING FOR STABLE PITCH',betaConfidence:'BETA · {value}% STABLE',independentRelation:'POSSIBLE INDEPENDENT NOTE · WITH {primary}',harmonicRelation:'H{harmonic} · HARMONIC OF {primary}',experimentalAnalysis:'EXPERIMENTAL ANALYSIS',spectralFullness:'SPECTRAL FULLNESS',startMeasure:'Start input to measure frequency coverage.',recordingRoom:'Recording 5 seconds of room tone…',noiseProfileRequired:'Noise profile required',full:'FULL',moderate:'MODERATE',limited:'LIMITED',fullnessDetail:'STRICT ONE-SHOT · Active bands {count}/3{bands} · {mode} thresholds',profileMode:'profile',manualMode:'manual',
     lows:'LOWS',mids:'MIDS',highs:'HIGHS',low:'LOW',mid:'MID',high:'HIGH',balanceEmpty:'BALANCE —',balanceEven:'BALANCE · EVENLY DISTRIBUTED',balanceForward:'BALANCE · {band} FORWARD',
     frequencySpectrum:'Frequency spectrum',ranges:'RANGES',spectrumColor:'Spectrum color',color:'COLOR',peak:'PEAK',blue:'Blue',purple:'Purple',yellow:'Yellow',orange:'Orange',green:'Green',blueSpectrum:'Blue spectrum',purpleSpectrum:'Purple spectrum',yellowSpectrum:'Yellow spectrum',orangeSpectrum:'Orange spectrum',greenSpectrum:'Green spectrum',spectrumCanvas:'20 Hz to 20 kHz live audio spectrum; click to lock frequency and dB reading',microphoneInput:'MICROPHONE INPUT',startHint:'Press Start Input, then make a sound.',cursorLocked:'LOCKED',cursorLive:'LIVE',methodSummary:'20 Hz — 20 kHz · −110 TO 0 dBFS · FULLNESS: STRICT ONE-SHOT · METRONOME INDEPENDENT',creditsMethod:'CREDITS & METHOD',
-    methodText:'<b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. Three Band mode uses one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Sound Wave mode shows the raw amplitude signal; below 100 ms it changes to connected samples, with individual sample dots at the deepest zoom. Spectral Fullness is a strict live one-shot reading: each band must independently cross its sound threshold before it counts as active, and all three must cross to show Full. It is a descriptive frequency-coverage indicator, not a quality score. The metronome is an independent practice aid and does not alter the Fullness result. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.',
+    methodText:'<b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. Three Band mode uses one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Sound Wave mode shows the raw amplitude signal; below 100 ms it changes to connected samples, with individual sample dots at the deepest zoom. Spectral Fullness is a strict live one-shot reading. Routine Analysis samples frequency-band activity every 200 ms and applies transparent, rule-based feedback locally. These are descriptive frequency-coverage indicators, not quality scores. The metronome is an independent practice aid and does not alter the results. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.',privacyText:'<b>Privacy.</b> This is not an AI tool. Audio samples are processed temporarily in memory for the live display; they are not uploaded, saved to persistent storage, or used to train a model. The local start count is stored only in this browser.',
+    routinePanelLabel:'Routine analysis',routineAnalysis:'ROUTINE ANALYSIS',onDevice:'ON DEVICE',duration:'DURATION',routineDurationLabel:'Routine analysis duration',startRoutine:'START ANALYSIS',cancelRoutine:'CANCEL',routineReady:'Choose a duration, then start when ready.',routineRunning:'ANALYZING FREQUENCY COVERAGE',routineComplete:'ANALYSIS COMPLETE',routineCancelled:'Analysis stopped early; results use the captured portion.',routineInstructions:'Only Low, Mid and High frequency summaries are recorded. Raw audio is never recorded or saved. For better results, capture 5 seconds of room tone first or use the manual threshold.',coverageChartLabel:'Low, mid and high frequency time coverage chart',routineFeedback:'FREQUENCY DISTRIBUTION IDEAS',routineWaiting:'Complete one analysis to see possible directions to explore.',routineDisclaimer:'Rule-based frequency-distribution guidance only—not AI, a skill score, or an arrangement standard.',routineNeedInput:'Starting microphone input…',routineNeedGate:'For more reliable results, record a noise profile or choose a manual threshold.',routineLowAdvice:'Low-frequency coverage is relatively light. Try kick, lip bass, throat bass, inward bass, or another low-frequency layer.',routineMidAdvice:'Mid-frequency coverage is relatively light. Try vocal, humming, a pitched line, or a more present snare body.',routineHighAdvice:'High-frequency coverage is relatively light. Try hi-hat, clicks, a brighter snare attack, or another high-frequency texture.',routineEvenAdvice:'All three bands appear regularly. Explore arrangement, contrast and intentional space rather than simply adding more sounds.',routineFlatAdvice:'The level range stays fairly consistent. A quieter setup, stronger drop, or clearer accents may create more contrast.',routineSparseAdvice:'A large part of the routine is below the current sound thresholds. Check input gain and noise-gate settings before treating this as an arrangement gap.',
     wingCredit:'WING · Beatbox spectrum-analysis inspiration (YouTube)',webAudioCredit:'W3C · Web Audio API',filterCredit:'MDN · Standard audio filter types',rekordboxCredit:'rekordbox · 3Band waveform reference',copyrightCredit:'U.S. Copyright Office · Coloration guidance',methodCopyrightCredit:'U.S. Copyright Office · Ideas, methods & systems',frequencyCredit:'MDN · Frequency data',noiseSuppressionCredit:'MDN · Browser noise suppression',noiseGateCredit:'Audacity · Noise gate method',waveformCredit:'Audacity · Waveform zoom & sample display reference',lowNoiseCredit:'Low-frequency noise · 20–200 Hz',praatCredit:'Praat · GPL license',formantCredit:'JASA · LPC & formants',beatboxCredit:'Human beatbox analysis'
   },
   'zh-Hant': {
     metronomeControls:'節拍器控制',metro:'節拍器',off:'關閉',metronomeBpm:'節拍器速度（BPM）',beats:'拍數',beatsPerMeasure:'每小節拍數',division:'拍值',beatDivision:'拍子音符時值',click:'節拍音',metronomeClickSound:'節拍器音色',digital:'數位',wood:'木質',soft:'柔和',
-    switchLanguage:'Switch to English',micIdle:'麥克風待機',micLive:'麥克風收音中',micDenied:'麥克風權限遭拒',startInput:'開始輸入',stopInput:'停止輸入',microphoneAlert:'無法使用麥克風。請允許此網站的麥克風權限，並使用 localhost 或 HTTPS 開啟。',
+    switchLanguage:'Switch to English',micIdle:'麥克風待機',micLive:'麥克風收音中',micDenied:'麥克風權限遭拒',startInput:'開始輸入',stopInput:'停止輸入',microphoneAlert:'無法使用麥克風。請允許此網站的麥克風權限，並使用 localhost 或 HTTPS 開啟。',localStarts:'本機啟動 {count} 次',localStartsLabel:'儲存在這台裝置的啟動次數',
     noiseGateControls:'底噪閘門控制',gate:'閘門',noiseFloor:'底噪',autoProfile:'自動取樣',recordNoise:'錄製底噪 5秒',rerecordNoise:'重新錄製底噪 5秒',manual:'手動',waitingInput:'等待輸入',profileRequired:'需要底噪樣本 · 請錄製環境底噪',pleaseQuiet:'請保持安靜',calibrating:'校正中 {seconds}秒',locked:'已鎖定 · {values} dB',manualStatus:'手動 · {value} dB',
     signalHistory:'訊號歷史',threeBandColors:'聲波顯示與顏色',displayMode:'模式',waveDisplayModeLabel:'訊號歷史顯示模式',threeBand:'三頻段',soundWave:'聲波',theme:'主題',threeBandTheme:'三頻段配色主題',cyberpunk:'賽博朋克',modernDark:'現代暗黑',neonGlow:'熱情霓虹',custom:'自訂',lowColor:'低頻顏色',midColor:'中頻顏色',highColor:'高頻顏色',bandOrder:'外層 低 · 中 · 高 內層',waveformCanvas:'即時聲波歷史',past:'過去',now:'現在',historyZoomLabel:'訊號歷史縮放',historySeconds:'顯示的歷史時間範圍',resetZoom:'重設縮放',seconds:'{value}秒',milliseconds:'{value}毫秒',
     liveReadout:'即時讀值',pitchMode:'音高模式',pitchModeLabel:'音高偵測模式',oneNote:'單音',polyphonicBeta:'複音實驗（Beta）',detectedNote:'偵測音高',listening:'聆聽中',unpitched:'無明確音高',cents:'{value} 音分',secondaryPitch:'第二音高',enhancedOvertone:'突出泛音',waitingStable:'等待穩定音高',betaConfidence:'BETA · 穩定度 {value}%',independentRelation:'可能是獨立音高 · 與 {primary} 並存',harmonicRelation:'H{harmonic} · {primary} 的整數倍泛音',experimentalAnalysis:'實驗性分析',spectralFullness:'頻譜飽滿度',startMeasure:'開始輸入以測量頻率涵蓋範圍。',recordingRoom:'正在錄製 5 秒環境底噪…',noiseProfileRequired:'需要先建立底噪樣本',full:'飽滿',moderate:'中等',limited:'有限',fullnessDetail:'嚴格單次判定 · 啟用頻段 {count}/3{bands} · {mode}閾值',profileMode:'自動取樣',manualMode:'手動',
     lows:'低頻',mids:'中頻',highs:'高頻',low:'低頻',mid:'中頻',high:'高頻',balanceEmpty:'頻段平衡 —',balanceEven:'頻段平衡 · 分布均勻',balanceForward:'頻段平衡 · {band}突出',
     frequencySpectrum:'頻率頻譜',ranges:'共振區',spectrumColor:'頻譜顏色',color:'顏色',peak:'峰值',blue:'藍色',purple:'紫色',yellow:'黃色',orange:'橘色',green:'綠色',blueSpectrum:'藍色頻譜',purpleSpectrum:'紫色頻譜',yellowSpectrum:'黃色頻譜',orangeSpectrum:'橘色頻譜',greenSpectrum:'綠色頻譜',spectrumCanvas:'20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值',microphoneInput:'麥克風輸入',startHint:'按下「開始輸入」，然後發出聲音。',cursorLocked:'已鎖定',cursorLive:'即時',methodSummary:'20 Hz — 20 kHz · −110 至 0 dBFS · 飽滿度：嚴格單次判定 · 節拍器獨立運作',creditsMethod:'製作資訊與方法',
-    methodText:'<b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。三頻段模式採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。聲波模式顯示原始振幅訊號；縮放至 100 毫秒以下會改用逐點連線，最深縮放會顯示個別取樣點。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。',
+    methodText:'<b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。三頻段模式採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。聲波模式顯示原始振幅訊號；縮放至 100 毫秒以下會改用逐點連線，最深縮放會顯示個別取樣點。頻譜飽滿度採嚴格的即時單次判定。段子分析每 200 毫秒記錄一次頻段活動，並完全在本機套用公開的規則式建議。這些都是描述性的頻率覆蓋參考，並非品質評分。節拍器是獨立的練習輔助，不會改變分析結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。',privacyText:'<b>隱私。</b>這不是 AI 工具。聲音取樣只會在執行時暫存於記憶體供即時顯示；不會上傳、寫入永久儲存空間或用於訓練模型。本機啟動次數只保存在這個瀏覽器中。',
+    routinePanelLabel:'段子分析',routineAnalysis:'段子分析',onDevice:'僅限本機',duration:'時間',routineDurationLabel:'段子分析時間',startRoutine:'開始分析',cancelRoutine:'取消',routineReady:'選擇時間，準備好後開始。',routineRunning:'正在分析頻率覆蓋',routineComplete:'分析完成',routineCancelled:'分析提前停止；結果依已收集的片段計算。',routineInstructions:'只記錄 Low、Mid、High 的頻率摘要，不錄製或保存原始聲音。建議先完成 5 秒底噪取樣，或使用手動閾值。',coverageChartLabel:'低中高頻時間覆蓋圖',routineFeedback:'頻率分布建議',routineWaiting:'完成一次分析後，這裡會顯示可嘗試的補強方向。',routineDisclaimer:'這是規則式的頻率分布參考，不是 AI、技巧評分或編排標準。',routineNeedInput:'正在啟動麥克風…',routineNeedGate:'若要得到更可靠的結果，建議先錄製底噪或選擇手動閾值。',routineLowAdvice:'低頻覆蓋相對較少。可以嘗試 Kick、Lip Bass、Throat Bass、Inward Bass，或其他低頻聲部。',routineMidAdvice:'中頻覆蓋相對較少。可以嘗試 Vocal、Humming、有音高的旋律聲部，或更有存在感的 Snare body。',routineHighAdvice:'高頻覆蓋相對較少。可以嘗試 Hi-hat、Clicks、較明亮的 Snare attack，或其他高頻質地。',routineEvenAdvice:'三個頻段都有規律出現。可以優先探索編排、對比與刻意留白，而不一定只是加入更多聲音。',routineFlatAdvice:'整段的音量變化較一致。可以嘗試更安靜的鋪陳、更明顯的 Drop，或更清楚的重音，增加段落對比。',routineSparseAdvice:'很大一部分低於目前的聲音閾值。請先檢查輸入 Gain 與 Noise Gate，再判斷是否真的是編排缺口。',
     wingCredit:'WING · Beatbox 頻譜分析靈感（YouTube）',webAudioCredit:'W3C · Web Audio API 規範',filterCredit:'MDN · 標準音訊濾波器類型',rekordboxCredit:'rekordbox · 三頻段聲波參考',copyrightCredit:'美國著作權局 · 配色指引',methodCopyrightCredit:'美國著作權局 · 概念、方法與系統',frequencyCredit:'MDN · 頻率資料',noiseSuppressionCredit:'MDN · 瀏覽器降噪',noiseGateCredit:'Audacity · 噪音閘門方法',waveformCredit:'Audacity · 聲波縮放與取樣點顯示參考',lowNoiseCredit:'低頻噪音 · 20–200 Hz',praatCredit:'Praat · GPL 授權',formantCredit:'JASA · LPC 與共振峰',beatboxCredit:'人聲 Beatbox 分析'
   }
 };
@@ -42,6 +44,8 @@ function applyLanguage(language){
   $('recordLabel').textContent=t(running?'stopInput':'startInput');setStatusText(running?'micLive':'micIdle');
   $('calibrateButton').textContent=calibrationEndsAt?t('calibrating',{seconds:Math.max(0,(calibrationEndsAt-performance.now())/1000).toFixed(1)}):t(profileReady?'rerecordNoise':'recordNoise');
   updateHistoryWindowLabel();
+  renderLocalStartCount();setRoutineButtonState();$('routineStatus').textContent=t(routineStatusKey);renderRoutineAdvice(routineState.samples);
+  [...$('routineDuration').options].forEach(option=>option.textContent=`${option.value} ${currentLanguage==='en'?'sec':'秒'}`);
   updateGateModeUi();
   if(!running){$('noteCents').textContent=t('listening');$('fullnessDetail').textContent=t('startMeasure');$('balanceText').textContent=t('balanceEmpty');}
   renderPolyphonicResult(lastPolyphonicResult);
@@ -73,6 +77,7 @@ let metronomeContext=null,metronomeTimer=null,metronomeRunning=false,metronomeBe
 let pitchMode='single';
 let secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};
 let lastPolyphonicResult=null;
+let routineState={active:false,durationMs:90000,startedAt:0,lastSampleAt:0,samples:[]},routineStatusKey='routineReady';
 const HISTORY_WINDOWS_MS=[20000,10000,6000,4000,3000,1000,500,200,100,50,20,10];
 const DEFAULT_HISTORY_ZOOM_INDEX=3,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
 const SPECTRUM_RELEASE_DB_PER_SECOND=18;
@@ -85,6 +90,11 @@ function updateBandColorUi() {
   ['lowBandColor','midBandColor','highBandColor'].forEach((id,i)=>$(id).value=bandColors[i]);
   $('bandGradient').style.background=`linear-gradient(90deg,${bandColors.join(',')})`;
 }
+
+const LOCAL_START_COUNT_KEY='beatbox-local-starts-v2';
+function localStartCount(){return Math.max(0,Number(localStorage.getItem(LOCAL_START_COUNT_KEY))||0);}
+function renderLocalStartCount(){const node=$('localUseCount');node.textContent=t('localStarts',{count:localStartCount()});node.setAttribute('aria-label',t('localStartsLabel'));}
+function incrementLocalStartCount(){localStorage.setItem(LOCAL_START_COUNT_KEY,String(localStartCount()+1));renderLocalStartCount();}
 
 function applyBandTheme(theme) {
   if(BAND_THEMES[theme])bandColors=[...BAND_THEMES[theme]];
@@ -195,6 +205,7 @@ async function toggleInput() {
     peaks = new Float32Array(freqData.length).fill(MIN_DB);
     currentGates=[0,0,0];resonanceBands=[];
     running = true; startedAt = performance.now(); lastFrame = startedAt; waveform = []; rawWaveform = [];
+    incrementLocalStartCount();
     $('recordButton').classList.add('active'); $('recordLabel').textContent = t('stopInput');
     $('statusText').classList.add('live'); setStatusText('micLive');
     $('calibrateButton').disabled=false;
@@ -208,6 +219,7 @@ async function toggleInput() {
 }
 
 function stopInput() {
+  if(routineState.active)finishRoutineAnalysis(true);
   running = false; cancelAnimationFrame(animationId);
   stream?.getTracks().forEach(track => track.stop());
   audioContext?.close();
@@ -439,6 +451,68 @@ function updateMetrics(gateState) {
   return { low, mid, high, level: Math.max(...levels), score, centroid:spectralCentroid() };
 }
 
+function routineDurationSeconds(){return [30,45,60,90].includes(Number($('routineDuration').value))?Number($('routineDuration').value):90;}
+function routineThresholds(){
+  if(gateMode==='manual')return FULLNESS_MANUAL_OFFSETS.map(offset=>manualThreshold+offset);
+  return noiseFloor.map((floor,i)=>floor+FULLNESS_PROFILE_MARGINS[i]);
+}
+function formatRoutineClock(seconds){const safe=Math.max(0,Math.round(seconds)),minutes=Math.floor(safe/60),rest=safe%60;return`${String(minutes).padStart(2,'0')}:${String(rest).padStart(2,'0')}`;}
+function setRoutineButtonState(){
+  $('routineButton').textContent=t(routineState.active?'cancelRoutine':'startRoutine');$('routineButton').classList.toggle('active',routineState.active);$('routineDuration').disabled=routineState.active;
+}
+function renderRoutineTimeline(samples=routineState.samples){
+  const names=['low','mid','high'],total=Math.max(1,samples.length),bucketCount=Math.min(90,Math.max(1,samples.length));
+  names.forEach((name,band)=>{
+    const active=samples.reduce((sum,sample)=>sum+(sample.active[band]?1:0),0),percentage=Math.round(active/total*100);
+    const colors=[];
+    for(let bucket=0;bucket<bucketCount;bucket++){
+      const from=Math.floor(bucket*samples.length/bucketCount),to=Math.max(from+1,Math.floor((bucket+1)*samples.length/bucketCount));
+      let hits=0;for(let i=from;i<Math.min(samples.length,to);i++)if(samples[i].active[band])hits++;
+      const strength=hits/Math.max(1,to-from),start=bucket/bucketCount*100,end=(bucket+1)/bucketCount*100;
+      colors.push(`rgba(${band===0?'77,0,255':band===1?'0,255,102':'255,0,127'},${(.08+strength*.88).toFixed(2)}) ${start.toFixed(2)}%`, `rgba(${band===0?'77,0,255':band===1?'0,255,102':'255,0,127'},${(.08+strength*.88).toFixed(2)}) ${end.toFixed(2)}%`);
+    }
+    $(`${name}CoverageFill`).style.background=samples.length?`linear-gradient(90deg,${colors.join(',')})`:'';
+    $(`${name}CoverageValue`).textContent=samples.length?`${percentage}%`:'—';
+  });
+}
+function routineAdvice(samples){
+  if(!samples.length)return['routineWaiting'];
+  const coverage=[0,1,2].map(band=>samples.filter(sample=>sample.active[band]).length/samples.length*100),anyCoverage=samples.filter(sample=>sample.active.some(Boolean)).length/samples.length*100;
+  const audibleRms=samples.filter(sample=>sample.active.some(Boolean)).map(sample=>sample.rmsDb),dynamicRange=percentile(audibleRms,.9)-percentile(audibleRms,.1),max=Math.max(...coverage),min=Math.min(...coverage),advice=[];
+  if(anyCoverage<40)advice.push('routineSparseAdvice');
+  const deficient=coverage.map((value,index)=>({value,index})).filter(item=>item.value<18||item.value<max-22).sort((a,b)=>a.value-b.value);
+  deficient.slice(0,2).forEach(item=>advice.push(['routineLowAdvice','routineMidAdvice','routineHighAdvice'][item.index]));
+  if(!deficient.length&&min>=25&&max-min<=18)advice.push('routineEvenAdvice');
+  if(audibleRms.length>8&&dynamicRange<8)advice.push('routineFlatAdvice');
+  if(!advice.length)advice.push(['routineLowAdvice','routineMidAdvice','routineHighAdvice'][coverage.indexOf(min)]);
+  return [...new Set(advice)];
+}
+function renderRoutineAdvice(samples){$('routineAdviceList').innerHTML=routineAdvice(samples).map(key=>`<li>${t(key)}</li>`).join('');}
+async function startRoutineAnalysis(){
+  if(routineState.active){finishRoutineAnalysis(true);return;}
+  routineStatusKey='routineNeedInput';$('routineStatus').textContent=t(routineStatusKey);
+  if(!running)await toggleInput();
+  if(!running){routineStatusKey='routineReady';$('routineStatus').textContent=t(routineStatusKey);return;}
+  const seconds=routineDurationSeconds(),now=performance.now();routineState={active:true,durationMs:seconds*1000,startedAt:now,lastSampleAt:0,samples:[]};
+  routineStatusKey=gateMode==='profile'&&!profileReady?'routineNeedGate':'routineRunning';$('routineStatus').textContent=t(routineStatusKey);$('routineTime').textContent=`00:00 / ${formatRoutineClock(seconds)}`;$('routineProgress').style.width='0%';
+  renderRoutineTimeline([]);renderRoutineAdvice([]);setRoutineButtonState();
+}
+function updateRoutineAnalysis(gateState,now){
+  if(!routineState.active)return;
+  const elapsed=now-routineState.startedAt,remaining=Math.max(0,routineState.durationMs-elapsed),progress=Math.min(1,elapsed/routineState.durationMs);
+  $('routineTime').textContent=`${formatRoutineClock(elapsed/1000)} / ${formatRoutineClock(routineState.durationMs/1000)}`;$('routineProgress').style.width=`${progress*100}%`;
+  if(!gateState.calibrating&&now-routineState.lastSampleAt>=200){
+    const thresholds=routineThresholds(),active=gateState.dbs.map((db,i)=>db>=thresholds[i]);routineState.samples.push({active,rmsDb:gateState.rmsDb});routineState.lastSampleAt=now;
+    if(routineState.samples.length%5===0)renderRoutineTimeline();
+  }
+  if(remaining<=0)finishRoutineAnalysis(false);
+}
+function finishRoutineAnalysis(cancelled=false){
+  if(!routineState.active)return;
+  routineState.active=false;renderRoutineTimeline();renderRoutineAdvice(routineState.samples);$('routineProgress').style.width=cancelled?`${Math.min(100,routineState.samples.length/(routineState.durationMs/200)*100)}%`:'100%';
+  routineStatusKey=cancelled?'routineCancelled':'routineComplete';$('routineStatus').textContent=t(routineStatusKey);setRoutineButtonState();
+}
+
 function addWaveSlice(gateState) {
   const references=gateMode==='profile'&&profileReady?noiseFloor:[manualThreshold-8,manualThreshold-8,manualThreshold-8];
   const bandWeights=[1.35,1,1];
@@ -598,7 +672,7 @@ function updateSpectrumCursor(clientX, locked=cursorLocked) {
 
 function draw(now=performance.now()) {
   if(!running)return; analyser.getFloatTimeDomainData(timeData); analyser.getFloatFrequencyData(freqData);transientAnalyser.getFloatTimeDomainData(waveTimeData);transientAnalyser.getFloatFrequencyData(waveFreqData);
-  const dt=Math.min(50,now-lastFrame);lastFrame=now;const gateState=updateVisualGate();updateMetrics(gateState);
+  const dt=Math.min(50,now-lastFrame);lastFrame=now;const gateState=updateVisualGate();updateMetrics(gateState);updateRoutineAnalysis(gateState,now);
   if (now-lastPitchAt > 80) { lastPitch=detectPitch(timeData.subarray(0,4096),audioContext.sampleRate); lastPitchAt=now; updateNote(lastPitch);lastPolyphonicResult=pitchMode==='polyphonic'?detectPolyphonicPitch(lastPitch):null;renderPolyphonicResult(lastPolyphonicResult); }
   addWaveSlice(gateState);addRawWaveSamples(dt);drawWaveform();drawSpectrum(dt,gateState);$('timer').textContent=formatTime(now-startedAt);animationId=requestAnimationFrame(draw);
 }
@@ -616,6 +690,8 @@ function setHistoryZoomIndex(value) {
 
 function formatTime(ms){const total=ms/1000,m=Math.floor(total/60),s=Math.floor(total%60),t=Math.floor((total%1)*10);return`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${t}`}
 $('recordButton').addEventListener('click',toggleInput);
+$('routineButton').addEventListener('click',startRoutineAnalysis);
+$('routineDuration').addEventListener('change',()=>{$('routineTime').textContent=`00:00 / ${formatRoutineClock(routineDurationSeconds())}`;});
 $('languageButton').addEventListener('click',()=>applyLanguage(currentLanguage==='zh-Hant'?'en':'zh-Hant'));
 $('pitchMode').addEventListener('change',event=>{pitchMode=event.target.value==='polyphonic'?'polyphonic':'single';secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};lastPolyphonicResult=null;renderPolyphonicResult(null);});
 $('waveDisplayMode').addEventListener('change',event=>{waveDisplayMode=event.target.value==='soundWave'?'soundWave':'threeBand';localStorage.setItem('beatbox-wave-display',waveDisplayMode);drawWaveform();});
@@ -652,6 +728,7 @@ spectrumCanvas.addEventListener('pointerleave',()=>{if(!cursorLocked)$('spectrum
 spectrumCanvas.addEventListener('click',e=>{cursorLocked=!cursorLocked;cursorClientX=e.clientX;updateSpectrumCursor(e.clientX,cursorLocked)});
 window.addEventListener('resize',()=>{if(!running){resizeCanvas(waveCanvas);resizeCanvas(spectrumCanvas)}});
 resizeCanvas(waveCanvas);resizeCanvas(spectrumCanvas);
+renderLocalStartCount();renderRoutineTimeline([]);setRoutineButtonState();$('routineTime').textContent=`00:00 / ${formatRoutineClock(routineDurationSeconds())}`;
 updateGateModeUi();
 restoreBandTheme();
 const savedSpectrumInput=document.querySelector(`input[name="spectrumColor"][value="${spectrumColor}"]`);if(savedSpectrumInput)savedSpectrumInput.checked=true;
