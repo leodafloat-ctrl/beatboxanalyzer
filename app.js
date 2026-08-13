@@ -75,6 +75,7 @@ let secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidenc
 let lastPolyphonicResult=null;
 const HISTORY_WINDOWS_MS=[20000,10000,6000,3000,1000,500,200,100,50,20,10];
 const DEFAULT_HISTORY_ZOOM_INDEX=2,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
+const SPECTRUM_RELEASE_DB_PER_SECOND=18;
 let historyZoomIndex=DEFAULT_HISTORY_ZOOM_INDEX,historyWindowMs=HISTORY_WINDOWS_MS[historyZoomIndex];
 let waveDisplayMode=localStorage.getItem('beatbox-wave-display')==='soundWave'?'soundWave':'threeBand';
 
@@ -555,7 +556,8 @@ function traceSmoothPath(ctx,points,key) {
 
 function drawSpectrum(dt,gateState) {
   const {width:w,height:h,dpr}=resizeCanvas(spectrumCanvas), pad=22*dpr, bottom=28*dpr;
-  sctx.clearRect(0,0,w,h); const binHz=audioContext.sampleRate/analyser.fftSize, decay=dt*.035;
+  sctx.save();sctx.globalAlpha=1;sctx.globalCompositeOperation='source-over';sctx.shadowBlur=0;sctx.clearRect(0,0,w,h);
+  const binHz=audioContext.sampleRate/analyser.fftSize, decay=dt/1000*SPECTRUM_RELEASE_DB_PER_SECOND;
   for(let i=1;i<freqData.length;i++){const gate=gateState.gates[bandIndexForFrequency(i*binHz)],gatedDb=MIN_DB+(freqData[i]-MIN_DB)*gate;peaks[i]=Math.max(gatedDb,peaks[i]-decay);}
   let samples=[];
   const nyquist=audioContext.sampleRate/2;
@@ -575,6 +577,7 @@ function drawSpectrum(dt,gateState) {
   const intensityStroke=sctx.createLinearGradient(0,h-bottom,0,18*dpr);intensityStroke.addColorStop(0,accent);intensityStroke.addColorStop(.58,accent);intensityStroke.addColorStop(1,peak);
   sctx.beginPath();traceSmoothPath(sctx,samples,'y');sctx.strokeStyle=intensityStroke;sctx.lineWidth=1.15*dpr;sctx.lineJoin='round';sctx.lineCap='round';sctx.shadowBlur=9*dpr;sctx.shadowColor=accent;sctx.stroke();sctx.shadowBlur=0;
   sctx.beginPath();traceSmoothPath(sctx,samples,'liveY');sctx.strokeStyle=accent;sctx.lineWidth=.65*dpr;sctx.globalAlpha=.55;sctx.stroke();sctx.globalAlpha=1;
+  sctx.restore();
   if (cursorLocked) updateSpectrumCursor(cursorClientX, true);
 }
 
