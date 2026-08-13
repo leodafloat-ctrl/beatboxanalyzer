@@ -14,7 +14,7 @@ const TRANSLATIONS = {
     lows:'LOWS',mids:'MIDS',highs:'HIGHS',low:'LOW',mid:'MID',high:'HIGH',balanceEmpty:'BALANCE —',balanceEven:'BALANCE · EVENLY DISTRIBUTED',balanceForward:'BALANCE · {band} FORWARD',
     frequencySpectrum:'Frequency spectrum',ranges:'RANGES',spectrumColor:'Spectrum color',color:'COLOR',peak:'PEAK',blue:'Blue',purple:'Purple',yellow:'Yellow',orange:'Orange',green:'Green',blueSpectrum:'Blue spectrum',purpleSpectrum:'Purple spectrum',yellowSpectrum:'Yellow spectrum',orangeSpectrum:'Orange spectrum',greenSpectrum:'Green spectrum',spectrumCanvas:'20 Hz to 20 kHz live audio spectrum; click to lock frequency and dB reading',microphoneInput:'MICROPHONE INPUT',startHint:'Press Start Input, then make a sound.',cursorLocked:'LOCKED',cursorLive:'LIVE',methodSummary:'20 Hz — 20 kHz · −110 TO 0 dBFS · FULLNESS: STRICT ONE-SHOT · METRONOME INDEPENDENT',creditsMethod:'CREDITS & METHOD',
     methodText:'<b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. Three Band mode uses one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Sound Wave mode shows the raw amplitude signal; below 100 ms it changes to connected samples, with individual sample dots at the deepest zoom. Spectral Fullness is a strict live one-shot reading. Routine Analysis samples frequency-band activity every 200 ms and applies transparent, rule-based feedback locally. These are descriptive frequency-coverage indicators, not quality scores. The metronome is an independent practice aid and does not alter the results. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.',privacyText:'<b>Privacy.</b> This is not an AI tool. Audio samples are processed temporarily in memory for the live display; they are not uploaded, saved to persistent storage, or used to train a model. The local start count is stored only in this browser.',
-    routinePanelLabel:'Routine analysis',routineAnalysis:'ROUTINE ANALYSIS',onDevice:'ON DEVICE',duration:'DURATION',routineDurationLabel:'Routine analysis duration',startRoutine:'START ANALYSIS',cancelRoutine:'CANCEL',routineReady:'Choose a duration, then start when ready.',routineRunning:'ANALYZING FREQUENCY COVERAGE',routineComplete:'ANALYSIS COMPLETE',routineCancelled:'Analysis stopped early; results use the captured portion.',routineInstructions:'Only Low, Mid and High frequency summaries are recorded. Raw audio is never recorded or saved. For better results, capture 5 seconds of room tone first or use the manual threshold.',coverageChartLabel:'Low, mid and high frequency time coverage chart',routineFeedback:'FREQUENCY DISTRIBUTION IDEAS',routineWaiting:'Complete one analysis to see possible directions to explore.',routineDisclaimer:'Rule-based frequency-distribution guidance only—not AI, a skill score, or an arrangement standard.',routineNeedInput:'Starting microphone input…',routineNeedGate:'For more reliable results, record a noise profile or choose a manual threshold.',routineLowAdvice:'Low-frequency coverage is relatively light. Try kick, lip bass, throat bass, inward bass, or another low-frequency layer.',routineMidAdvice:'Mid-frequency coverage is relatively light. Try vocal, humming, a pitched line, or a more present snare body.',routineHighAdvice:'High-frequency coverage is relatively light. Try hi-hat, clicks, a brighter snare attack, or another high-frequency texture.',routineEvenAdvice:'All three frequency bands appear steadily, so the overall distribution looks well covered. There is no obvious frequency gap to fix—explore different combinations and arrangements, and enjoy discovering more ways to beatbox.',routineFlatAdvice:'The level range stays fairly consistent. A quieter setup, stronger drop, or clearer accents may create more contrast.',routineSparseAdvice:'A large part of the routine is below the current sound thresholds. Check input gain and noise-gate settings before treating this as an arrangement gap.',
+    routinePanelLabel:'Routine analysis',routineAnalysis:'ROUTINE ANALYSIS',onDevice:'ON DEVICE',duration:'DURATION',routineDurationLabel:'Routine analysis duration',startRoutine:'START ANALYSIS',cancelRoutine:'CANCEL',routineReady:'Choose a duration, then start when ready.',routineRunning:'ANALYZING FREQUENCY COVERAGE',routineComplete:'ANALYSIS COMPLETE',routineCancelled:'Analysis stopped early; results use the captured portion.',routineInstructions:'Only Low, Mid and High frequency summaries are recorded. Raw audio is never recorded or saved. For better results, capture 5 seconds of room tone first or use the manual threshold.',coverageChartLabel:'Low, mid and high frequency time coverage chart',routineFeedback:'FREQUENCY DISTRIBUTION IDEAS',routineWaiting:'Complete one analysis to see possible directions to explore.',routineDisclaimer:'This analysis describes spectral distribution and sound activity. It is not a rating of beatbox skill, musicality, or performance quality.',routineNeedInput:'Starting microphone input…',routineNeedGate:'For more reliable results, record a noise profile or choose a manual threshold.',routineFocus:'Spectrum Focus · {bands}',routineFocusNarrow:'Spectrum Focus · CONCENTRATED RANGE',routineLowDominantFeedback:'This routine is currently led by low-frequency activity. If you want more layers and clarity, you could explore mid-frequency percussion and brighter elements such as {ideas}.',routineMidDominantFeedback:'The spectral center of this routine is mainly in the mid range. If you want a wider span, you could extend downward and upward with sounds such as {ideas}.',routineHighDominantFeedback:'High-frequency activity is currently more prominent. If you want more weight and lower support, you could explore bass-oriented sounds and mid-frequency body such as {ideas}.',routineLowMidFeedback:'Low and mid frequencies currently provide most of the support, while high-frequency activity appears relatively less often. If you want more brightness, detail, or rhythmic outline, you could explore {ideas}.',routineMidHighFeedback:'Mid and high frequencies are currently more active, while low-frequency activity appears relatively less often. If you want more weight or a lower foundation, you could explore {ideas}.',routineLowHighFeedback:'Low and high frequencies both show clear activity, while the mid range appears relatively less often. If you want denser connections between sounds, you could explore {ideas}.',routineBalancedFeedback:'This routine has sustained activity across low, mid, and high frequencies, giving it relatively broad spectral coverage. If you want to refine it further, you can explore dynamic contrast, space, and sound density between bands rather than necessarily adding more sounds.',routineNarrowFeedback:'Sound activity in this routine stays within a relatively concentrated frequency range. If you want more variation, you could explore different registers, timbres, percussion families, vocal sounds, bass sounds, or textures rather than simply adding volume. Possible starting points include {ideas}.',routineSignalFeedback:'There is not yet enough sustained activity above the current sound thresholds to describe the routine confidently. You can check the input gain or noise-gate profile and try again.',routineCreativeCaveat:'These are optional sound-design directions. A Beatbox sound can contain several frequency components, and an intentional frequency contrast can be kept as it is.',
     wingCredit:'WING · Beatbox spectrum-analysis inspiration (YouTube)',webAudioCredit:'W3C · Web Audio API',filterCredit:'MDN · Standard audio filter types',rekordboxCredit:'rekordbox · 3Band waveform reference',copyrightCredit:'U.S. Copyright Office · Coloration guidance',methodCopyrightCredit:'U.S. Copyright Office · Ideas, methods & systems',frequencyCredit:'MDN · Frequency data',noiseSuppressionCredit:'MDN · Browser noise suppression',noiseGateCredit:'Audacity · Noise gate method',waveformCredit:'Audacity · Waveform zoom & sample display reference',lowNoiseCredit:'Low-frequency noise · 20–200 Hz',praatCredit:'Praat · GPL license',formantCredit:'JASA · LPC & formants',beatboxCredit:'Human beatbox analysis',
     communityPanelLabel:'Credits and community contributions',communityCredits:'CREDITS / COMMUNITY CONTRIBUTIONS',communityIntro:'Ideas from the beatbox community that helped shape specific parts of the analyser.',wingContribution:'Inspired the spectrum-analysis concept: noticing weaker or missing frequency regions and considering how Low, Mid and High can each support a more complete musical arrangement.',morrisContribution:'Suggested turning frequency gaps into practical sound ideas—such as drums, bass, hi-hats or other elements. This became part of Frequency Distribution Ideas.',chuanContribution:'Taiwan Beatbox Champion who used the analyser for overtone experiments, prompting deeper exploration of multiple vocal frequencies and overtone structures.',geneContribution:'His note-by-note analysis of lip oscillation and different vocal tones inspired the Polyphonic Singing / Multi-pitch direction now available in Note Detect’s Poly mode.',communityClosing:'Built by Leo Dafloat, shaped by ideas, experiments, and feedback from the beatbox community.'
   },
@@ -27,7 +27,7 @@ const TRANSLATIONS = {
     lows:'低頻',mids:'中頻',highs:'高頻',low:'低頻',mid:'中頻',high:'高頻',balanceEmpty:'頻段平衡 —',balanceEven:'頻段平衡 · 分布均勻',balanceForward:'頻段平衡 · {band}突出',
     frequencySpectrum:'頻率頻譜',ranges:'共振區',spectrumColor:'頻譜顏色',color:'顏色',peak:'峰值',blue:'藍色',purple:'紫色',yellow:'黃色',orange:'橘色',green:'綠色',blueSpectrum:'藍色頻譜',purpleSpectrum:'紫色頻譜',yellowSpectrum:'黃色頻譜',orangeSpectrum:'橘色頻譜',greenSpectrum:'綠色頻譜',spectrumCanvas:'20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值',microphoneInput:'麥克風輸入',startHint:'按下「開始輸入」，然後發出聲音。',cursorLocked:'已鎖定',cursorLive:'即時',methodSummary:'20 Hz — 20 kHz · −110 至 0 dBFS · 飽滿度：嚴格單次判定 · 節拍器獨立運作',creditsMethod:'製作資訊與方法',
     methodText:'<b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。三頻段模式採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。聲波模式顯示原始振幅訊號；縮放至 100 毫秒以下會改用逐點連線，最深縮放會顯示個別取樣點。頻譜飽滿度採嚴格的即時單次判定。段子分析每 200 毫秒記錄一次頻段活動，並完全在本機套用公開的規則式建議。這些都是描述性的頻率覆蓋參考，並非品質評分。節拍器是獨立的練習輔助，不會改變分析結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。',privacyText:'<b>隱私。</b>這不是 AI 工具。聲音取樣只會在執行時暫存於記憶體供即時顯示；不會上傳、寫入永久儲存空間或用於訓練模型。本機啟動次數只保存在這個瀏覽器中。',
-    routinePanelLabel:'段子分析',routineAnalysis:'段子分析',onDevice:'僅限本機',duration:'時間',routineDurationLabel:'段子分析時間',startRoutine:'開始分析',cancelRoutine:'取消',routineReady:'選擇時間，準備好後開始。',routineRunning:'正在分析頻率覆蓋',routineComplete:'分析完成',routineCancelled:'分析提前停止；結果依已收集的片段計算。',routineInstructions:'只記錄 Low、Mid、High 的頻率摘要，不錄製或保存原始聲音。建議先完成 5 秒底噪取樣，或使用手動閾值。',coverageChartLabel:'低中高頻時間覆蓋圖',routineFeedback:'頻率分布建議',routineWaiting:'完成一次分析後，這裡會顯示可嘗試的補強方向。',routineDisclaimer:'這是規則式的頻率分布參考，不是 AI、技巧評分或編排標準。',routineNeedInput:'正在啟動麥克風…',routineNeedGate:'若要得到更可靠的結果，建議先錄製底噪或選擇手動閾值。',routineLowAdvice:'低頻覆蓋相對較少。可以嘗試 Kick、Lip Bass、Throat Bass、Inward Bass，或其他低頻聲部。',routineMidAdvice:'中頻覆蓋相對較少。可以嘗試 Vocal、Humming、有音高的旋律聲部，或更有存在感的 Snare body。',routineHighAdvice:'高頻覆蓋相對較少。可以嘗試 Hi-hat、Clicks、較明亮的 Snare attack，或其他高頻質地。',routineEvenAdvice:'三個頻段都有穩定出現，從頻率分布來看整體沒有太多問題，也沒有明顯需要補強的缺口。接下來可以參考不同的排招與編排方式，體驗更多 Beatbox 的樂趣。',routineFlatAdvice:'整段的音量變化較一致。可以嘗試更安靜的鋪陳、更明顯的 Drop，或更清楚的重音，增加段落對比。',routineSparseAdvice:'很大一部分低於目前的聲音閾值。請先檢查輸入 Gain 與 Noise Gate，再判斷是否真的是編排缺口。',
+    routinePanelLabel:'段子分析',routineAnalysis:'段子分析',onDevice:'僅限本機',duration:'時間',routineDurationLabel:'段子分析時間',startRoutine:'開始分析',cancelRoutine:'取消',routineReady:'選擇時間，準備好後開始。',routineRunning:'正在分析頻率覆蓋',routineComplete:'分析完成',routineCancelled:'分析提前停止；結果依已收集的片段計算。',routineInstructions:'只記錄 Low、Mid、High 的頻率摘要，不錄製或保存原始聲音。建議先完成 5 秒底噪取樣，或使用手動閾值。',coverageChartLabel:'低中高頻時間覆蓋圖',routineFeedback:'頻率分布建議',routineWaiting:'完成一次分析後，這裡會顯示可嘗試的聲音配置方向。',routineDisclaimer:'此分析描述的是頻譜配置與聲音活動，不代表 Beatbox 技巧、音樂性或表演品質評分。',routineNeedInput:'正在啟動麥克風…',routineNeedGate:'若要得到更可靠的結果，建議先錄製底噪或選擇手動閾值。',routineFocus:'頻譜重心 · {bands}',routineFocusNarrow:'頻譜重心 · 集中音域',routineLowDominantFeedback:'這段表演目前以低頻活動為主。如果你希望增加更多層次與清晰度，可以嘗試加入中頻 percussion 與較明亮的聲音，例如 {ideas}。',routineMidDominantFeedback:'這段的頻譜重心主要位於中頻。如果你希望增加更大的頻譜跨度，可以往低頻與高頻探索，例如 {ideas}。',routineHighDominantFeedback:'目前高頻活動較突出。如果你希望增加重量與底部支撐，可以探索 bass 類聲音與帶有中頻 body 的 percussion，例如 {ideas}。',routineLowMidFeedback:'目前低頻與中頻提供了主要的聲音支撐，高頻活動相對較少。如果希望增加亮度、細節或節奏輪廓，可以嘗試 {ideas}。',routineMidHighFeedback:'目前中頻與高頻較活躍，而低頻活動相對較少。如果希望增加重量或低頻 foundation，可以嘗試 {ideas}。',routineLowHighFeedback:'目前低頻與高頻都有明顯活動，而中頻相對較少。如果希望讓不同聲音之間的連接更密集，可以嘗試 {ideas}。',routineBalancedFeedback:'這段表演在低、中、高頻都有持續活動，頻譜涵蓋相對廣。如果希望進一步調整，可以開始觀察不同頻段之間的動態對比、留白與聲音密度，而不一定需要加入更多聲音。',routineNarrowFeedback:'目前這段的聲音活動較集中在有限的頻率範圍。如果你希望增加聲音變化，可以嘗試不同音域、不同 timbre 或不同類型的 percussion、vocal、bass 與 texture，而不一定只是增加音量；例如可以從 {ideas} 開始探索。',routineSignalFeedback:'目前超過聲音閾值的持續活動還不足以穩定描述整段配置。可以先檢查輸入 Gain 或底噪閘門，再試一次。',routineCreativeCaveat:'這些只是可選擇的聲音設計方向；一個 Beatbox sound 可能同時包含多個頻率成分。如果目前配置是刻意的聲音設計，也可以維持原本安排。',
     wingCredit:'WING · Beatbox 頻譜分析靈感（YouTube）',webAudioCredit:'W3C · Web Audio API 規範',filterCredit:'MDN · 標準音訊濾波器類型',rekordboxCredit:'rekordbox · 三頻段聲波參考',copyrightCredit:'美國著作權局 · 配色指引',methodCopyrightCredit:'美國著作權局 · 概念、方法與系統',frequencyCredit:'MDN · 頻率資料',noiseSuppressionCredit:'MDN · 瀏覽器降噪',noiseGateCredit:'Audacity · 噪音閘門方法',waveformCredit:'Audacity · 聲波縮放與取樣點顯示參考',lowNoiseCredit:'低頻噪音 · 20–200 Hz',praatCredit:'Praat · GPL 授權',formantCredit:'JASA · LPC 與共振峰',beatboxCredit:'人聲 Beatbox 分析',
     communityPanelLabel:'致謝與社群貢獻',communityCredits:'CREDITS / 社群貢獻',communityIntro:'來自 Beatbox 社群的想法，逐步形塑了 Analyzer 中幾個具體的分析方向。',wingContribution:'啟發整個頻譜分析概念：觀察頻譜中較弱或缺失的區域，並思考如何適當照顧 Low、Mid、High，讓聲音更接近完整音樂編排的思維。',morrisContribution:'提出將頻率缺口轉化為實際聲音建議的想法，例如加入對應的鼓聲、Bass、Hi-hat 或其他聲音元素；目前已延伸為「頻率分布建議」。',chuanContribution:'台灣 Beatbox 冠軍，實際使用 Analyzer 進行 Overtone 實驗，讓多重人聲頻率與泛音結構成為後續分析方向。',geneContribution:'其影片中對 Lip Oscillation 與不同 vocal tone 的逐音分析，啟發 Polyphonic Singing / Multi-pitch 的方向，目前已整合於 Note Detect 的 Poly 模式。',communityClosing:'Built by Leo Dafloat, shaped by ideas, experiments, and feedback from the beatbox community.'
   }
@@ -59,10 +59,27 @@ let timeData, freqData, waveTimeData, waveFreqData, peaks = [];
 let lastPitch = null, lastPitchAt = 0;
 const MIN_FREQ = 20, MAX_FREQ = 20000;
 const MIN_DB = -110, MAX_DB = 0;
-const BAND_EDGES = [[20,250],[250,4000],[4000,MAX_FREQ]];
+const BAND_CONFIG = [
+  { key:'low', minHz:20, maxHz:250, suggestions:['Kick','Deep Kick','Lip Bass','Sub-style Bass','Throat Bass','Low Vocal Texture','Bass-oriented Special Sound'] },
+  { key:'mid', minHz:250, maxHz:4000, suggestions:['Snare','PF Snare','Inward-style Snare','Clap-like Percussion','Mid Vocal','Percussive Texture','Mid-register Special Sound'] },
+  { key:'high', minHz:4000, maxHz:MAX_FREQ, suggestions:['Hi-hat','Click','Rim-like Percussion','Airy Texture','High Vocal','Overtone','Whistle / Squeak','Bright Special Sound'] }
+];
+const BAND_EDGES = BAND_CONFIG.map(({minHz,maxHz})=>[minHz,maxHz]);
 const GATE_MARGINS = [4,8,8];
 const FULLNESS_PROFILE_MARGINS = [10,14,18];
 const FULLNESS_MANUAL_OFFSETS = [0,4,8];
+const ROUTINE_ANALYSIS_CONFIG = {
+  sampleIntervalMs:200,
+  smoothingAttack:.45,
+  smoothingRelease:.2,
+  activeStrength:.14,
+  minimumAudibleActivity:.1,
+  stableActivity:.22,
+  stableScore:.24,
+  activityWeight:.6,
+  relativeEnergyWeight:.4,
+  dominanceRatio:1.3
+};
 const BAND_THEMES = {
   cyberpunk: ['#4d00ff','#00ff66','#ff007f'],
   modernDark: ['#4a4a4a','#a3e4d7','#f4d03f'],
@@ -79,7 +96,7 @@ let metronomeContext=null,metronomeTimer=null,metronomeRunning=false,metronomeBe
 let pitchMode='single';
 let secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};
 let lastPolyphonicResult=null;
-let routineState={active:false,durationMs:90000,startedAt:0,lastSampleAt:0,samples:[]},routineStatusKey='routineReady';
+let routineState={active:false,durationMs:90000,startedAt:0,lastSampleAt:0,samples:[],smoothedStrengths:[0,0,0]},routineStatusKey='routineReady';
 const HISTORY_WINDOWS_MS=[20000,10000,6000,4000,3000,1000,500,200,100,50,20,10];
 const DEFAULT_HISTORY_ZOOM_INDEX=3,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
 const SPECTRUM_RELEASE_DB_PER_SECOND=18;
@@ -252,7 +269,10 @@ function smoothstep(value) {
   const x=Math.max(0,Math.min(1,value));return x*x*(3-2*x);
 }
 
-function bandIndexForFrequency(freq) { return freq<250?0:freq<4000?1:2; }
+function bandIndexForFrequency(freq) {
+  const index=BAND_CONFIG.findIndex((band,i)=>freq<band.maxHz||i===BAND_CONFIG.length-1);
+  return Math.max(0,index);
+}
 
 function percentile(values,p) {
   if(!values.length)return MIN_DB;
@@ -443,8 +463,7 @@ function spectralCentroid() {
 }
 
 function updateMetrics(gateState) {
-  const low = bandEnergy(20, 250), mid = bandEnergy(250, 4000), high = bandEnergy(4000, MAX_FREQ);
-  const values = [low, mid, high], levels = values.map(dbToLevel);
+  const values=BAND_EDGES.map(([lo,hi])=>bandEnergy(lo,hi)),[low,mid,high]=values,levels=values.map(dbToLevel);
   ['lowValue','midValue','highValue'].forEach((id,i)=>$(id).textContent=`${Math.round(values[i])} dB`);
   if(gateState.calibrating||gateState.profileMissing){$('fullnessLabel').textContent='—';$('fullnessMeter').style.width='0%';$('fullnessDetail').textContent=t(gateState.calibrating?'recordingRoom':'noiseProfileRequired');return{low,mid,high,level:0,score:0,centroid:spectralCentroid()};}
   const thresholds=gateMode==='profile'
@@ -484,25 +503,92 @@ function renderRoutineTimeline(samples=routineState.samples){
     $(`${name}CoverageValue`).textContent=samples.length?`${percentage}%`:'—';
   });
 }
-function routineAdvice(samples){
-  if(!samples.length)return['routineWaiting'];
-  const coverage=[0,1,2].map(band=>samples.filter(sample=>sample.active[band]).length/samples.length*100),anyCoverage=samples.filter(sample=>sample.active.some(Boolean)).length/samples.length*100;
-  const audibleRms=samples.filter(sample=>sample.active.some(Boolean)).map(sample=>sample.rmsDb),dynamicRange=percentile(audibleRms,.9)-percentile(audibleRms,.1),max=Math.max(...coverage),min=Math.min(...coverage),advice=[];
-  if(anyCoverage<40)advice.push('routineSparseAdvice');
-  const deficient=coverage.map((value,index)=>({value,index})).filter(item=>item.value<18||item.value<max-22).sort((a,b)=>a.value-b.value);
-  deficient.slice(0,2).forEach(item=>advice.push(['routineLowAdvice','routineMidAdvice','routineHighAdvice'][item.index]));
-  if(!deficient.length&&min>=25&&max-min<=18)return['routineEvenAdvice'];
-  if(audibleRms.length>8&&dynamicRange<8)advice.push('routineFlatAdvice');
-  if(!advice.length)advice.push(['routineLowAdvice','routineMidAdvice','routineHighAdvice'][coverage.indexOf(min)]);
-  return [...new Set(advice)];
+
+function routineBandStrength(db,threshold){
+  return smoothstep((db-threshold+5)/24);
 }
-function renderRoutineAdvice(samples){$('routineAdviceList').innerHTML=routineAdvice(samples).map(key=>`<li>${t(key)}</li>`).join('');}
+
+function smoothRoutineStrengths(previous,instant){
+  return instant.map((value,i)=>{
+    const rate=value>previous[i]?ROUTINE_ANALYSIS_CONFIG.smoothingAttack:ROUTINE_ANALYSIS_CONFIG.smoothingRelease;
+    return previous[i]+(value-previous[i])*rate;
+  });
+}
+
+function analyzeBandBalance(samples){
+  if(!samples.length)return null;
+  const strengths=samples.map(sample=>sample.strengths||sample.active.map(active=>active?1:0));
+  const meanStrength=BAND_CONFIG.map((_,band)=>strengths.reduce((sum,values)=>sum+values[band],0)/strengths.length);
+  const energyTotal=meanStrength.reduce((sum,value)=>sum+value,0);
+  const relativeEnergy=meanStrength.map(value=>energyTotal>1e-6?value/energyTotal:0);
+  const activity=BAND_CONFIG.map((_,band)=>samples.reduce((sum,sample,index)=>{
+    const active=sample.active?.[band]??strengths[index][band]>=ROUTINE_ANALYSIS_CONFIG.activeStrength;
+    return sum+(active?1:0);
+  },0)/samples.length);
+  const audibleActivity=samples.reduce((sum,sample,index)=>{
+    const active=sample.active?.some(Boolean)??strengths[index].some(value=>value>=ROUTINE_ANALYSIS_CONFIG.activeStrength);
+    return sum+(active?1:0);
+  },0)/samples.length;
+  const scores=activity.map((value,i)=>value*ROUTINE_ANALYSIS_CONFIG.activityWeight+relativeEnergy[i]*ROUTINE_ANALYSIS_CONFIG.relativeEnergyWeight);
+  const stable=scores.map((score,i)=>score>=ROUTINE_ANALYSIS_CONFIG.stableScore&&activity[i]>=ROUTINE_ANALYSIS_CONFIG.stableActivity);
+  return {activity,meanStrength,relativeEnergy,scores,stable,audibleActivity};
+}
+
+function classifySpectrumProfile(analysis){
+  if(!analysis||analysis.audibleActivity<ROUTINE_ANALYSIS_CONFIG.minimumAudibleActivity)return'insufficientSignal';
+  const stableBands=analysis.stable.map((active,index)=>active?index:-1).filter(index=>index>=0);
+  if(stableBands.length===3)return'balanced';
+  if(stableBands.length===2)return{'0-1':'lowMid','0-2':'lowHigh','1-2':'midHigh'}[stableBands.join('-')];
+  if(stableBands.length===1)return`${BAND_CONFIG[stableBands[0]].key}Dominant`;
+  const order=[0,1,2].sort((a,b)=>analysis.scores[b]-analysis.scores[a]),[first,second]=order;
+  if(analysis.activity[first]>=ROUTINE_ANALYSIS_CONFIG.minimumAudibleActivity&&analysis.scores[first]>=analysis.scores[second]*ROUTINE_ANALYSIS_CONFIG.dominanceRatio)return`${BAND_CONFIG[first].key}Dominant`;
+  return'narrow';
+}
+
+function routineSuggestionSeed(analysis){
+  return analysis.activity.reduce((seed,value,index)=>seed+Math.round(value*997)*(index+3),17);
+}
+
+function pickBandSuggestions(bandIndex,count,seed){
+  const pool=BAND_CONFIG[bandIndex].suggestions,start=Math.abs(seed+bandIndex*5)%pool.length;
+  return Array.from({length:Math.min(count,pool.length)},(_,index)=>pool[(start+index*3)%pool.length]);
+}
+
+function formatRoutineIdeas(ideas){
+  if(currentLanguage==='zh-Hant')return ideas.join('、');
+  if(ideas.length<2)return ideas[0]||'';
+  return `${ideas.slice(0,-1).join(', ')} or ${ideas.at(-1)}`;
+}
+
+function generateSpectrumFeedback(analysis){
+  if(!analysis)return[t('routineWaiting')];
+  const profile=classifySpectrumProfile(analysis);
+  if(profile==='insufficientSignal')return[t('routineSignalFeedback')];
+  const profileBands={lowDominant:[0],midDominant:[1],highDominant:[2],lowMid:[0,1],midHigh:[1,2],lowHigh:[0,2],balanced:[0,1,2]};
+  const names=currentLanguage==='zh-Hant'?['低頻','中頻','高頻']:['LOW','MID','HIGH'];
+  const lines=[profile==='narrow'?t('routineFocusNarrow'):t('routineFocus',{bands:profileBands[profile].map(index=>names[index]).join(' + ')})];
+  if(profile==='balanced'){lines.push(t('routineBalancedFeedback'));return lines;}
+  const seed=routineSuggestionSeed(analysis),suggestionPlan={
+    lowDominant:[[1,2],[2,2]],midDominant:[[0,2],[2,2]],highDominant:[[0,3],[1,1]],
+    lowMid:[[2,4]],midHigh:[[0,4]],lowHigh:[[1,4]],narrow:[[0,1],[1,1],[2,1]]
+  };
+  const ideas=suggestionPlan[profile].flatMap(([band,count],index)=>pickBandSuggestions(band,count,seed+index*11));
+  const feedbackKey={lowDominant:'routineLowDominantFeedback',midDominant:'routineMidDominantFeedback',highDominant:'routineHighDominantFeedback',lowMid:'routineLowMidFeedback',midHigh:'routineMidHighFeedback',lowHigh:'routineLowHighFeedback',narrow:'routineNarrowFeedback'}[profile];
+  lines.push(t(feedbackKey,{ideas:formatRoutineIdeas(ideas)}),t('routineCreativeCaveat'));
+  return lines;
+}
+
+function routineAdvice(samples){return generateSpectrumFeedback(analyzeBandBalance(samples));}
+function renderRoutineAdvice(samples){
+  const list=$('routineAdviceList'),items=routineAdvice(samples).map(message=>{const item=document.createElement('li');item.textContent=message;return item;});
+  list.replaceChildren(...items);
+}
 async function startRoutineAnalysis(){
   if(routineState.active){finishRoutineAnalysis(true);return;}
   routineStatusKey='routineNeedInput';$('routineStatus').textContent=t(routineStatusKey);
   if(!running)await toggleInput();
   if(!running){routineStatusKey='routineReady';$('routineStatus').textContent=t(routineStatusKey);return;}
-  const seconds=routineDurationSeconds(),now=performance.now();routineState={active:true,durationMs:seconds*1000,startedAt:now,lastSampleAt:0,samples:[]};
+  const seconds=routineDurationSeconds(),now=performance.now();routineState={active:true,durationMs:seconds*1000,startedAt:now,lastSampleAt:0,samples:[],smoothedStrengths:[0,0,0]};
   routineStatusKey=gateMode==='profile'&&!profileReady?'routineNeedGate':'routineRunning';$('routineStatus').textContent=t(routineStatusKey);$('routineTime').textContent=`00:00 / ${formatRoutineClock(seconds)}`;$('routineProgress').style.width='0%';
   renderRoutineTimeline([]);renderRoutineAdvice([]);setRoutineButtonState();
 }
@@ -510,15 +596,18 @@ function updateRoutineAnalysis(gateState,now){
   if(!routineState.active)return;
   const elapsed=now-routineState.startedAt,remaining=Math.max(0,routineState.durationMs-elapsed),progress=Math.min(1,elapsed/routineState.durationMs);
   $('routineTime').textContent=`${formatRoutineClock(elapsed/1000)} / ${formatRoutineClock(routineState.durationMs/1000)}`;$('routineProgress').style.width=`${progress*100}%`;
-  if(!gateState.calibrating&&now-routineState.lastSampleAt>=200){
-    const thresholds=routineThresholds(),active=gateState.dbs.map((db,i)=>db>=thresholds[i]);routineState.samples.push({active,rmsDb:gateState.rmsDb});routineState.lastSampleAt=now;
+  if(!gateState.calibrating&&now-routineState.lastSampleAt>=ROUTINE_ANALYSIS_CONFIG.sampleIntervalMs){
+    const thresholds=routineThresholds(),instant=gateState.dbs.map((db,i)=>routineBandStrength(db,thresholds[i]));
+    routineState.smoothedStrengths=smoothRoutineStrengths(routineState.smoothedStrengths,instant);
+    const strengths=[...routineState.smoothedStrengths],active=strengths.map(value=>value>=ROUTINE_ANALYSIS_CONFIG.activeStrength);
+    routineState.samples.push({active,strengths,dbs:[...gateState.dbs],thresholds,rmsDb:gateState.rmsDb});routineState.lastSampleAt=now;
     if(routineState.samples.length%5===0)renderRoutineTimeline();
   }
   if(remaining<=0)finishRoutineAnalysis(false);
 }
 function finishRoutineAnalysis(cancelled=false){
   if(!routineState.active)return;
-  routineState.active=false;renderRoutineTimeline();renderRoutineAdvice(routineState.samples);$('routineProgress').style.width=cancelled?`${Math.min(100,routineState.samples.length/(routineState.durationMs/200)*100)}%`:'100%';
+  routineState.active=false;renderRoutineTimeline();renderRoutineAdvice(routineState.samples);$('routineProgress').style.width=cancelled?`${Math.min(100,routineState.samples.length/(routineState.durationMs/ROUTINE_ANALYSIS_CONFIG.sampleIntervalMs)*100)}%`:'100%';
   routineStatusKey=cancelled?'routineCancelled':'routineComplete';$('routineStatus').textContent=t(routineStatusKey);setRoutineButtonState();
 }
 
