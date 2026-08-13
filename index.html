@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08080b" />
     <title>Beatbox Analyzer</title>
-    <link rel="stylesheet" href="styles.css?v=11" />
+    <link rel="stylesheet" href="styles.css?v=17" />
   </head>
   <body>
     <main class="app-shell">
@@ -30,6 +30,7 @@
             </label>
           </div>
           <span id="statusText" class="status"><i></i> 麥克風待機</span>
+          <span id="localUseCount" class="local-use-count" aria-label="本機啟動次數">本機 0 次</span>
           <span id="timer" class="timer">00:00.0</span>
           <div class="record-cluster">
             <button id="languageButton" class="language-button" type="button" aria-label="Switch to English">EN</button>
@@ -56,6 +57,12 @@
           <div class="panel-heading">
             <div><span class="index">01</span><h2 data-i18n="signalHistory">訊號歷史</h2></div>
             <div class="band-controls" aria-label="Three band waveform colors" data-i18n-aria="threeBandColors">
+              <label><span data-i18n="displayMode">模式</span>
+                <select id="waveDisplayMode" aria-label="訊號歷史顯示模式" data-i18n-aria="waveDisplayModeLabel">
+                  <option value="threeBand" data-i18n="threeBand">三頻段</option>
+                  <option value="soundWave" data-i18n="soundWave">聲波</option>
+                </select>
+              </label>
               <label><span data-i18n="theme">主題</span>
                 <select id="bandTheme" aria-label="Three band color theme" data-i18n-aria="threeBandTheme">
                   <option value="cyberpunk" data-i18n="cyberpunk">賽博朋克</option>
@@ -74,18 +81,36 @@
           <div class="canvas-wrap">
             <canvas id="waveformCanvas" aria-label="即時彩色聲波" data-i18n-aria="waveformCanvas"></canvas>
             <div class="playhead"></div>
-            <div class="time-axis"><span data-i18n="past">過去</span><span data-i18n="now">現在</span></div>
+            <div class="time-axis"><span data-i18n="past">過去</span><span id="historyWindowLabel">4秒</span><span data-i18n="now">現在</span></div>
+            <div class="history-zoom" aria-label="訊號歷史縮放" data-i18n-aria="historyZoomLabel">
+              <button id="resetHistoryZoom" type="button" title="重設縮放" data-i18n-title="resetZoom" aria-label="重設縮放" data-i18n-aria="resetZoom">↺</button>
+              <input id="historyZoom" type="range" min="0" max="11" step="1" value="3" aria-label="顯示的歷史時間範圍" data-i18n-aria="historySeconds" />
+            </div>
           </div>
         </article>
 
         <aside class="panel metrics-panel">
           <div class="panel-heading">
             <div><span class="index">02</span><h2 data-i18n="liveReadout">即時讀值</h2></div>
+            <label class="pitch-mode-control"><span data-i18n="pitchMode">音高模式</span>
+              <select id="pitchMode" aria-label="音高偵測模式" data-i18n-aria="pitchModeLabel">
+                <option value="single" data-i18n="oneNote">單音</option>
+                <option value="polyphonic" data-i18n="polyphonicBeta">複音實驗（Beta）</option>
+              </select>
+            </label>
           </div>
           <div class="note-block">
-            <span class="metric-label" data-i18n="detectedNote">偵測音高</span>
-            <div><strong id="noteName">—</strong><sup id="noteCents">聆聽中</sup></div>
-            <span id="noteHz" class="metric-sub">— Hz</span>
+            <div class="primary-pitch">
+              <span class="metric-label" data-i18n="detectedNote">偵測音高</span>
+              <div><strong id="noteName">—</strong><sup id="noteCents">聆聽中</sup></div>
+              <span id="noteHz" class="metric-sub">— Hz</span>
+            </div>
+            <div id="secondaryPitch" class="secondary-pitch" hidden>
+              <span id="secondaryPitchLabel" class="metric-label">第二音高</span>
+              <div><strong id="secondaryNoteName">—</strong><sup id="secondaryConfidence">等待穩定音高</sup></div>
+              <span id="secondaryNoteHz" class="metric-sub">— Hz</span>
+              <p id="pitchRelation" class="pitch-relation">實驗性分析</p>
+            </div>
           </div>
           <div class="fullness-block">
             <span class="metric-label" data-i18n="spectralFullness">頻譜飽滿度</span>
@@ -144,14 +169,17 @@
             <summary data-i18n="creditsMethod">製作資訊與方法</summary>
             <div class="credit-card">
               <p data-i18n-html="methodText"><b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。訊號歷史採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。</p>
+              <p class="privacy-note" data-i18n-html="privacyText"><b>隱私。</b>這不是 AI 工具。聲音取樣只會在執行時暫存於記憶體供即時顯示；不會上傳、寫入永久儲存空間或用於訓練模型。本機啟動次數只保存在這個瀏覽器中。</p>
               <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer" data-i18n="wingCredit">WING · Beatbox 頻譜分析靈感（YouTube）</a>
               <a href="https://www.w3.org/TR/webaudio-1.1/" target="_blank" rel="noreferrer" data-i18n="webAudioCredit">W3C · Web Audio API 規範</a>
               <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type" target="_blank" rel="noreferrer" data-i18n="filterCredit">MDN · 標準音訊濾波器類型</a>
               <a href="https://cdn.rekordbox.com/files/20240509141437/rekordbox7.0.0_manual_EN.pdf" target="_blank" rel="noreferrer" data-i18n="rekordboxCredit">rekordbox · 三頻段聲波參考</a>
               <a href="https://www.copyright.gov/comp3/redlines/chap900.pdf" target="_blank" rel="noreferrer" data-i18n="copyrightCredit">美國著作權局 · 配色指引</a>
+              <a href="https://www.copyright.gov/circs/circ33.pdf" target="_blank" rel="noreferrer" data-i18n="methodCopyrightCredit">美國著作權局 · 概念、方法與系統</a>
               <a href="https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getFloatFrequencyData" target="_blank" rel="noreferrer" data-i18n="frequencyCredit">MDN · 頻率資料</a>
               <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/noiseSuppression" target="_blank" rel="noreferrer" data-i18n="noiseSuppressionCredit">MDN · 瀏覽器降噪</a>
               <a href="https://manual.audacityteam.org/man/noise_gate.html" target="_blank" rel="noreferrer" data-i18n="noiseGateCredit">Audacity · 噪音閘門方法</a>
+              <a href="https://manual.audacityteam.org/man/zooming.html" target="_blank" rel="noreferrer" data-i18n="waveformCredit">Audacity · 聲波縮放與取樣點顯示參考</a>
               <a href="https://swepub.kb.se/bib/swepub%3Aoai%3Agup.ub.gu.se/137471?language=en" target="_blank" rel="noreferrer" data-i18n="lowNoiseCredit">低頻噪音 · 20–200 Hz</a>
               <a href="https://praat.org/manual/License.html" target="_blank" rel="noreferrer" data-i18n="praatCredit">Praat · GPL 授權</a>
               <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7056453/" target="_blank" rel="noreferrer" data-i18n="formantCredit">JASA · LPC 與共振峰</a>
@@ -160,7 +188,40 @@
           </details>
         </footer>
       </section>
+
+      <section class="panel routine-panel" aria-label="段子分析" data-i18n-aria="routinePanelLabel">
+        <div class="panel-heading routine-heading">
+          <div><span class="index">04</span><h2 data-i18n="routineAnalysis">段子分析</h2><span class="local-badge" data-i18n="onDevice">僅限本機</span></div>
+          <div class="routine-controls">
+            <label><span data-i18n="duration">時間</span>
+              <select id="routineDuration" aria-label="段子分析時間" data-i18n-aria="routineDurationLabel">
+                <option value="30">30 秒</option><option value="45">45 秒</option><option value="60">60 秒</option><option value="90" selected>90 秒</option>
+              </select>
+            </label>
+            <button id="routineButton" type="button" data-i18n="startRoutine">開始分析</button>
+          </div>
+        </div>
+        <div class="routine-body">
+          <div class="routine-progress-block">
+            <div class="routine-status-line"><strong id="routineStatus" aria-live="polite" data-i18n="routineReady">選擇時間，準備好後開始。</strong><b id="routineTime">00:00 / 01:30</b></div>
+            <div class="routine-progress"><i id="routineProgress"></i></div>
+            <p data-i18n="routineInstructions">只記錄 Low、Mid、High 的頻率摘要，不錄製或保存原始聲音。建議先完成 5 秒底噪取樣，或使用手動閾值。</p>
+          </div>
+          <div id="routineResults" class="routine-results">
+            <div class="coverage-chart" role="img" aria-label="低中高頻時間覆蓋圖" data-i18n-aria="coverageChartLabel">
+              <div><span data-i18n="low">低頻</span><i id="lowCoverageTrack"><b id="lowCoverageFill"></b></i><strong id="lowCoverageValue">—</strong></div>
+              <div><span data-i18n="mid">中頻</span><i id="midCoverageTrack"><b id="midCoverageFill"></b></i><strong id="midCoverageValue">—</strong></div>
+              <div><span data-i18n="high">高頻</span><i id="highCoverageTrack"><b id="highCoverageFill"></b></i><strong id="highCoverageValue">—</strong></div>
+            </div>
+            <div class="routine-advice">
+              <span class="metric-label" data-i18n="routineFeedback">頻率分布建議</span>
+              <ul id="routineAdviceList"><li data-i18n="routineWaiting">完成一次分析後，這裡會顯示可嘗試的補強方向。</li></ul>
+              <p data-i18n="routineDisclaimer">這是規則式的頻率分布參考，不是 AI、技巧評分或編排標準。</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <script src="app.js?v=12"></script>
+    <script src="app.js?v=17"></script>
   </body>
 </html>
