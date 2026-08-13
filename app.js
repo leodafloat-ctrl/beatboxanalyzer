@@ -180,6 +180,13 @@ function freqToX(freq, width, pad = 0) {
 
 function dbToLevel(db) { return Math.max(0, Math.min(1, (db - MIN_DB) / (MAX_DB - MIN_DB))); }
 
+// Treat the gate as attenuation in decibels. Interpolating a negative dB value
+// toward MIN_DB makes even a partly-open gate crush useful spectrum detail.
+function applySpectrumGate(db, gate) {
+  if (gate <= .015) return MIN_DB;
+  return Math.max(MIN_DB, db - (1 - gate) * 24);
+}
+
 async function toggleInput() {
   if (running) return stopInput();
   try {
@@ -592,9 +599,9 @@ function drawWaveform() {
 function findSpectralPeaks() {
   const binHz=audioContext.sampleRate/analyser.fftSize, found=[],analysisCeiling=Math.min(MAX_FREQ,audioContext.sampleRate/2)*.95;
   for(let f=40;f<analysisCeiling;f+=binHz){
-    const i=Math.round(f/binHz),band=bandIndexForFrequency(f),threshold=gateMode==='manual'?manualThreshold+2:Math.max(-78,noiseFloor[band]+9);
+    const i=Math.round(f/binHz),band=bandIndexForFrequency(f),threshold=gateMode==='manual'?manualThreshold+2:Math.max(-84,noiseFloor[band]+7);
     const shoulder=(freqData[i-3]+freqData[i+3])/2,prominence=freqData[i]-shoulder;
-    if(currentGates[band]>.08&&freqData[i]>threshold&&prominence>2.2)found.push({f,db:freqData[i],threshold,prominence});
+    if(freqData[i]>threshold&&prominence>2.5)found.push({f,db:freqData[i],threshold,prominence});
   }
   return found.sort((a,b)=>(b.db-b.threshold)-(a.db-a.threshold)).slice(0,16).sort((a,b)=>a.f-b.f);
 }
@@ -634,10 +641,10 @@ function drawSpectrum(dt,gateState) {
   const {width:w,height:h,dpr}=resizeCanvas(spectrumCanvas), pad=22*dpr, bottom=28*dpr;
   sctx.save();sctx.globalAlpha=1;sctx.globalCompositeOperation='source-over';sctx.shadowBlur=0;sctx.clearRect(0,0,w,h);
   const binHz=audioContext.sampleRate/analyser.fftSize, decay=dt/1000*SPECTRUM_RELEASE_DB_PER_SECOND;
-  for(let i=1;i<freqData.length;i++){const gate=gateState.gates[bandIndexForFrequency(i*binHz)],gatedDb=MIN_DB+(freqData[i]-MIN_DB)*gate;peaks[i]=Math.max(gatedDb,peaks[i]-decay);}
+  for(let i=1;i<freqData.length;i++){const gate=gateState.gates[bandIndexForFrequency(i*binHz)],gatedDb=applySpectrumGate(freqData[i],gate);peaks[i]=Math.max(gatedDb,peaks[i]-decay);}
   let samples=[];
   const nyquist=audioContext.sampleRate/2;
-  for(let x=0;x<=w-pad*2;x+=Math.max(1,dpr)){const t=x/(w-pad*2),f=MIN_FREQ*(MAX_FREQ/MIN_FREQ)**t,i=Math.min(freqData.length-1,Math.round(f/binHz)),available=f<=nyquist,gate=available?gateState.gates[bandIndexForFrequency(f)]:0,liveDb=available?MIN_DB+(freqData[i]-MIN_DB)*gate:MIN_DB,peakDb=available?peaks[i]:MIN_DB;samples.push({x:x+pad,y:h-bottom-dbToLevel(peakDb)*(h-bottom-18*dpr),liveY:h-bottom-dbToLevel(liveDb)*(h-bottom-18*dpr)});}
+  for(let x=0;x<=w-pad*2;x+=Math.max(1,dpr)){const t=x/(w-pad*2),f=MIN_FREQ*(MAX_FREQ/MIN_FREQ)**t,i=Math.min(freqData.length-1,Math.round(f/binHz)),available=f<=nyquist,gate=available?gateState.gates[bandIndexForFrequency(f)]:0,liveDb=available?applySpectrumGate(freqData[i],gate):MIN_DB,peakDb=available?peaks[i]:MIN_DB;samples.push({x:x+pad,y:h-bottom-dbToLevel(peakDb)*(h-bottom-18*dpr),liveY:h-bottom-dbToLevel(liveDb)*(h-bottom-18*dpr)});}
   samples=smoothSpectrumPoints(samples);
   const base=spectrumColor, accent=spectrumColor, peak='#ffffff';
   const gradient=sctx.createLinearGradient(0,h-bottom,0,10*dpr);gradient.addColorStop(0,base+'8f');gradient.addColorStop(.55,accent+'c9');gradient.addColorStop(1,peak+'f2');
@@ -663,7 +670,7 @@ function updateSpectrumCursor(clientX, locked=cursorLocked) {
   const positionRatio=(x-pad)/(rect.width-pad*2), freq=MIN_FREQ*(MAX_FREQ/MIN_FREQ)**positionRatio;
   const binHz=audioContext ? audioContext.sampleRate/analyser.fftSize : 48000/16384;
   const index=Math.max(1,Math.min((freqData?.length||4096)-1,Math.round(freq/binHz)));
-  const available=!audioContext||freq<=audioContext.sampleRate/2,rawDb=freqData&&available?freqData[index]:MIN_DB,gate=available?currentGates[bandIndexForFrequency(freq)]:0,db=MIN_DB+(rawDb-MIN_DB)*gate,y=rect.height-28-dbToLevel(db)*(rect.height-46);
+  const available=!audioContext||freq<=audioContext.sampleRate/2,rawDb=freqData&&available?freqData[index]:MIN_DB,gate=available?currentGates[bandIndexForFrequency(freq)]:0,db=applySpectrumGate(rawDb,gate),y=rect.height-28-dbToLevel(db)*(rect.height-46);
   const cursor=$('spectrumCursor'); cursor.style.setProperty('--cursor-x',`${x}px`); cursor.style.setProperty('--cursor-y',`${y}px`);
   cursor.classList.add('visible'); cursor.classList.toggle('locked',locked);
   const freqText=freq>=1000?`${(freq/1000).toFixed(2)} kHz`:`${Math.round(freq)} Hz`;
