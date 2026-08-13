@@ -9,23 +9,23 @@ const TRANSLATIONS = {
     metronomeControls:'Metronome controls',metro:'METRO',off:'OFF',metronomeBpm:'Metronome BPM',beats:'BEATS',beatsPerMeasure:'Beats per measure',division:'DIVISION',beatDivision:'Beat division',click:'CLICK',metronomeClickSound:'Metronome click sound',digital:'DIGITAL',wood:'WOOD',soft:'SOFT',
     switchLanguage:'切換為繁體中文',micIdle:'MIC IDLE',micLive:'MIC LIVE',micDenied:'MIC ACCESS DENIED',startInput:'START INPUT',stopInput:'STOP INPUT',microphoneAlert:'Microphone access is unavailable. Allow microphone permission and open this page through localhost or HTTPS.',
     noiseGateControls:'Noise gate controls',gate:'GATE',noiseFloor:'NOISE FLOOR',autoProfile:'AUTO PROFILE',recordNoise:'RECORD NOISE 5s',rerecordNoise:'RE-RECORD NOISE 5s',manual:'MANUAL',waitingInput:'WAITING FOR INPUT',profileRequired:'PROFILE REQUIRED · RECORD ROOM TONE',pleaseQuiet:'PLEASE STAY QUIET',calibrating:'CALIBRATING {seconds}s',locked:'LOCKED · {values} dB',manualStatus:'MANUAL · {value} dB',
-    signalHistory:'Signal history',threeBandColors:'Waveform display and colors',displayMode:'MODE',waveDisplayModeLabel:'Signal history display mode',threeBand:'THREE BAND',soundWave:'SOUND WAVE',theme:'THEME',threeBandTheme:'Three band color theme',cyberpunk:'CYBERPUNK',modernDark:'MODERN DARK',neonGlow:'NEON GLOW',custom:'CUSTOM',lowColor:'Low frequency color',midColor:'Mid frequency color',highColor:'High frequency color',bandOrder:'OUT L · M · H IN',waveformCanvas:'Live waveform history',past:'PAST',now:'NOW',historyZoomLabel:'Signal history zoom',historySeconds:'Displayed history in seconds',resetZoom:'Reset zoom',seconds:'{value}s',
+    signalHistory:'Signal history',threeBandColors:'Waveform display and colors',displayMode:'MODE',waveDisplayModeLabel:'Signal history display mode',threeBand:'THREE BAND',soundWave:'SOUND WAVE',theme:'THEME',threeBandTheme:'Three band color theme',cyberpunk:'CYBERPUNK',modernDark:'MODERN DARK',neonGlow:'NEON GLOW',custom:'CUSTOM',lowColor:'Low frequency color',midColor:'Mid frequency color',highColor:'High frequency color',bandOrder:'OUT L · M · H IN',waveformCanvas:'Live waveform history',past:'PAST',now:'NOW',historyZoomLabel:'Signal history zoom',historySeconds:'Displayed history window',resetZoom:'Reset zoom',seconds:'{value}s',milliseconds:'{value} ms',
     liveReadout:'Live readout',pitchMode:'NOTE MODE',pitchModeLabel:'Pitch detection mode',oneNote:'ONE NOTE',polyphonicBeta:'POLYPHONIC EXPERIMENT (BETA)',detectedNote:'DETECTED NOTE',listening:'LISTENING',unpitched:'UNPITCHED',cents:'{value} CENTS',secondaryPitch:'SECONDARY PITCH',enhancedOvertone:'ENHANCED OVERTONE',waitingStable:'WAITING FOR STABLE PITCH',betaConfidence:'BETA · {value}% STABLE',independentRelation:'POSSIBLE INDEPENDENT NOTE · WITH {primary}',harmonicRelation:'H{harmonic} · HARMONIC OF {primary}',experimentalAnalysis:'EXPERIMENTAL ANALYSIS',spectralFullness:'SPECTRAL FULLNESS',startMeasure:'Start input to measure frequency coverage.',recordingRoom:'Recording 5 seconds of room tone…',noiseProfileRequired:'Noise profile required',full:'FULL',moderate:'MODERATE',limited:'LIMITED',fullnessDetail:'STRICT ONE-SHOT · Active bands {count}/3{bands} · {mode} thresholds',profileMode:'profile',manualMode:'manual',
     lows:'LOWS',mids:'MIDS',highs:'HIGHS',low:'LOW',mid:'MID',high:'HIGH',balanceEmpty:'BALANCE —',balanceEven:'BALANCE · EVENLY DISTRIBUTED',balanceForward:'BALANCE · {band} FORWARD',
     frequencySpectrum:'Frequency spectrum',ranges:'RANGES',spectrumColor:'Spectrum color',color:'COLOR',peak:'PEAK',blue:'Blue',purple:'Purple',yellow:'Yellow',orange:'Orange',green:'Green',blueSpectrum:'Blue spectrum',purpleSpectrum:'Purple spectrum',yellowSpectrum:'Yellow spectrum',orangeSpectrum:'Orange spectrum',greenSpectrum:'Green spectrum',spectrumCanvas:'20 Hz to 20 kHz live audio spectrum; click to lock frequency and dB reading',microphoneInput:'MICROPHONE INPUT',startHint:'Press Start Input, then make a sound.',cursorLocked:'LOCKED',cursorLive:'LIVE',methodSummary:'20 Hz — 20 kHz · −110 TO 0 dBFS · FULLNESS: STRICT ONE-SHOT · METRONOME INDEPENDENT',creditsMethod:'CREDITS & METHOD',
-    methodText:'<b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. The history is one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Spectral Fullness is a strict live one-shot reading: each band must independently cross its sound threshold before it counts as active, and all three must cross to show Full. It is a descriptive frequency-coverage indicator, not a quality score. The metronome is an independent practice aid and does not alter the Fullness result. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.',
-    wingCredit:'WING · Beatbox spectrum-analysis inspiration (YouTube)',webAudioCredit:'W3C · Web Audio API',filterCredit:'MDN · Standard audio filter types',rekordboxCredit:'rekordbox · 3Band waveform reference',copyrightCredit:'U.S. Copyright Office · Coloration guidance',frequencyCredit:'MDN · Frequency data',noiseSuppressionCredit:'MDN · Browser noise suppression',noiseGateCredit:'Audacity · Noise gate method',lowNoiseCredit:'Low-frequency noise · 20–200 Hz',praatCredit:'Praat · GPL license',formantCredit:'JASA · LPC & formants',beatboxCredit:'Human beatbox analysis'
+    methodText:'<b>Method.</b> Independent implementation using a fast 2,048-point transient analyser and smooth 16,384-point FFT from 20 Hz to 20 kHz. Three Band mode uses one amplitude envelope: high energy sits at the center, mid energy in the middle, and low energy at the outer edge. Sound Wave mode shows the raw amplitude signal; below 100 ms it changes to connected samples, with individual sample dots at the deepest zoom. Spectral Fullness is a strict live one-shot reading: each band must independently cross its sound threshold before it counts as active, and all three must cross to show Full. It is a descriptive frequency-coverage indicator, not a quality score. The metronome is an independent practice aid and does not alter the Fullness result. Its click is generated separately from the microphone analyser; headphones are recommended so the microphone does not re-record it.',
+    wingCredit:'WING · Beatbox spectrum-analysis inspiration (YouTube)',webAudioCredit:'W3C · Web Audio API',filterCredit:'MDN · Standard audio filter types',rekordboxCredit:'rekordbox · 3Band waveform reference',copyrightCredit:'U.S. Copyright Office · Coloration guidance',methodCopyrightCredit:'U.S. Copyright Office · Ideas, methods & systems',frequencyCredit:'MDN · Frequency data',noiseSuppressionCredit:'MDN · Browser noise suppression',noiseGateCredit:'Audacity · Noise gate method',waveformCredit:'Audacity · Waveform zoom & sample display reference',lowNoiseCredit:'Low-frequency noise · 20–200 Hz',praatCredit:'Praat · GPL license',formantCredit:'JASA · LPC & formants',beatboxCredit:'Human beatbox analysis'
   },
   'zh-Hant': {
     metronomeControls:'節拍器控制',metro:'節拍器',off:'關閉',metronomeBpm:'節拍器速度（BPM）',beats:'拍數',beatsPerMeasure:'每小節拍數',division:'拍值',beatDivision:'拍子音符時值',click:'節拍音',metronomeClickSound:'節拍器音色',digital:'數位',wood:'木質',soft:'柔和',
     switchLanguage:'Switch to English',micIdle:'麥克風待機',micLive:'麥克風收音中',micDenied:'麥克風權限遭拒',startInput:'開始輸入',stopInput:'停止輸入',microphoneAlert:'無法使用麥克風。請允許此網站的麥克風權限，並使用 localhost 或 HTTPS 開啟。',
     noiseGateControls:'底噪閘門控制',gate:'閘門',noiseFloor:'底噪',autoProfile:'自動取樣',recordNoise:'錄製底噪 5秒',rerecordNoise:'重新錄製底噪 5秒',manual:'手動',waitingInput:'等待輸入',profileRequired:'需要底噪樣本 · 請錄製環境底噪',pleaseQuiet:'請保持安靜',calibrating:'校正中 {seconds}秒',locked:'已鎖定 · {values} dB',manualStatus:'手動 · {value} dB',
-    signalHistory:'訊號歷史',threeBandColors:'聲波顯示與顏色',displayMode:'模式',waveDisplayModeLabel:'訊號歷史顯示模式',threeBand:'三頻段',soundWave:'聲波',theme:'主題',threeBandTheme:'三頻段配色主題',cyberpunk:'賽博朋克',modernDark:'現代暗黑',neonGlow:'熱情霓虹',custom:'自訂',lowColor:'低頻顏色',midColor:'中頻顏色',highColor:'高頻顏色',bandOrder:'外層 低 · 中 · 高 內層',waveformCanvas:'即時聲波歷史',past:'過去',now:'現在',historyZoomLabel:'訊號歷史縮放',historySeconds:'顯示的歷史秒數',resetZoom:'重設縮放',seconds:'{value}秒',
+    signalHistory:'訊號歷史',threeBandColors:'聲波顯示與顏色',displayMode:'模式',waveDisplayModeLabel:'訊號歷史顯示模式',threeBand:'三頻段',soundWave:'聲波',theme:'主題',threeBandTheme:'三頻段配色主題',cyberpunk:'賽博朋克',modernDark:'現代暗黑',neonGlow:'熱情霓虹',custom:'自訂',lowColor:'低頻顏色',midColor:'中頻顏色',highColor:'高頻顏色',bandOrder:'外層 低 · 中 · 高 內層',waveformCanvas:'即時聲波歷史',past:'過去',now:'現在',historyZoomLabel:'訊號歷史縮放',historySeconds:'顯示的歷史時間範圍',resetZoom:'重設縮放',seconds:'{value}秒',milliseconds:'{value}毫秒',
     liveReadout:'即時讀值',pitchMode:'音高模式',pitchModeLabel:'音高偵測模式',oneNote:'單音',polyphonicBeta:'複音實驗（Beta）',detectedNote:'偵測音高',listening:'聆聽中',unpitched:'無明確音高',cents:'{value} 音分',secondaryPitch:'第二音高',enhancedOvertone:'突出泛音',waitingStable:'等待穩定音高',betaConfidence:'BETA · 穩定度 {value}%',independentRelation:'可能是獨立音高 · 與 {primary} 並存',harmonicRelation:'H{harmonic} · {primary} 的整數倍泛音',experimentalAnalysis:'實驗性分析',spectralFullness:'頻譜飽滿度',startMeasure:'開始輸入以測量頻率涵蓋範圍。',recordingRoom:'正在錄製 5 秒環境底噪…',noiseProfileRequired:'需要先建立底噪樣本',full:'飽滿',moderate:'中等',limited:'有限',fullnessDetail:'嚴格單次判定 · 啟用頻段 {count}/3{bands} · {mode}閾值',profileMode:'自動取樣',manualMode:'手動',
     lows:'低頻',mids:'中頻',highs:'高頻',low:'低頻',mid:'中頻',high:'高頻',balanceEmpty:'頻段平衡 —',balanceEven:'頻段平衡 · 分布均勻',balanceForward:'頻段平衡 · {band}突出',
     frequencySpectrum:'頻率頻譜',ranges:'共振區',spectrumColor:'頻譜顏色',color:'顏色',peak:'峰值',blue:'藍色',purple:'紫色',yellow:'黃色',orange:'橘色',green:'綠色',blueSpectrum:'藍色頻譜',purpleSpectrum:'紫色頻譜',yellowSpectrum:'黃色頻譜',orangeSpectrum:'橘色頻譜',greenSpectrum:'綠色頻譜',spectrumCanvas:'20 Hz 到 20 kHz 即時聲音頻譜，可點擊鎖定頻率與分貝讀值',microphoneInput:'麥克風輸入',startHint:'按下「開始輸入」，然後發出聲音。',cursorLocked:'已鎖定',cursorLive:'即時',methodSummary:'20 Hz — 20 kHz · −110 至 0 dBFS · 飽滿度：嚴格單次判定 · 節拍器獨立運作',creditsMethod:'製作資訊與方法',
-    methodText:'<b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。訊號歷史採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。',
-    wingCredit:'WING · Beatbox 頻譜分析靈感（YouTube）',webAudioCredit:'W3C · Web Audio API 規範',filterCredit:'MDN · 標準音訊濾波器類型',rekordboxCredit:'rekordbox · 三頻段聲波參考',copyrightCredit:'美國著作權局 · 配色指引',frequencyCredit:'MDN · 頻率資料',noiseSuppressionCredit:'MDN · 瀏覽器降噪',noiseGateCredit:'Audacity · 噪音閘門方法',lowNoiseCredit:'低頻噪音 · 20–200 Hz',praatCredit:'Praat · GPL 授權',formantCredit:'JASA · LPC 與共振峰',beatboxCredit:'人聲 Beatbox 分析'
+    methodText:'<b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。三頻段模式採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。聲波模式顯示原始振幅訊號；縮放至 100 毫秒以下會改用逐點連線，最深縮放會顯示個別取樣點。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。',
+    wingCredit:'WING · Beatbox 頻譜分析靈感（YouTube）',webAudioCredit:'W3C · Web Audio API 規範',filterCredit:'MDN · 標準音訊濾波器類型',rekordboxCredit:'rekordbox · 三頻段聲波參考',copyrightCredit:'美國著作權局 · 配色指引',methodCopyrightCredit:'美國著作權局 · 概念、方法與系統',frequencyCredit:'MDN · 頻率資料',noiseSuppressionCredit:'MDN · 瀏覽器降噪',noiseGateCredit:'Audacity · 噪音閘門方法',waveformCredit:'Audacity · 聲波縮放與取樣點顯示參考',lowNoiseCredit:'低頻噪音 · 20–200 Hz',praatCredit:'Praat · GPL 授權',formantCredit:'JASA · LPC 與共振峰',beatboxCredit:'人聲 Beatbox 分析'
   }
 };
 let currentLanguage=localStorage.getItem('beatbox-language')==='en'?'en':'zh-Hant';
@@ -41,7 +41,7 @@ function applyLanguage(language){
   if(!metronomeRunning)$('metronomePosition').textContent=t('off');
   $('recordLabel').textContent=t(running?'stopInput':'startInput');setStatusText(running?'micLive':'micIdle');
   $('calibrateButton').textContent=calibrationEndsAt?t('calibrating',{seconds:Math.max(0,(calibrationEndsAt-performance.now())/1000).toFixed(1)}):t(profileReady?'rerecordNoise':'recordNoise');
-  $('historyWindowLabel').textContent=t('seconds',{value:historySeconds});
+  updateHistoryWindowLabel();
   updateGateModeUi();
   if(!running){$('noteCents').textContent=t('listening');$('fullnessDetail').textContent=t('startMeasure');$('balanceText').textContent=t('balanceEmpty');}
   renderPolyphonicResult(lastPolyphonicResult);
@@ -73,8 +73,9 @@ let metronomeContext=null,metronomeTimer=null,metronomeRunning=false,metronomeBe
 let pitchMode='single';
 let secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};
 let lastPolyphonicResult=null;
-const DEFAULT_HISTORY_SECONDS=6,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
-let historySeconds=DEFAULT_HISTORY_SECONDS;
+const HISTORY_WINDOWS_MS=[20000,10000,6000,3000,1000,500,200,100,50,20,10];
+const DEFAULT_HISTORY_ZOOM_INDEX=2,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
+let historyZoomIndex=DEFAULT_HISTORY_ZOOM_INDEX,historyWindowMs=HISTORY_WINDOWS_MS[historyZoomIndex];
 let waveDisplayMode=localStorage.getItem('beatbox-wave-display')==='soundWave'?'soundWave':'threeBand';
 
 function updateBandColorUi() {
@@ -455,10 +456,10 @@ function addRawWaveSamples(dt) {
 }
 
 function drawThreeBandWaveform(w,h,dpr) {
-  const mid=h/2,now=performance.now(),windowStart=now-historySeconds*1000,visible=waveform.filter(slice=>slice.at>=windowStart);
+  const mid=h/2,now=performance.now(),windowStart=now-historyWindowMs,visible=waveform.filter(slice=>slice.at>=windowStart);
   const layers=[2,1,0].map(index=>({index,color:bandColors[index]}));
   for(let i=1;i<visible.length;i++){
-    const a=visible[i-1],b=visible[i],x0=Math.max(0,(a.at-windowStart)/(historySeconds*1000)*(w-20*dpr)),x1=Math.max(x0+1,(b.at-windowStart)/(historySeconds*1000)*(w-20*dpr));
+    const a=visible[i-1],b=visible[i],x0=Math.max(0,(a.at-windowStart)/historyWindowMs*(w-20*dpr)),x1=Math.max(x0+1,(b.at-windowStart)/historyWindowMs*(w-20*dpr));
     const amp0=a.peak*h*.42,amp1=b.peak*h*.42;
     let inner0=0,inner1=0;
     layers.forEach(layer=>{
@@ -474,16 +475,32 @@ function drawThreeBandWaveform(w,h,dpr) {
 }
 
 function drawRawSoundWave(w,h,dpr) {
-  const mid=h/2,visibleCount=Math.min(rawWaveform.length,Math.round(historySeconds*RAW_HISTORY_RATE)),start=rawWaveform.length-visibleCount,usable=w-20*dpr;
+  const mid=h/2,visibleCount=Math.min(rawWaveform.length,Math.round(historyWindowMs/1000*RAW_HISTORY_RATE)),start=rawWaveform.length-visibleCount,usable=w-20*dpr;
   if(visibleCount<2)return;
+  const pixelsPerSample=usable/(visibleCount-1);
+  if(pixelsPerSample>=.85){
+    wctx.save();wctx.shadowColor=bandColors[1];wctx.shadowBlur=3*dpr;wctx.strokeStyle=bandColors[1];wctx.lineWidth=Math.max(1,1.05*dpr);wctx.beginPath();
+    for(let i=0;i<visibleCount;i++){
+      const x=i/(visibleCount-1)*usable,y=mid-rawWaveform[start+i]*h*.43;
+      if(i===0)wctx.moveTo(x,y);else wctx.lineTo(x,y);
+    }
+    wctx.stroke();wctx.shadowBlur=0;
+    if(pixelsPerSample>=3){
+      wctx.fillStyle='rgba(255,255,255,.92)';
+      for(let i=0;i<visibleCount;i++){
+        const x=i/(visibleCount-1)*usable,y=mid-rawWaveform[start+i]*h*.43;
+        wctx.beginPath();wctx.arc(x,y,Math.max(1.15*dpr,1.4),0,Math.PI*2);wctx.fill();
+      }
+    }
+    wctx.restore();return;
+  }
   const buckets=Math.max(2,Math.floor(usable/dpr)),samplesPerBucket=visibleCount/buckets,upper=[],lower=[];
   for(let bucket=0;bucket<buckets;bucket++){
     const from=start+Math.floor(bucket*samplesPerBucket),to=Math.min(rawWaveform.length,start+Math.ceil((bucket+1)*samplesPerBucket));let min=1,max=-1;
     for(let i=from;i<to;i++){const sample=rawWaveform[i];if(sample<min)min=sample;if(sample>max)max=sample;}
     const x=bucket/(buckets-1)*usable;upper.push({x,y:mid-max*h*.43});lower.push({x,y:mid-min*h*.43});
   }
-  const gradient=wctx.createLinearGradient(0,0,0,h);gradient.addColorStop(0,bandColors[0]);gradient.addColorStop(.42,bandColors[1]);gradient.addColorStop(.5,bandColors[2]);gradient.addColorStop(.58,bandColors[1]);gradient.addColorStop(1,bandColors[0]);
-  wctx.beginPath();wctx.moveTo(upper[0].x,upper[0].y);upper.slice(1).forEach(point=>wctx.lineTo(point.x,point.y));for(let i=lower.length-1;i>=0;i--)wctx.lineTo(lower[i].x,lower[i].y);wctx.closePath();wctx.fillStyle=gradient;wctx.globalAlpha=.7;wctx.fill();
+  wctx.beginPath();wctx.moveTo(upper[0].x,upper[0].y);upper.slice(1).forEach(point=>wctx.lineTo(point.x,point.y));for(let i=lower.length-1;i>=0;i--)wctx.lineTo(lower[i].x,lower[i].y);wctx.closePath();wctx.fillStyle=bandColors[1];wctx.globalAlpha=.55;wctx.fill();
   wctx.beginPath();wctx.moveTo(upper[0].x,upper[0].y);upper.slice(1).forEach(point=>wctx.lineTo(point.x,point.y));wctx.strokeStyle='rgba(255,255,255,.82)';wctx.lineWidth=.7*dpr;wctx.stroke();
   wctx.beginPath();wctx.moveTo(lower[0].x,lower[0].y);lower.slice(1).forEach(point=>wctx.lineTo(point.x,point.y));wctx.stroke();
 }
@@ -581,9 +598,14 @@ function draw(now=performance.now()) {
   addWaveSlice(gateState);addRawWaveSamples(dt);drawWaveform();drawSpectrum(dt,gateState);$('timer').textContent=formatTime(now-startedAt);animationId=requestAnimationFrame(draw);
 }
 
-function setHistorySeconds(value) {
-  historySeconds=Math.max(1,Math.min(MAX_HISTORY_SECONDS,Math.round(Number(value)||DEFAULT_HISTORY_SECONDS)));
-  $('historyZoom').value=String(historySeconds);$('historyWindowLabel').textContent=t('seconds',{value:historySeconds});
+function updateHistoryWindowLabel() {
+  $('historyWindowLabel').textContent=historyWindowMs>=1000?t('seconds',{value:historyWindowMs/1000}):t('milliseconds',{value:historyWindowMs});
+}
+
+function setHistoryZoomIndex(value) {
+  historyZoomIndex=Math.max(0,Math.min(HISTORY_WINDOWS_MS.length-1,Math.round(Number(value)||0)));
+  historyWindowMs=HISTORY_WINDOWS_MS[historyZoomIndex];
+  $('historyZoom').value=String(historyZoomIndex);updateHistoryWindowLabel();
   if(!running)drawWaveform();
 }
 
@@ -592,9 +614,14 @@ $('recordButton').addEventListener('click',toggleInput);
 $('languageButton').addEventListener('click',()=>applyLanguage(currentLanguage==='zh-Hant'?'en':'zh-Hant'));
 $('pitchMode').addEventListener('change',event=>{pitchMode=event.target.value==='polyphonic'?'polyphonic':'single';secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};lastPolyphonicResult=null;renderPolyphonicResult(null);});
 $('waveDisplayMode').addEventListener('change',event=>{waveDisplayMode=event.target.value==='soundWave'?'soundWave':'threeBand';localStorage.setItem('beatbox-wave-display',waveDisplayMode);drawWaveform();});
-$('historyZoom').addEventListener('input',event=>setHistorySeconds(event.target.value));
-$('resetHistoryZoom').addEventListener('click',()=>setHistorySeconds(DEFAULT_HISTORY_SECONDS));
-waveCanvas.closest('.canvas-wrap').addEventListener('wheel',event=>{event.preventDefault();setHistorySeconds(historySeconds+(event.deltaY>0?1:-1));},{passive:false});
+$('historyZoom').addEventListener('input',event=>setHistoryZoomIndex(event.target.value));
+$('resetHistoryZoom').addEventListener('click',()=>setHistoryZoomIndex(DEFAULT_HISTORY_ZOOM_INDEX));
+waveCanvas.closest('.canvas-wrap').addEventListener('wheel',event=>{
+  const direction=event.deltaY<0?1:-1;
+  const nextIndex=historyZoomIndex+direction;
+  if(nextIndex<0||nextIndex>=HISTORY_WINDOWS_MS.length)return;
+  event.preventDefault();setHistoryZoomIndex(nextIndex);
+},{passive:false});
 $('metronomeButton').addEventListener('click',toggleMetronome);
 $('bpmInput').addEventListener('change',event=>{event.target.value=metronomeBpm();restartMetronomeClock();});
 $('meterBeats').addEventListener('change',normalizeMeterInputs);
@@ -625,5 +652,5 @@ restoreBandTheme();
 const savedSpectrumInput=document.querySelector(`input[name="spectrumColor"][value="${spectrumColor}"]`);if(savedSpectrumInput)savedSpectrumInput.checked=true;
 $('waveDisplayMode').value=waveDisplayMode;
 $('pitchMode').value=pitchMode;
-localStorage.removeItem('beatbox-pitch-mode');setHistorySeconds(DEFAULT_HISTORY_SECONDS);
+localStorage.removeItem('beatbox-pitch-mode');setHistoryZoomIndex(DEFAULT_HISTORY_ZOOM_INDEX);
 applyLanguage(currentLanguage);
