@@ -73,10 +73,12 @@ let metronomeContext=null,metronomeTimer=null,metronomeRunning=false,metronomeBe
 let pitchMode='single';
 let secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};
 let lastPolyphonicResult=null;
-const HISTORY_WINDOWS_MS=[20000,10000,6000,3000,1000,500,200,100,50,20,10];
-const DEFAULT_HISTORY_ZOOM_INDEX=2,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
+const HISTORY_WINDOWS_MS=[20000,10000,6000,4000,3000,1000,500,200,100,50,20,10];
+const DEFAULT_HISTORY_ZOOM_INDEX=3,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
 const SPECTRUM_RELEASE_DB_PER_SECOND=18;
 let historyZoomIndex=DEFAULT_HISTORY_ZOOM_INDEX,historyWindowMs=HISTORY_WINDOWS_MS[historyZoomIndex];
+const WAVE_DISPLAY_DEFAULT_VERSION='three-band-v1';
+if(localStorage.getItem('beatbox-wave-default-version')!==WAVE_DISPLAY_DEFAULT_VERSION){localStorage.setItem('beatbox-wave-display','threeBand');localStorage.setItem('beatbox-wave-default-version',WAVE_DISPLAY_DEFAULT_VERSION);}
 let waveDisplayMode=localStorage.getItem('beatbox-wave-display')==='soundWave'?'soundWave':'threeBand';
 
 function updateBandColorUi() {
