@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08080b" />
     <title>Beatbox Analyzer</title>
-    <link rel="stylesheet" href="styles.css?v=18" />
+    <link rel="stylesheet" href="styles.css?v=19" />
   </head>
   <body>
     <main class="app-shell">
@@ -222,32 +222,35 @@
         </div>
       </section>
 
-      <section class="panel community-panel" aria-label="致謝與社群貢獻" data-i18n-aria="communityPanelLabel">
-        <div class="panel-heading community-heading">
-          <div><span class="index">05</span><h2 data-i18n="communityCredits">CREDITS / 社群貢獻</h2></div>
-          <p data-i18n="communityIntro">來自 Beatbox 社群的想法，逐步形塑了 Analyzer 中幾個具體的分析方向。</p>
+      <details class="panel community-panel" aria-label="致謝與社群貢獻" data-i18n-aria="communityPanelLabel">
+        <summary class="community-summary">
+          <span class="community-summary-title"><span class="index">05</span><strong data-i18n="communityCredits">CREDITS / 社群貢獻</strong></span>
+          <span class="community-toggle"><span data-i18n="communityToggle">社群迭代紀錄</span><i aria-hidden="true"></i></span>
+        </summary>
+        <div class="community-content">
+          <p class="community-intro" data-i18n="communityIntro">來自 Beatbox 社群的想法，逐步形塑了 Analyzer 中幾個具體的分析方向。</p>
+          <div class="community-grid">
+            <article>
+              <div class="community-entry-heading"><a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer">Wing</a><time datetime="2026-08-14">2026.08.14</time></div>
+              <p data-i18n="wingContribution">啟發整個頻譜分析概念：觀察頻譜中較弱或缺失的區域，並思考如何適當照顧 Low、Mid、High，讓聲音更接近完整音樂編排的思維。</p>
+            </article>
+            <article>
+              <div class="community-entry-heading"><strong>Morris Chang</strong><time datetime="2026-08-14">2026.08.14</time></div>
+              <p data-i18n="morrisContribution">提出將頻率缺口轉化為實際聲音建議的想法，例如加入對應的鼓聲、Bass、Hi-hat 或其他聲音元素；目前已延伸為「頻率分布建議」。</p>
+            </article>
+            <article>
+              <div class="community-entry-heading"><strong>Chuan Li</strong><time datetime="2026-08-14">2026.08.14</time></div>
+              <p data-i18n="chuanContribution">台灣 Beatbox 冠軍，實際使用 Analyzer 進行 Overtone 實驗，讓多重人聲頻率與泛音結構成為後續分析方向。</p>
+            </article>
+            <article>
+              <div class="community-entry-heading"><strong>Gene Shinozaki</strong><time datetime="2026-08-14">2026.08.14</time></div>
+              <p data-i18n="geneContribution">其影片中對 Lip Oscillation 與不同 vocal tone 的逐音分析，啟發 Polyphonic Singing / Multi-pitch 的方向，目前已整合於 Note Detect 的 Poly 模式。</p>
+            </article>
+          </div>
+          <p class="community-closing" data-i18n="communityClosing">Built by Leo Dafloat, shaped by ideas, experiments, and feedback from the beatbox community.</p>
         </div>
-        <div class="community-grid">
-          <article>
-            <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer">Wing</a>
-            <p data-i18n="wingContribution">啟發整個頻譜分析概念：觀察頻譜中較弱或缺失的區域，並思考如何適當照顧 Low、Mid、High，讓聲音更接近完整音樂編排的思維。</p>
-          </article>
-          <article>
-            <strong>Morris Chang</strong>
-            <p data-i18n="morrisContribution">提出將頻率缺口轉化為實際聲音建議的想法，例如加入對應的鼓聲、Bass、Hi-hat 或其他聲音元素；目前已延伸為「頻率分布建議」。</p>
-          </article>
-          <article>
-            <strong>Chuan Li</strong>
-            <p data-i18n="chuanContribution">台灣 Beatbox 冠軍，實際使用 Analyzer 進行 Overtone 實驗，讓多重人聲頻率與泛音結構成為後續分析方向。</p>
-          </article>
-          <article>
-            <strong>Gene Shinozaki</strong>
-            <p data-i18n="geneContribution">其影片中對 Lip Oscillation 與不同 vocal tone 的逐音分析，啟發 Polyphonic Singing / Multi-pitch 的方向，目前已整合於 Note Detect 的 Poly 模式。</p>
-          </article>
-        </div>
-        <p class="community-closing" data-i18n="communityClosing">Built by Leo Dafloat, shaped by ideas, experiments, and feedback from the beatbox community.</p>
-      </section>
+      </details>
     </main>
-    <script src="app.js?v=18"></script>
+    <script src="app.js?v=19"></script>
   </body>
 </html>
