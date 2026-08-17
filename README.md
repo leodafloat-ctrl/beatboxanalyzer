@@ -22,12 +22,16 @@ python3 -m http.server 4173
 - low / mid / high 能量、頻帶傾向與 Full / Moderate / Limited 指標
 - 30／45／60／90 秒的 Routine Analysis：每 200 ms 只在瀏覽器記錄 low／mid／high 是否跨過目前閾值，完成後提供時間覆蓋圖與規則式補強方向
 - Sound Wave 模式與 20 秒至 10 毫秒的訊號歷史縮放；深度縮放會顯示逐點連線與個別 sample dots
+- Signal History 的高度使用僅限視覺呈現的 soft limiter；它不會修改原始音訊，也不會改變頻譜、gate 或段子分析數值
+- 瀏覽器本機錄音、試聽與下載；錄音格式會依 Safari／Chrome 實際支援能力自動選擇
+- 本機音檔播放分析：播放時會驅動既有的 Signal History、Spectrum、Note Detect 與 Routine Analysis，檔案不會上傳伺服器；目前限制最長 3 分鐘、50 MB
+- 音檔播放會沿用已完成的底噪 profile，讓現場輸入與回放使用相同 gate 基準；若尚未建立 profile，才會退回手動閾值
 
 「Spectral Fullness」是描述性頻率覆蓋指標，不是音質優劣判定。它以嚴格的即時 one-shot 門檻分別檢查 low、mid、high；三段都越過各自的聲音門檻才會顯示 Full。
 
-節拍器是獨立的練習工具，不參與 Fullness 判定；提供 BPM、可自訂的 Beats／Division，以及 Digital、Wood、Soft 三種程式合成 click 音色。
+節拍器是獨立的練習工具，不參與 Fullness 判定；提供 BPM、可自訂的 Beats／Division，以及 Digital、Wood、Soft 三種程式合成 click 音色。BPM 以四分音符為計時基準，Division 會換算實際拍值，因此 4／8 的每拍間隔會是同 BPM 之 4／4 的一半。
 
-Routine Analysis 是透明的 rule-based feedback，不是 AI、技巧評分或編排標準。聲音取樣只在執行時短暫存在記憶體中供即時分析，不會上傳或寫入永久儲存空間。頁首的使用次數只保存在目前瀏覽器的 `localStorage`，不是全球人數或獨立使用者統計。
+Routine Analysis 是透明的 rule-based feedback，不是 AI、技巧評分或編排標準。不同麥克風的頻率響應、輸入 Gain 與錄音環境可能造成結果差異，分析應視為參考。聲音與匯入檔案只在執行時存在瀏覽器記憶體中，不會上傳或寫入永久儲存空間；錄音只有在使用者按下下載時才會儲存至裝置。
 
 ## 授權與素材
 
