@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08080b" />
     <title>Beatbox Analyzer</title>
-    <link rel="stylesheet" href="styles.css?v=20" />
+    <link rel="stylesheet" href="styles.css?v=25" />
   </head>
   <body>
     <main class="app-shell">
@@ -20,7 +20,7 @@
             <label>BPM <input id="bpmInput" type="number" min="40" max="240" step="1" value="100" aria-label="Metronome BPM" data-i18n-aria="metronomeBpm" /></label>
             <label><span data-i18n="beats">拍數</span> <input id="meterBeats" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beats per measure" data-i18n-aria="beatsPerMeasure" /></label>
             <span class="meter-divider" aria-hidden="true"></span>
-            <label><span data-i18n="division">拍值</span> <input id="meterDivision" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="Beat division" data-i18n-aria="beatDivision" /></label>
+            <label><span data-i18n="division">拍值</span> <input id="meterDivision" type="number" min="1" max="32" step="1" value="4" inputmode="numeric" aria-label="拍值分母（4＝四分音符，8＝八分音符）" title="拍值分母（4＝四分音符，8＝八分音符）" data-i18n-aria="beatDivision" data-i18n-title="beatDivision" /></label>
             <label><span data-i18n="click">節拍音</span>
               <select id="clickSound" aria-label="Metronome click sound" data-i18n-aria="metronomeClickSound">
                 <option value="digital" data-i18n="digital">數位</option>
@@ -30,7 +30,7 @@
             </label>
           </div>
           <span id="statusText" class="status"><i></i> 麥克風待機</span>
-          <span id="localUseCount" class="local-use-count" aria-label="本機啟動次數">本機 0 次</span>
+          <button id="helpButton" class="help-button" type="button" aria-label="如何使用 Beatbox Analyzer" title="如何使用 Beatbox Analyzer" data-i18n-aria="openGuide" data-i18n-title="openGuide">?</button>
           <span id="timer" class="timer">00:00.0</span>
           <div class="record-cluster">
             <button id="languageButton" class="language-button" type="button" aria-label="Switch to English">EN</button>
@@ -40,6 +40,47 @@
           </div>
         </div>
       </header>
+
+      <dialog id="helpDialog" class="help-dialog" aria-labelledby="helpDialogTitle">
+        <div class="help-dialog-heading">
+          <div><span class="index">GUIDE</span><h2 id="helpDialogTitle" data-i18n="guideTitle">如何使用 Beatbox Analyzer</h2></div>
+          <button id="helpClose" type="button" aria-label="關閉使用指南" data-i18n-aria="closeGuide">×</button>
+        </div>
+        <div class="help-language" role="group" aria-label="指南語言" data-i18n-aria="guideLanguage">
+          <span data-i18n="guideLanguage">指南語言</span>
+          <button id="guideLanguageZh" type="button" aria-pressed="true">繁體中文</button>
+          <button id="guideLanguageEn" type="button" aria-pressed="false">ENGLISH</button>
+        </div>
+        <p class="help-intro" data-i18n="guideIntro">先建立適合目前環境的分析基準，再用即時視覺、錄音回放與段子分析認識自己的聲音。</p>
+        <ol class="help-steps">
+          <li><b data-i18n="guideStep1Title">建立底噪基準</b><span data-i18n="guideStep1">先按「開始輸入」並選擇「自動取樣」，接著保持安靜，錄製 5 秒環境底噪。若分析外部音檔，也可切換成手動閾值。</span></li>
+          <li><b data-i18n="guideStep2Title">開始即時分析或錄音</b><span data-i18n="guideStep2">上方「開始輸入」只負責麥克風分析；「錄製」會將聲音暫存在本機，完成後可使用「播放＋分析」或下載。</span></li>
+          <li><b data-i18n="guideStep3Title">閱讀聲音資訊</b><span data-i18n="guideStep3">訊號歷史顯示 Low／Mid／High 的比例；即時讀值顯示音高與頻譜飽滿度；點擊頻譜可鎖定頻率與 dBFS。</span></li>
+          <li><b data-i18n="guideStep4Title">配合節拍器練習</b><span data-i18n="guideStep4">設定 BPM、每小節拍數與拍值。建議戴耳機，避免節拍音被麥克風重新收錄。</span></li>
+          <li><b data-i18n="guideStep5Title">分析完整段子</b><span data-i18n="guideStep5">選擇 30、45、60 或 90 秒，觀察 Low／Mid／High 的時間參與程度與規則式聲音配置建議。</span></li>
+          <li><b data-i18n="guideStep6Title">探索與玩聲音</b><span data-i18n="guideStep6">切換三頻段／聲波模式、縮放訊號歷史，或使用複音實驗模式觀察泛音與可能的第二音高。</span></li>
+        </ol>
+        <p class="help-note" data-i18n="guideNote">所有聲音只在你的瀏覽器中處理。分析是聲音配置參考，不是 Beatbox 技巧或表演品質評分。</p>
+      </dialog>
+
+      <section class="audio-strip" aria-label="本機音訊控制" data-i18n-aria="audioControlsLabel">
+        <div class="audio-source-control">
+          <span class="index">00</span><strong data-i18n="localAudio">本機音訊</strong>
+        </div>
+        <div class="audio-actions">
+          <button id="recordCaptureButton" type="button" disabled><span aria-hidden="true">●</span><b data-i18n="recordAudio">錄製</b></button>
+          <label class="audio-file-button" for="audioFileInput"><input id="audioFileInput" type="file" accept="audio/*" /><span data-i18n="chooseAudio">選擇音檔</span></label>
+          <button id="playbackButton" type="button" disabled data-i18n="playAudio">播放＋分析</button>
+          <a id="downloadRecording" class="audio-download disabled" role="button" aria-disabled="true" data-i18n="downloadRecording">下載錄音</a>
+        </div>
+        <label class="audio-seek">
+          <span id="audioAssetName" data-i18n="noAudioSelected">尚未選擇音檔</span>
+          <input id="audioSeek" type="range" min="0" max="1000" step="1" value="0" disabled aria-label="播放位置" data-i18n-aria="audioSeekLabel" />
+          <b id="audioPlaybackTime">00:00 / 00:00</b>
+        </label>
+        <p class="audio-local-note" id="audioLocalNote" data-i18n="audioLocalNote">完全在本機處理 · 最長 3 分鐘 · 上限 50 MB</p>
+        <audio id="playbackAudio" preload="metadata" hidden></audio>
+      </section>
 
       <section class="gate-strip" aria-label="Noise gate controls" data-i18n-aria="noiseGateControls">
         <div class="gate-title"><span class="index" data-i18n="gate">閘門</span><strong data-i18n="noiseFloor">底噪</strong><b id="gateStatus">等待輸入</b></div>
@@ -169,7 +210,7 @@
             <summary data-i18n="creditsMethod">製作資訊與方法</summary>
             <div class="credit-card">
               <p data-i18n-html="methodText"><b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。訊號歷史採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。</p>
-              <p class="privacy-note" data-i18n-html="privacyText"><b>隱私。</b>這不是 AI 工具。聲音取樣只會在執行時暫存於記憶體供即時顯示；不會上傳、寫入永久儲存空間或用於訓練模型。本機啟動次數只保存在這個瀏覽器中。</p>
+              <p class="privacy-note" data-i18n-html="privacyText"><b>隱私。</b>這不是 AI 工具。麥克風聲音、錄音與匯入檔案都只留在這個瀏覽器中，不會上傳或用於訓練模型；只有在你按下「下載錄音」時，錄音才會儲存到裝置。</p>
               <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer" data-i18n="wingCredit">WING · Beatbox 頻譜分析靈感（YouTube）</a>
               <a href="https://www.w3.org/TR/webaudio-1.1/" target="_blank" rel="noreferrer" data-i18n="webAudioCredit">W3C · Web Audio API 規範</a>
               <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type" target="_blank" rel="noreferrer" data-i18n="filterCredit">MDN · 標準音訊濾波器類型</a>
@@ -205,7 +246,7 @@
           <div class="routine-progress-block">
             <div class="routine-status-line"><strong id="routineStatus" aria-live="polite" data-i18n="routineReady">選擇時間，準備好後開始。</strong><b id="routineTime">00:00 / 01:30</b></div>
             <div class="routine-progress"><i id="routineProgress"></i></div>
-            <p data-i18n="routineInstructions">只記錄 Low、Mid、High 的頻率摘要，不錄製或保存原始聲音。建議先完成 5 秒底噪取樣，或使用手動閾值。</p>
+            <p data-i18n="routineInstructions">段子分析只記錄 Low、Mid、High 的頻率摘要。獨立錄音功能只會將聲音暫存在記憶體，直到你選擇下載。建議先完成 5 秒底噪取樣，或使用手動閾值。</p>
           </div>
           <div id="routineResults" class="routine-results">
             <div class="coverage-chart" role="img" aria-label="低中高頻時間覆蓋圖" data-i18n-aria="coverageChartLabel">
@@ -216,7 +257,7 @@
             <div class="routine-advice">
               <span class="metric-label" data-i18n="routineFeedback">頻率分布建議</span>
               <ul id="routineAdviceList"><li data-i18n="routineWaiting">完成一次分析後，這裡會顯示可嘗試的補強方向。</li></ul>
-              <p data-i18n="routineDisclaimer">這是規則式的頻率分布參考，不是 AI、技巧評分或編排標準。</p>
+              <p data-i18n="routineDisclaimer">此分析描述的是頻譜配置與聲音活動，不代表 Beatbox 技巧、音樂性或表演品質評分。不同麥克風的頻率響應、輸入 Gain 與錄音環境可能造成結果差異，請將分析視為參考。</p>
             </div>
           </div>
         </div>
@@ -225,32 +266,43 @@
       <details class="panel community-panel" aria-label="致謝與社群貢獻" data-i18n-aria="communityPanelLabel">
         <summary class="community-summary">
           <span class="community-summary-title"><span class="index">05</span><strong data-i18n="communityCredits">CREDITS / 社群貢獻</strong></span>
-          <span class="community-toggle"><span data-i18n="communityToggle">社群迭代紀錄</span><i aria-hidden="true"></i></span>
+          <span class="community-summary-actions">
+            <a id="communityJoin" class="community-join" href="https://www.skool.com/beatbox/about?ref=f9e99f827c4948cd99f53d78119a32b2" target="_blank" rel="noopener noreferrer" data-i18n="joinCommunity">加入靴子跟貓 Beatbox 社群</a>
+            <span class="community-toggle"><span data-i18n="communityToggle">社群迭代紀錄</span><i aria-hidden="true"></i></span>
+          </span>
         </summary>
         <div class="community-content">
           <p class="community-intro" data-i18n="communityIntro">來自 Beatbox 社群的想法，逐步形塑了 Analyzer 中幾個具體的分析方向。</p>
           <div class="community-grid">
             <article>
-              <div class="community-entry-heading"><a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer">Wing</a><time datetime="2026-08-14">2026.08.14</time></div>
+              <div class="community-entry-heading"><span class="community-entry-identity"><a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer">Wing</a><span class="community-role inspiration" data-i18n="inspirationRole">INSPIRATION</span></span><time datetime="2026-08-14">2026.08.14</time></div>
               <p data-i18n="wingContribution">啟發整個頻譜分析概念：觀察頻譜中較弱或缺失的區域，並思考如何適當照顧 Low、Mid、High，讓聲音更接近完整音樂編排的思維。</p>
             </article>
             <article>
-              <div class="community-entry-heading"><strong>Morris Chang</strong><time datetime="2026-08-14">2026.08.14</time></div>
+              <div class="community-entry-heading"><span class="community-entry-identity"><strong>Morris Chang</strong><span class="community-role contributor" data-i18n="contributorRole">社群協作者</span></span><span class="community-entry-dates"><time datetime="2026-08-14">2026.08.14</time><time class="updated" datetime="2026-08-17" data-i18n="updatedDate">UPDATE 2026.08.17</time></span></div>
               <p data-i18n="morrisContribution">提出將頻率缺口轉化為實際聲音建議的想法，例如加入對應的鼓聲、Bass、Hi-hat 或其他聲音元素；目前已延伸為「頻率分布建議」。</p>
             </article>
             <article>
-              <div class="community-entry-heading"><strong>Chuan Li</strong><time datetime="2026-08-14">2026.08.14</time></div>
-              <p data-i18n="chuanContribution">台灣 Beatbox 冠軍，實際使用 Analyzer 進行 Overtone 實驗，讓多重人聲頻率與泛音結構成為後續分析方向。</p>
+              <div class="community-entry-heading"><span class="community-entry-identity"><strong>Chuan Li</strong><span class="community-role contributor" data-i18n="contributorRole">社群協作者</span></span><span class="community-entry-dates"><time datetime="2026-08-14">2026.08.14</time><time class="updated" datetime="2026-08-17" data-i18n="updatedDate">UPDATE 2026.08.17</time></span></div>
+              <p data-i18n="chuanContribution">臺灣 Beatbox 冠軍，實際使用 Analyzer 進行 Overtone 實驗，讓多重人聲頻率與泛音結構成為後續分析方向。</p>
             </article>
             <article>
-              <div class="community-entry-heading"><strong>Gene Shinozaki</strong><time datetime="2026-08-14">2026.08.14</time></div>
+              <div class="community-entry-heading"><span class="community-entry-identity"><strong>Gene Shinozaki</strong><span class="community-role inspiration" data-i18n="inspirationRole">INSPIRATION</span></span><time datetime="2026-08-14">2026.08.14</time></div>
               <p data-i18n="geneContribution">其影片中對 Lip Oscillation 與不同 vocal tone 的逐音分析，啟發 Polyphonic Singing / Multi-pitch 的方向，目前已整合於 Note Detect 的 Poly 模式。</p>
+            </article>
+            <article>
+              <div class="community-entry-heading"><span class="community-entry-identity"><strong>Mi Chang</strong><span class="community-role contributor" data-i18n="contributorRole">社群協作者</span></span><time class="updated" datetime="2026-08-17">2026.08.17</time></div>
+              <p data-i18n="miContribution">協助校正社群版面與資訊呈現，提供內容清晰度與公開溝通上的回饋。</p>
+            </article>
+            <article>
+              <div class="community-entry-heading"><span class="community-entry-identity"><strong>Karyo Wei</strong><span class="community-role contributor" data-i18n="contributorRole">社群協作者</span></span><time class="updated" datetime="2026-08-17">2026.08.17</time></div>
+              <p data-i18n="karyoContribution">提出平台內即時錄音、回放與下載流程的設計構想，成為本機錄音功能的迭代依據。</p>
             </article>
           </div>
           <p class="community-closing" data-i18n="communityClosing">Built by Leo Dafloat, shaped by ideas, experiments, and feedback from the beatbox community.</p>
         </div>
       </details>
     </main>
-    <script src="app.js?v=19"></script>
+    <script src="app.js?v=25"></script>
   </body>
 </html>
