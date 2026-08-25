@@ -2,6 +2,10 @@
 
 瀏覽器內即時 beatbox 聲音視覺分析 prototype。
 
+目前公開版本：**Beatbox Analyzer 1.0**
+
+支持專案：[Buy Me a Coffee](https://buymeacoffee.com/leodafloat) · [PayPal](https://paypal.me/leodafloat)
+
 ## 執行
 
 麥克風 API 需要安全來源，請勿直接雙擊 `index.html`。在此資料夾執行：
