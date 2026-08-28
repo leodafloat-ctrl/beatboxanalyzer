@@ -37,6 +37,22 @@ python3 -m http.server 4173
 
 Routine Analysis 是透明的 rule-based feedback，不是 AI、技巧評分或編排標準。不同麥克風的頻率響應、輸入 Gain 與錄音環境可能造成結果差異，分析應視為參考。聲音與匯入檔案只在執行時存在瀏覽器記憶體中，不會上傳或寫入永久儲存空間；錄音只有在使用者按下下載時才會儲存至裝置。
 
+## Anonymous Usage Analytics
+
+專案已預留可移除的 [Umami](https://umami.is/) 匿名使用統計整合，但預設為停用狀態，不會發出 analytics 網路請求。若要啟用：
+
+1. 在 Umami Cloud 或自架 Umami 建立 Beatbox Analyzer 網站。
+2. 從網站的 Tracking code 取得 Website ID。
+3. 將 ID 填入 `analytics.js` 的 `CONFIG.websiteId`。若為自架服務，同時修改 `CONFIG.scriptUrl`。
+
+追蹤只會在 `leodafloat-ctrl.github.io` 正式網域啟用，`localhost` 不會送出測試事件。Umami 自動記錄匿名 page view、referrer 與 UTM；`analytics.js` 另以白名單限制少量產品事件與分類欄位。程式不呼叫 `identify()`，也不傳送音訊、錄音、檔名、音高、頻譜、波形、頻段分析值、回饋結果或使用者輸入。事件設定與白名單集中在 `analytics.js`，移除該檔及 `index.html` 中對它的引用即可完整移除統計。
+
+YouTube 分享連結可使用：
+
+```text
+https://leodafloat-ctrl.github.io/beatboxanalyzer/?utm_source=youtube&utm_medium=video&utm_campaign=beatbox_analyzer_launch
+```
+
 ## 授權與素材
 
 程式碼與文件以 [MIT License](LICENSE) 發布，署名 Leo Dafloat。介面、分析邏輯與 click 音色皆為本專案獨立實作；程式不下載或內嵌第三方影音、字型或圖片。`Sounds Test/` 內的錄音只供本機測試，網頁不會載入它們，且不包含在 MIT 授權或公開發行內容中。

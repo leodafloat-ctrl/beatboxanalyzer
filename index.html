@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#08080b" />
     <title>Beatbox Analyzer</title>
-    <link rel="stylesheet" href="styles.css?v=26" />
+    <link rel="stylesheet" href="styles.css?v=27" />
   </head>
   <body>
     <main class="app-shell">
@@ -80,6 +80,40 @@
           <li><b data-i18n="guideStep6Title">探索與玩聲音</b><span data-i18n="guideStep6">切換三頻段／聲波模式、縮放訊號歷史，或使用複音實驗模式觀察泛音與可能的第二音高。</span></li>
         </ol>
         <p class="help-note" data-i18n="guideNote">所有聲音只在你的瀏覽器中處理。分析是聲音配置參考，不是 Beatbox 技巧或表演品質評分。</p>
+        <section class="help-privacy" aria-labelledby="helpPrivacyTitle">
+          <div class="help-privacy-summary">
+            <span class="help-privacy-icon" aria-hidden="true">🔒</span>
+            <div>
+              <h3 id="helpPrivacyTitle" data-i18n="guidePrivacyTitle">你的聲音，只屬於你</h3>
+              <p data-i18n="guidePrivacySummary">聲音只在你的裝置上處理；錄音與匯入音檔只暫存在目前瀏覽器工作階段，不會送往伺服器或由 Beatbox Analyzer 永久儲存。工具只會收集匿名頁面流量與少量功能使用事件，協助改善 Analyzer。</p>
+            </div>
+          </div>
+          <details class="help-privacy-details">
+            <summary data-i18n="privacyAnalytics">隱私與匿名統計</summary>
+            <div class="help-privacy-detail-grid">
+              <section>
+                <h4 data-i18n="privacyMayCollect">可能收集</h4>
+                <ul>
+                  <li data-i18n="privacyCollectVisits">匿名頁面瀏覽、referrer 與 UTM 來源</li>
+                  <li data-i18n="privacyCollectDevice">瀏覽器語言、裝置／畫面與大致地區資訊</li>
+                  <li data-i18n="privacyCollectFeatures">主要功能、模式與設定的匿名使用事件</li>
+                  <li data-i18n="privacyCollectRecording">錄音開始／完成與本機音檔使用事件</li>
+                  <li data-i18n="privacyCollectAnalysis">段子分析開始／完成／取消與結果區瀏覽事件</li>
+                </ul>
+              </section>
+              <section>
+                <h4 data-i18n="privacyNeverCollect">不會收集</h4>
+                <ul>
+                  <li data-i18n="privacyNoAudio">麥克風錄音、匯入音檔、音訊內容或檔名</li>
+                  <li data-i18n="privacyNoVisuals">聲波、頻譜、音高、共振峰或其他分析資料</li>
+                  <li data-i18n="privacyNoResults">頻段數值、段子分析結果或聲音建議內容</li>
+                  <li data-i18n="privacyNoIdentity">Beatbox Analyzer 主動收集的姓名、帳號或聯絡資料</li>
+                </ul>
+              </section>
+            </div>
+            <p class="help-privacy-provider" data-i18n="privacyProviderNote">匿名統計由 Umami 處理。Umami 不使用 Cookie；它可能處理 IP 位址與 User-Agent 等技術請求資料，以推估匿名 session 與大致地區，但不儲存 IP 位址。Beatbox Analyzer 不會建立使用者帳號或自訂追蹤身分。</p>
+          </details>
+        </section>
       </dialog>
 
       <section class="audio-strip" aria-label="本機音訊控制" data-i18n-aria="audioControlsLabel">
@@ -229,7 +263,7 @@
             <summary data-i18n="creditsMethod">製作資訊與方法</summary>
             <div class="credit-card">
               <p data-i18n-html="methodText"><b>方法。</b>本工具為獨立實作，使用快速的 2,048 點瞬態分析器，以及涵蓋 20 Hz 至 20 kHz、經平滑處理的 16,384 點 FFT。訊號歷史採用單一振幅包絡：高頻能量位於中心、中頻位於中層、低頻位於外層。頻譜飽滿度採嚴格的即時單次判定；每個頻段都必須各自越過聲音閾值才算啟用，三個頻段全數越過才顯示「飽滿」。它描述頻率涵蓋程度，並非品質評分。節拍器是獨立的練習輔助，不會改變飽滿度結果；節拍音與麥克風分析器分開產生，建議使用耳機，以免麥克風再次收錄節拍音。</p>
-              <p class="privacy-note" data-i18n-html="privacyText"><b>隱私。</b>這不是 AI 工具。麥克風聲音、錄音與匯入檔案都只留在這個瀏覽器中，不會上傳或用於訓練模型；只有在你按下「下載錄音」時，錄音才會儲存到裝置。</p>
+              <p class="privacy-note" data-i18n-html="privacyText"><b>隱私。</b>這不是 AI 工具。麥克風聲音、錄音、匯入檔案、檔名與音訊分析結果都只留在這個瀏覽器中，不會上傳或用於訓練模型；只有在你按下「下載錄音」時，錄音才會儲存到裝置。若啟用匿名使用統計，只有頁面流量與少量產品互動事件會送出，絕不包含音訊或分析資料。</p>
               <a href="https://www.youtube.com/watch?v=TT-9OhiSX8Y" target="_blank" rel="noreferrer" data-i18n="wingCredit">WING · Beatbox 頻譜分析靈感（YouTube）</a>
               <a href="https://www.w3.org/TR/webaudio-1.1/" target="_blank" rel="noreferrer" data-i18n="webAudioCredit">W3C · Web Audio API 規範</a>
               <a href="https://developer.mozilla.org/en-US/docs/Web/API/BiquadFilterNode/type" target="_blank" rel="noreferrer" data-i18n="filterCredit">MDN · 標準音訊濾波器類型</a>
@@ -322,6 +356,7 @@
         </div>
       </details>
     </main>
-    <script src="app.js?v=26"></script>
+    <script src="analytics.js?v=1"></script>
+    <script src="app.js?v=28"></script>
   </body>
 </html>
