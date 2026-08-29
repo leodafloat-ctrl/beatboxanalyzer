@@ -988,5 +988,4 @@ $('pitchMode').value=pitchMode;
 localStorage.removeItem('beatbox-pitch-mode');setHistoryZoomIndex(DEFAULT_HISTORY_ZOOM_INDEX);
 applyLanguage(currentLanguage);
 updateAudioTransportUi();
-trackEvent('app_open');
 requestAnimationFrame(openHelpDialog);

@@ -10,7 +10,6 @@
   });
 
   const ALLOWED_EVENTS = new Set([
-    'app_open',
     'live_input_started',
     'recording_started',
     'recording_completed',
