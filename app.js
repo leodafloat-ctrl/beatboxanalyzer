@@ -10,7 +10,7 @@ const TRANSLATIONS = {
     metronomeControls:'Metronome controls',metro:'METRO',off:'OFF',metronomeBpm:'Metronome BPM',beats:'BEATS',beatsPerMeasure:'Beats per measure',division:'DIVISION',beatDivision:'Beat-unit denominator (4 = quarter, 8 = eighth)',click:'CLICK',metronomeClickSound:'Metronome click sound',digital:'DIGITAL',wood:'WOOD',soft:'SOFT',
     switchLanguage:'切換為繁體中文',supportLinksLabel:'Support Leo Dafloat',supportMe:'SUPPORT ME',supportCoffee:'Support Leo Dafloat on Buy Me a Coffee',supportPaypal:'Support Leo Dafloat via PayPal',micIdle:'MIC IDLE',micLive:'MIC LIVE',micDenied:'MIC ACCESS DENIED',fileIdle:'FILE READY',fileLive:'FILE PLAYING',startInput:'START INPUT',stopInput:'STOP INPUT',playFile:'PLAY FILE',pauseFile:'PAUSE FILE',microphoneAlert:'Microphone access is unavailable. Allow microphone permission and open this page through localhost or HTTPS.',
     audioControlsLabel:'Local recording and audio-file controls',localAudio:'LOCAL AUDIO',audioSource:'AUDIO SOURCE',audioSourceLabel:'Analysis audio source',microphone:'MICROPHONE',audioFile:'AUDIO FILE',recordAudio:'RECORD',stopRecording:'STOP RECORDING',chooseAudio:'CHOOSE AUDIO',playAudio:'PLAY + ANALYZE',pauseAudio:'PAUSE',downloadRecording:'DOWNLOAD RECORDING',noAudioSelected:'NO AUDIO SELECTED',audioSeekLabel:'Playback position',audioLocalNote:'ON-DEVICE ONLY · MAX 3 MINUTES · 50 MB LIMIT',fileTooLarge:'This file is larger than 50 MB. Choose a smaller audio file.',fileTooLong:'This file is longer than 3 minutes. Choose a shorter audio file.',fileUnsupported:'This browser could not decode that audio file. Try WAV, MP3, M4A or another browser-supported format.',recordingUnavailable:'Audio recording is not supported by this browser.',startMicBeforeRecord:'Start microphone input before recording.',fileRequired:'Choose an audio file or finish a recording first.',fileInput:'AUDIO FILE INPUT',fileStartHint:'Choose an audio file, then press Play + Analyze below.',audioReady:'{name} · {duration}',recordingReady:'RECORDING · {duration}',
-    openGuide:'How to use Beatbox Analyzer',closeGuide:'Close usage guide',guideLanguage:'GUIDE LANGUAGE',guideTitle:'HOW TO USE BEATBOX ANALYZER',guideIntro:'Build an analysis baseline for the current environment, then use live visuals, recording playback, and Routine Analysis to understand your sound.',guideStep1Title:'1 · SET THE NOISE BASELINE',guideStep1:'Press Start Input, choose Auto Profile, then remain quiet while recording 5 seconds of room tone. For an external audio file, you can also switch to the manual threshold.',guideStep2Title:'2 · START LIVE INPUT OR RECORD',guideStep2:'Start Input at the top controls microphone analysis only. Record keeps audio temporarily on this device; afterward, use Play + Analyze or Download.',guideStep3Title:'3 · READ YOUR SOUND',guideStep3:'Signal History shows the Low / Mid / High balance. Live Readout shows pitch and spectral fullness. Click the spectrum to lock a frequency and dBFS reading.',guideStep4Title:'4 · PRACTICE WITH THE METRONOME',guideStep4:'Set BPM, beats per measure, and the beat-unit division. Headphones are recommended so the microphone does not re-record the click.',guideStep5Title:'5 · ANALYZE A ROUTINE',guideStep5:'Choose 30, 45, 60, or 90 seconds to observe Low / Mid / High participation over time and receive rule-based sound-arrangement ideas.',guideStep6Title:'6 · EXPLORE AND PLAY',guideStep6:'Switch between Three Band and Sound Wave, zoom into Signal History, or use the Polyphonic Experiment to inspect overtones and a possible secondary pitch.',guideNote:'All audio stays in your browser. The analysis is a sound-distribution reference, not a rating of beatbox skill or performance quality.',guidePrivacyTitle:'YOUR AUDIO STAYS WITH YOU',guidePrivacySummary:'Your audio is processed locally on your device. Recordings and imported audio stay temporarily in the current browser session; they are never sent to a server or persistently stored by Beatbox Analyzer. Only anonymous page traffic and a small set of feature-usage events may be collected to improve the Analyzer.',privacyAnalytics:'PRIVACY & ANALYTICS',privacyMayCollect:'WHAT WE MAY COLLECT',privacyCollectVisits:'Anonymous page visits, referrer and UTM source information',privacyCollectDevice:'Browser language, device / screen and approximate location information',privacyCollectFeatures:'Anonymous use of major features, modes and settings',privacyCollectRecording:'Recording started / completed and local-audio usage events',privacyCollectAnalysis:'Routine Analysis started / completed / cancelled and results-view events',privacyNeverCollect:'WHAT WE DO NOT COLLECT',privacyNoAudio:'Microphone recordings, imported audio, audio content or filenames',privacyNoVisuals:'Waveform, spectrum, pitch, resonance or other analysis data',privacyNoResults:'Band values, Routine Analysis results or sound-suggestion content',privacyNoIdentity:'Names, accounts or contact information intentionally collected by Beatbox Analyzer',privacyProviderNote:'Anonymous statistics are handled by Umami. Umami does not use cookies. It may process technical request data such as IP address and User-Agent to estimate anonymous sessions and approximate location, but does not store IP addresses. Beatbox Analyzer does not create user accounts or custom tracking identities.',
+    openGuide:'How to use Beatbox Analyzer',closeGuide:'Close usage guide',guideLanguage:'GUIDE LANGUAGE',guideTitle:'HOW TO USE BEATBOX ANALYZER',guideIntro:'Build an analysis baseline for the current environment, then use live visuals, recording playback, and Routine Analysis to understand your sound.',guideStep1Title:'1 · SET THE NOISE BASELINE',guideStep1:'Press Start Input, choose Auto Profile, then remain quiet while recording 5 seconds of room tone. For an external audio file, you can also switch to the manual threshold.',guideStep2Title:'2 · START LIVE INPUT OR RECORD',guideStep2:'Start Input at the top controls microphone analysis only. Record keeps audio temporarily on this device; afterward, use Play + Analyze or Download.',guideStep3Title:'3 · READ YOUR SOUND',guideStep3:'Signal History shows the Low / Mid / High balance. Live Readout shows pitch and spectral fullness. Click the spectrum to lock a frequency and dBFS reading.',guideStep4Title:'4 · PRACTICE WITH THE METRONOME',guideStep4:'Set BPM, beats per measure, and the beat-unit division. Headphones are recommended so the microphone does not re-record the click.',guideStep5Title:'5 · ANALYZE A ROUTINE',guideStep5:'Choose 30, 45, 60, or 90 seconds to observe Low / Mid / High participation over time and receive rule-based sound-arrangement ideas.',guideStep6Title:'6 · EXPLORE AND PLAY',guideStep6:'Switch between Three Band and Sound Wave, zoom into Signal History, or use the Polyphonic Experiment to inspect overtones and a possible secondary pitch.',guideNote:'All audio stays in your browser. The analysis is a sound-distribution reference, not a rating of beatbox skill or performance quality.',guidePrivacyTitle:'YOUR AUDIO STAYS WITH YOU',guidePrivacySummary:'Your audio is processed locally on your device. Recordings and imported audio stay temporarily in the current browser session; they are never sent to a server or persistently stored by Beatbox Analyzer. Only anonymous page traffic and a small set of feature-usage events may be collected to improve the Analyzer.',privacyAnalytics:'PRIVACY & ANALYTICS',privacyMayCollect:'WHAT WE MAY COLLECT',privacyCollectVisits:'Anonymous page visits, referrer and UTM source information',privacyCollectDevice:'Browser language, device / screen and approximate location information',privacyCollectFeatures:'First use of intentionally selected features such as Poly, Waveform, Spectrum and Metronome',privacyCollectRecording:'Whether microphone / upload, recording, playback or download actions occurred',privacyCollectAnalysis:'Anonymous valid-input and analysis milestones, plus Phrase Analysis exposure / start / completion',privacyNeverCollect:'WHAT WE DO NOT COLLECT',privacyNoAudio:'Microphone recordings, imported audio, audio content or filenames',privacyNoVisuals:'Waveform, spectrum, pitch, resonance or other analysis data',privacyNoResults:'Band values, Routine Analysis results or sound-suggestion content',privacyNoIdentity:'Names, accounts or contact information intentionally collected by Beatbox Analyzer',privacyProviderNote:'Anonymous statistics are handled by Umami. Umami does not use cookies. It may process technical request data such as IP address and User-Agent to estimate anonymous sessions and approximate location, but does not store IP addresses. Beatbox Analyzer does not create user accounts or custom tracking identities.',
     noiseGateControls:'Noise gate controls',gate:'GATE',noiseFloor:'NOISE FLOOR',autoProfile:'AUTO PROFILE',recordNoise:'RECORD NOISE 5s',rerecordNoise:'RE-RECORD NOISE 5s',manual:'MANUAL',waitingInput:'WAITING FOR INPUT',profileRequired:'PROFILE REQUIRED · RECORD ROOM TONE',pleaseQuiet:'PLEASE STAY QUIET',calibrating:'CALIBRATING {seconds}s',locked:'LOCKED · {values} dB',manualStatus:'MANUAL · {value} dB',
     signalHistory:'Signal history',threeBandColors:'Waveform display and colors',displayMode:'MODE',waveDisplayModeLabel:'Signal history display mode',threeBand:'THREE BAND',soundWave:'SOUND WAVE',theme:'THEME',threeBandTheme:'Three band color theme',cyberpunk:'CYBERPUNK',modernDark:'MODERN DARK',neonGlow:'NEON GLOW',custom:'CUSTOM',lowColor:'Low frequency color',midColor:'Mid frequency color',highColor:'High frequency color',bandOrder:'OUT L · M · H IN',waveformCanvas:'Live waveform history',past:'PAST',now:'NOW',historyZoomLabel:'Signal history zoom',historySeconds:'Displayed history window',resetZoom:'Reset zoom',seconds:'{value}s',milliseconds:'{value} ms',
     liveReadout:'Live readout',pitchMode:'NOTE MODE',pitchModeLabel:'Pitch detection mode',oneNote:'ONE NOTE',polyphonicBeta:'POLYPHONIC EXPERIMENT (BETA)',detectedNote:'DETECTED NOTE',listening:'LISTENING',unpitched:'UNPITCHED',cents:'{value} CENTS',secondaryPitch:'SECONDARY PITCH',enhancedOvertone:'ENHANCED OVERTONE',waitingStable:'WAITING FOR STABLE PITCH',betaConfidence:'BETA · {value}% STABLE',independentRelation:'POSSIBLE INDEPENDENT NOTE · WITH {primary}',harmonicRelation:'H{harmonic} · HARMONIC OF {primary}',experimentalAnalysis:'EXPERIMENTAL ANALYSIS',spectralFullness:'SPECTRAL FULLNESS',startMeasure:'Start input to measure frequency coverage.',recordingRoom:'Recording 5 seconds of room tone…',noiseProfileRequired:'Noise profile required',full:'FULL',moderate:'MODERATE',limited:'LIMITED',fullnessDetail:'STRICT ONE-SHOT · Active bands {count}/3{bands} · {mode} thresholds',profileMode:'profile',manualMode:'manual',
@@ -25,7 +25,7 @@ const TRANSLATIONS = {
     metronomeControls:'節拍器控制',metro:'節拍器',off:'關閉',metronomeBpm:'節拍器速度（BPM）',beats:'拍數',beatsPerMeasure:'每小節拍數',division:'拍值',beatDivision:'拍值分母（4＝四分音符，8＝八分音符）',click:'節拍音',metronomeClickSound:'節拍器音色',digital:'數位',wood:'木質',soft:'柔和',
     switchLanguage:'Switch to English',supportLinksLabel:'支持 Leo Dafloat',supportMe:'支持我',supportCoffee:'在 Buy Me a Coffee 支持 Leo Dafloat',supportPaypal:'透過 PayPal 支持 Leo Dafloat',micIdle:'麥克風待機',micLive:'麥克風收音中',micDenied:'麥克風權限遭拒',fileIdle:'音檔已就緒',fileLive:'音檔播放中',startInput:'開始輸入',stopInput:'停止輸入',playFile:'播放音檔',pauseFile:'暫停音檔',microphoneAlert:'無法使用麥克風。請允許此網站的麥克風權限，並使用 localhost 或 HTTPS 開啟。',
     audioControlsLabel:'本機錄音與音檔控制',localAudio:'本機音訊',audioSource:'音訊來源',audioSourceLabel:'分析音訊來源',microphone:'麥克風',audioFile:'音訊檔案',recordAudio:'錄製',stopRecording:'停止錄製',chooseAudio:'選擇音檔',playAudio:'播放＋分析',pauseAudio:'暫停',downloadRecording:'下載錄音',noAudioSelected:'尚未選擇音檔',audioSeekLabel:'播放位置',audioLocalNote:'完全在本機處理 · 最長 3 分鐘 · 上限 50 MB',fileTooLarge:'這個檔案超過 50 MB，請選擇較小的音檔。',fileTooLong:'這個檔案超過 3 分鐘，請選擇較短的音檔。',fileUnsupported:'瀏覽器無法解碼這個音檔，請嘗試 WAV、MP3、M4A 或其他瀏覽器支援的格式。',recordingUnavailable:'這個瀏覽器不支援網頁錄音。',startMicBeforeRecord:'請先開始麥克風輸入，再開始錄製。',fileRequired:'請先選擇音檔或完成一段錄音。',fileInput:'音訊檔案輸入',fileStartHint:'選擇音檔後，按下下方的「播放＋分析」。',audioReady:'{name} · {duration}',recordingReady:'錄音 · {duration}',
-    openGuide:'如何使用 Beatbox Analyzer',closeGuide:'關閉使用指南',guideLanguage:'指南語言',guideTitle:'如何使用 Beatbox Analyzer',guideIntro:'先建立適合目前環境的分析基準，再用即時視覺、錄音回放與段子分析認識自己的聲音。',guideStep1Title:'1 · 建立底噪基準',guideStep1:'先按「開始輸入」並選擇「自動取樣」，接著保持安靜，錄製 5 秒環境底噪。若分析外部音檔，也可切換成手動閾值。',guideStep2Title:'2 · 開始即時分析或錄音',guideStep2:'上方「開始輸入」只負責麥克風分析；「錄製」會將聲音暫存在本機，完成後可使用「播放＋分析」或下載。',guideStep3Title:'3 · 閱讀聲音資訊',guideStep3:'訊號歷史顯示 Low／Mid／High 的比例；即時讀值顯示音高與頻譜飽滿度；點擊頻譜可鎖定頻率與 dBFS。',guideStep4Title:'4 · 配合節拍器練習',guideStep4:'設定 BPM、每小節拍數與拍值。建議戴耳機，避免節拍音被麥克風重新收錄。',guideStep5Title:'5 · 分析完整段子',guideStep5:'選擇 30、45、60 或 90 秒，觀察 Low／Mid／High 的時間參與程度與規則式聲音配置建議。',guideStep6Title:'6 · 探索與玩聲音',guideStep6:'切換三頻段／聲波模式、縮放訊號歷史，或使用複音實驗模式觀察泛音與可能的第二音高。',guideNote:'所有聲音只在你的瀏覽器中處理。分析是聲音配置參考，不是 Beatbox 技巧或表演品質評分。',guidePrivacyTitle:'你的聲音，只屬於你',guidePrivacySummary:'聲音只在你的裝置上處理；錄音與匯入音檔只暫存在目前瀏覽器工作階段，不會送往伺服器或由 Beatbox Analyzer 永久儲存。工具只會收集匿名頁面流量與少量功能使用事件，協助改善 Analyzer。',privacyAnalytics:'隱私與匿名統計',privacyMayCollect:'可能收集',privacyCollectVisits:'匿名頁面瀏覽、referrer 與 UTM 來源',privacyCollectDevice:'瀏覽器語言、裝置／畫面與大致地區資訊',privacyCollectFeatures:'主要功能、模式與設定的匿名使用事件',privacyCollectRecording:'錄音開始／完成與本機音檔使用事件',privacyCollectAnalysis:'段子分析開始／完成／取消與結果區瀏覽事件',privacyNeverCollect:'不會收集',privacyNoAudio:'麥克風錄音、匯入音檔、音訊內容或檔名',privacyNoVisuals:'聲波、頻譜、音高、共振峰或其他分析資料',privacyNoResults:'頻段數值、段子分析結果或聲音建議內容',privacyNoIdentity:'Beatbox Analyzer 主動收集的姓名、帳號或聯絡資料',privacyProviderNote:'匿名統計由 Umami 處理。Umami 不使用 Cookie；它可能處理 IP 位址與 User-Agent 等技術請求資料，以推估匿名 session 與大致地區，但不儲存 IP 位址。Beatbox Analyzer 不會建立使用者帳號或自訂追蹤身分。',
+    openGuide:'如何使用 Beatbox Analyzer',closeGuide:'關閉使用指南',guideLanguage:'指南語言',guideTitle:'如何使用 Beatbox Analyzer',guideIntro:'先建立適合目前環境的分析基準，再用即時視覺、錄音回放與段子分析認識自己的聲音。',guideStep1Title:'1 · 建立底噪基準',guideStep1:'先按「開始輸入」並選擇「自動取樣」，接著保持安靜，錄製 5 秒環境底噪。若分析外部音檔，也可切換成手動閾值。',guideStep2Title:'2 · 開始即時分析或錄音',guideStep2:'上方「開始輸入」只負責麥克風分析；「錄製」會將聲音暫存在本機，完成後可使用「播放＋分析」或下載。',guideStep3Title:'3 · 閱讀聲音資訊',guideStep3:'訊號歷史顯示 Low／Mid／High 的比例；即時讀值顯示音高與頻譜飽滿度；點擊頻譜可鎖定頻率與 dBFS。',guideStep4Title:'4 · 配合節拍器練習',guideStep4:'設定 BPM、每小節拍數與拍值。建議戴耳機，避免節拍音被麥克風重新收錄。',guideStep5Title:'5 · 分析完整段子',guideStep5:'選擇 30、45、60 或 90 秒，觀察 Low／Mid／High 的時間參與程度與規則式聲音配置建議。',guideStep6Title:'6 · 探索與玩聲音',guideStep6:'切換三頻段／聲波模式、縮放訊號歷史，或使用複音實驗模式觀察泛音與可能的第二音高。',guideNote:'所有聲音只在你的瀏覽器中處理。分析是聲音配置參考，不是 Beatbox 技巧或表演品質評分。',guidePrivacyTitle:'你的聲音，只屬於你',guidePrivacySummary:'聲音只在你的裝置上處理；錄音與匯入音檔只暫存在目前瀏覽器工作階段，不會送往伺服器或由 Beatbox Analyzer 永久儲存。工具只會收集匿名頁面流量與少量功能使用事件，協助改善 Analyzer。',privacyAnalytics:'隱私與匿名統計',privacyMayCollect:'可能收集',privacyCollectVisits:'匿名頁面瀏覽、referrer 與 UTM 來源',privacyCollectDevice:'瀏覽器語言、裝置／畫面與大致地區資訊',privacyCollectFeatures:'Poly、聲波、頻譜與節拍器等主動選用功能的首次使用',privacyCollectRecording:'是否啟動麥克風／音檔、錄音、播放或下載流程',privacyCollectAnalysis:'匿名有效輸入與分析里程碑，以及段子分析的看見／開始／完成',privacyNeverCollect:'不會收集',privacyNoAudio:'麥克風錄音、匯入音檔、音訊內容或檔名',privacyNoVisuals:'聲波、頻譜、音高、共振峰或其他分析資料',privacyNoResults:'頻段數值、段子分析結果或聲音建議內容',privacyNoIdentity:'Beatbox Analyzer 主動收集的姓名、帳號或聯絡資料',privacyProviderNote:'匿名統計由 Umami 處理。Umami 不使用 Cookie；它可能處理 IP 位址與 User-Agent 等技術請求資料，以推估匿名 session 與大致地區，但不儲存 IP 位址。Beatbox Analyzer 不會建立使用者帳號或自訂追蹤身分。',
     noiseGateControls:'底噪閘門控制',gate:'閘門',noiseFloor:'底噪',autoProfile:'自動取樣',recordNoise:'錄製底噪 5秒',rerecordNoise:'重新錄製底噪 5秒',manual:'手動',waitingInput:'等待輸入',profileRequired:'需要底噪樣本 · 請錄製環境底噪',pleaseQuiet:'請保持安靜',calibrating:'校正中 {seconds}秒',locked:'已鎖定 · {values} dB',manualStatus:'手動 · {value} dB',
     signalHistory:'訊號歷史',threeBandColors:'聲波顯示與顏色',displayMode:'模式',waveDisplayModeLabel:'訊號歷史顯示模式',threeBand:'三頻段',soundWave:'聲波',theme:'主題',threeBandTheme:'三頻段配色主題',cyberpunk:'賽博朋克',modernDark:'現代暗黑',neonGlow:'熱情霓虹',custom:'自訂',lowColor:'低頻顏色',midColor:'中頻顏色',highColor:'高頻顏色',bandOrder:'外層 低 · 中 · 高 內層',waveformCanvas:'即時聲波歷史',past:'過去',now:'現在',historyZoomLabel:'訊號歷史縮放',historySeconds:'顯示的歷史時間範圍',resetZoom:'重設縮放',seconds:'{value}秒',milliseconds:'{value}毫秒',
     liveReadout:'即時讀值',pitchMode:'音高模式',pitchModeLabel:'音高偵測模式',oneNote:'單音',polyphonicBeta:'複音實驗（Beta）',detectedNote:'偵測音高',listening:'聆聽中',unpitched:'無明確音高',cents:'{value} 音分',secondaryPitch:'第二音高',enhancedOvertone:'突出泛音',waitingStable:'等待穩定音高',betaConfidence:'BETA · 穩定度 {value}%',independentRelation:'可能是獨立音高 · 與 {primary} 並存',harmonicRelation:'H{harmonic} · {primary} 的整數倍泛音',experimentalAnalysis:'實驗性分析',spectralFullness:'頻譜飽滿度',startMeasure:'開始輸入以測量頻率涵蓋範圍。',recordingRoom:'正在錄製 5 秒環境底噪…',noiseProfileRequired:'需要先建立底噪樣本',full:'飽滿',moderate:'中等',limited:'有限',fullnessDetail:'嚴格單次判定 · 啟用頻段 {count}/3{bands} · {mode}閾值',profileMode:'自動取樣',manualMode:'手動',
@@ -61,7 +61,7 @@ function applyLanguage(language){
 
 let audioContext, analyser, transientAnalyser, source, stream, animationId;
 let microphoneSource=null,mediaElementSource=null,mediaElementConnected=false;
-let inputMode='mic',loadedAudioUrl='',loadedAudioName='',loadedAudioKind='',loadedAudioDuration=0,loadedAudioPlaybackTracked=false;
+let inputMode='mic',loadedAudioUrl='',loadedAudioName='',loadedAudioKind='',loadedAudioDuration=0,loadedAudioPlaybackTracked=false,loadedAudioDownloadTracked=false;
 let mediaRecorder=null,recordingStartedAt=0,recordingLimitTimer=null;
 let running = false, startedAt = 0, waveform = [], rawWaveform = [], lastFrame = 0;
 let timeData, freqData, waveTimeData, waveFreqData, peaks = [];
@@ -108,7 +108,10 @@ let pitchMode='single';
 let secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};
 let lastPolyphonicResult=null;
 let routineState={active:false,durationMs:90000,startedAt:0,lastSampleAt:0,samples:[],smoothedStrengths:[0,0,0],analysisNumber:0,inputType:'microphone'},routineStatusKey='routineReady';
-let analysisRunCount=0,pendingResultsView=0;
+let analysisRunCount=0;
+const ANALYTICS_VALID_SIGNAL_MS=3000,ANALYTICS_ENGAGED_MS=15000,ANALYTICS_COMPLETED_MS=30000;
+const analyticsFeaturesTracked=new Set();
+let analysisAnalyticsState=null,phraseAnalysisExposed=false,noiseProfileAnalyticsTracked=false;
 const HISTORY_WINDOWS_MS=[20000,10000,6000,4000,3000,1000,500,200,100,50,20,10];
 const DEFAULT_HISTORY_ZOOM_INDEX=3,MAX_HISTORY_SECONDS=20,RAW_HISTORY_RATE=8000;
 const WAVEFORM_MAX_HALF_HEIGHT=.31,RAW_WAVEFORM_MAX_SAMPLE=.78;
@@ -189,7 +192,7 @@ function toggleMetronome() {
     metronomeRunning=false;clearInterval(metronomeTimer);metronomeTimer=null;$('metronomeButton').classList.remove('active');$('metronomeButton').setAttribute('aria-pressed','false');$('metronomePosition').textContent=t('off');metronomeContext?.suspend().catch(()=>{});return;
   }
   metronomeContext??=new (window.AudioContext||window.webkitAudioContext)();metronomeRunning=true;$('metronomeButton').classList.add('active');$('metronomeButton').setAttribute('aria-pressed','true');restartMetronomeClock();metronomeContext.resume().catch(()=>{});
-  trackEvent('metronome_started',{mode:$('clickSound').value});
+  trackFeatureFirstUsed('metronome');
 }
 
 function resizeCanvas(canvas) {
@@ -221,15 +224,40 @@ function formatAudioClock(seconds){const safe=Number.isFinite(seconds)?Math.max(
 
 function analyticsInputType(){
   if(inputMode!=='file')return'microphone';
-  return loadedAudioKind==='recording'?'recording_playback':'uploaded_file';
+  return loadedAudioKind==='recording'?'recording':'upload';
 }
 
 function analyticsDurationBucket(seconds){
-  if(seconds<15)return'under_15_seconds';
-  if(seconds<30)return'15_to_29_seconds';
+  if(seconds<30)return'under_30_seconds';
   if(seconds<60)return'30_to_59_seconds';
-  if(seconds<120)return'60_to_119_seconds';
-  return'120_to_180_seconds';
+  if(seconds<300)return'1_to_5_minutes';
+  return'5_minutes_plus';
+}
+
+function createAnalysisAnalyticsState(){
+  return{inputType:analyticsInputType(),startedAt:performance.now(),validMs:0,validSignalTracked:false,engagedTracked:false,completedTracked:false,featuresUsed:new Set()};
+}
+
+function trackFeatureFirstUsed(feature){
+  if(running&&analysisAnalyticsState)analysisAnalyticsState.featuresUsed.add(feature);
+  if(!analyticsFeaturesTracked.has(feature)){
+    analyticsFeaturesTracked.add(feature);trackEvent('feature_first_used',{feature});
+  }
+}
+
+function updateAnalysisFunnel(gateState,dt){
+  const state=analysisAnalyticsState;
+  if(!state||gateState.calibrating||gateState.profileMissing||!gateState.active.some(Boolean))return;
+  state.validMs+=dt;
+  if(!state.validSignalTracked&&state.validMs>=ANALYTICS_VALID_SIGNAL_MS){
+    state.validSignalTracked=true;trackEvent('valid_signal_detected',{input_type:state.inputType});
+  }
+  if(state.validSignalTracked&&!state.engagedTracked&&(state.validMs>=ANALYTICS_ENGAGED_MS||state.featuresUsed.size>0)){
+    state.engagedTracked=true;trackEvent('analysis_engaged',{input_type:state.inputType,features_used_count:state.featuresUsed.size});
+  }
+  if(state.validSignalTracked&&!state.completedTracked&&state.validMs>=ANALYTICS_COMPLETED_MS){
+    state.completedTracked=true;trackEvent('analysis_completed',{input_type:state.inputType,duration_bucket:analyticsDurationBucket((performance.now()-state.startedAt)/1000),features_used_count:state.featuresUsed.size});
+  }
 }
 
 function refreshPlaybackPosition(){
@@ -275,6 +303,7 @@ async function ensureAudioGraph(){
 function beginAnalysisSession(){
   currentGates=[0,0,0];resonanceBands=[];peaks?.fill(MIN_DB);freqData?.fill(MIN_DB);waveFreqData?.fill(MIN_DB);timeData?.fill(0);waveTimeData?.fill(0);
   running=true;startedAt=performance.now();lastFrame=startedAt;waveform=[];rawWaveform=[];
+  analysisAnalyticsState=createAnalysisAnalyticsState();trackEvent('input_started',{input_type:analysisAnalyticsState.inputType});
   $('emptyState').classList.add('hidden');updateAudioTransportUi();updateGateModeUi();draw();
 }
 
@@ -283,7 +312,7 @@ async function startMicrophoneInput(){
     inputMode='mic';$('playbackAudio').pause();await ensureAudioGraph();
     stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
     microphoneSource=audioContext.createMediaStreamSource(stream);source=microphoneSource;microphoneSource.connect(analyser);microphoneSource.connect(transientAnalyser);
-    $('calibrateButton').disabled=false;beginAnalysisSession();trackEvent('live_input_started',{input_type:'microphone'});
+    $('calibrateButton').disabled=false;beginAnalysisSession();
   }catch(error){$('statusText').textContent=t('micDenied');alert(t('microphoneAlert'));}
 }
 
@@ -299,7 +328,7 @@ async function startFileInput(){
     $('calibrateButton').disabled=true;updateGateModeUi();
     if($('playbackAudio').currentTime>=loadedAudioDuration-.03)$('playbackAudio').currentTime=0;
     await $('playbackAudio').play();beginAnalysisSession();
-    if(!loadedAudioPlaybackTracked){trackEvent('audio_playback_started',{input_type:analyticsInputType(),duration_bucket:analyticsDurationBucket(loadedAudioDuration)});loadedAudioPlaybackTracked=true;}
+    if(!loadedAudioPlaybackTracked){trackEvent('playback_started',{input_type:analyticsInputType(),duration_bucket:analyticsDurationBucket(loadedAudioDuration)});loadedAudioPlaybackTracked=true;}
   }catch(error){inputMode='mic';updateAudioTransportUi();alert(t('fileUnsupported'));}
 }
 
@@ -335,13 +364,13 @@ async function loadLocalAudio(blob,name,kind,durationHint=0){
   probe.removeAttribute('src');probe.load();
   if(metadata<0||!metadata){URL.revokeObjectURL(url);alert(t('fileUnsupported'));return false;}
   if(metadata>MAX_LOCAL_AUDIO_SECONDS+.25){URL.revokeObjectURL(url);alert(t('fileTooLong'));return false;}
-  const audio=$('playbackAudio');audio.pause();audio.src=url;audio.load();if(previousUrl)URL.revokeObjectURL(previousUrl);loadedAudioUrl=url;loadedAudioName=name;loadedAudioKind=kind;loadedAudioDuration=metadata;loadedAudioPlaybackTracked=false;audio.currentTime=0;updateAudioTransportUi();return true;
+  const audio=$('playbackAudio');audio.pause();audio.src=url;audio.load();if(previousUrl)URL.revokeObjectURL(previousUrl);loadedAudioUrl=url;loadedAudioName=name;loadedAudioKind=kind;loadedAudioDuration=metadata;loadedAudioPlaybackTracked=false;loadedAudioDownloadTracked=false;audio.currentTime=0;updateAudioTransportUi();return true;
 }
 
 async function handleAudioFile(event){
   const file=event.target.files?.[0];event.target.value='';if(!file)return;
   if(await loadLocalAudio(file,file.name,'file')){
-    trackEvent('audio_file_selected',{duration_bucket:analyticsDurationBucket(loadedAudioDuration)});
+    trackEvent('audio_uploaded',{input_type:'upload',duration_bucket:analyticsDurationBucket(loadedAudioDuration)});
     if(running&&inputMode==='file')stopInput();
   }
 }
@@ -397,7 +426,7 @@ function startNoiseCalibration() {
 function finishNoiseCalibration() {
   noiseFloor=calibrationSamples.map(samples=>percentile(samples,.9));rmsNoiseFloor=percentile(calibrationRmsSamples,.9);profileReady=true;calibrationEndsAt=0;currentGates=[0,0,0];
   $('calibrateButton').textContent=t('rerecordNoise');setGateStatus(t('locked',{values:noiseFloor.map(v=>Math.round(v)).join(' / ')}),'ready');
-  trackEvent('noise_profile_completed',{gate_mode:'profile'});
+  if(!noiseProfileAnalyticsTracked){noiseProfileAnalyticsTracked=true;trackEvent('noise_profile_completed',{gate_mode:'profile'});}
 }
 
 function updateGateModeUi() {
@@ -690,25 +719,28 @@ function renderRoutineAdvice(samples){
   list.replaceChildren(...items);
 }
 
-const routineResultsObserver='IntersectionObserver'in window?new IntersectionObserver(entries=>{
-  if(!pendingResultsView||!entries.some(entry=>entry.isIntersecting))return;
-  trackEvent('routine_results_viewed',{analysis_number:pendingResultsView});pendingResultsView=0;
-}, {threshold:.35}):null;
-
-function armRoutineResultsViewTracking(analysisNumber){
-  if(!routineResultsObserver)return;
-  pendingResultsView=analysisNumber;routineResultsObserver.unobserve($('routineResults'));routineResultsObserver.observe($('routineResults'));
+const routinePanel=document.querySelector('.routine-panel');
+function trackPhraseExposureIfVisible(){
+  if(phraseAnalysisExposed||!routinePanel||$('helpDialog').open)return;
+  const rect=routinePanel.getBoundingClientRect(),visibleWidth=Math.max(0,Math.min(innerWidth,rect.right)-Math.max(0,rect.left)),visibleHeight=Math.max(0,Math.min(innerHeight,rect.bottom)-Math.max(0,rect.top));
+  if(!rect.width||!rect.height||visibleWidth*visibleHeight/(rect.width*rect.height)<.35)return;
+  phraseAnalysisExposed=true;trackEvent('phrase_analysis_exposed');phraseExposureObserver?.disconnect();
 }
+const phraseExposureObserver='IntersectionObserver'in window?new IntersectionObserver(entries=>{
+  if(entries.some(entry=>entry.isIntersecting&&entry.intersectionRatio>=.35))trackPhraseExposureIfVisible();
+},{threshold:[.35]}):null;
+if(phraseExposureObserver&&routinePanel)phraseExposureObserver.observe(routinePanel);
 
 async function startRoutineAnalysis(){
   if(routineState.active){finishRoutineAnalysis(true);return;}
+  if(!phraseAnalysisExposed){phraseAnalysisExposed=true;trackEvent('phrase_analysis_exposed');phraseExposureObserver?.disconnect();}
   routineStatusKey='routineNeedInput';$('routineStatus').textContent=t(routineStatusKey);
   if(!running)await toggleInput();
   if(!running){routineStatusKey='routineReady';$('routineStatus').textContent=t(routineStatusKey);return;}
   const seconds=routineDurationSeconds(),now=performance.now(),analysisNumber=++analysisRunCount,inputType=analyticsInputType();routineState={active:true,durationMs:seconds*1000,startedAt:now,lastSampleAt:0,samples:[],smoothedStrengths:[0,0,0],analysisNumber,inputType};
   routineStatusKey=gateMode==='profile'&&!profileReady?'routineNeedGate':'routineRunning';$('routineStatus').textContent=t(routineStatusKey);$('routineTime').textContent=`00:00 / ${formatRoutineClock(seconds)}`;$('routineProgress').style.width='0%';
   renderRoutineTimeline([]);renderRoutineAdvice([]);setRoutineButtonState();
-  trackEvent('routine_analysis_started',{input_type:inputType,analysis_seconds:seconds,analysis_number:analysisNumber,gate_mode:gateMode});
+  trackEvent('phrase_analysis_started',{input_type:inputType,duration_bucket:analyticsDurationBucket(seconds),gate_mode:gateMode});
 }
 function updateRoutineAnalysis(gateState,now){
   if(!routineState.active)return;
@@ -725,11 +757,11 @@ function updateRoutineAnalysis(gateState,now){
 }
 function finishRoutineAnalysis(cancelled=false){
   if(!routineState.active)return;
+  const elapsedMs=performance.now()-routineState.startedAt,completed=!cancelled&&elapsedMs>=routineState.durationMs-500;
   routineState.active=false;renderRoutineTimeline();renderRoutineAdvice(routineState.samples);$('routineProgress').style.width=cancelled?`${Math.min(100,routineState.samples.length/(routineState.durationMs/ROUTINE_ANALYSIS_CONFIG.sampleIntervalMs)*100)}%`:'100%';
   routineStatusKey=cancelled?'routineCancelled':'routineComplete';$('routineStatus').textContent=t(routineStatusKey);setRoutineButtonState();
-  const eventProperties={input_type:routineState.inputType,analysis_seconds:routineState.durationMs/1000,analysis_number:routineState.analysisNumber,gate_mode:gateMode};
-  trackEvent(cancelled?'routine_analysis_cancelled':'routine_analysis_completed',eventProperties);
-  if(!cancelled)armRoutineResultsViewTracking(routineState.analysisNumber);
+  const eventProperties={input_type:routineState.inputType,duration_bucket:analyticsDurationBucket(elapsedMs/1000),gate_mode:gateMode};
+  trackEvent(completed?'phrase_analysis_completed':'phrase_analysis_cancelled',eventProperties);
 }
 
 function addWaveSlice(gateState) {
@@ -893,7 +925,7 @@ function updateSpectrumCursor(clientX, locked=cursorLocked) {
 
 function draw(now=performance.now()) {
   if(!running)return; analyser.getFloatTimeDomainData(timeData); analyser.getFloatFrequencyData(freqData);transientAnalyser.getFloatTimeDomainData(waveTimeData);transientAnalyser.getFloatFrequencyData(waveFreqData);
-  const dt=Math.min(50,now-lastFrame);lastFrame=now;const gateState=updateVisualGate();lastGateState=gateState;updateMetrics(gateState);updateRoutineAnalysis(gateState,now);
+  const dt=Math.min(50,now-lastFrame);lastFrame=now;const gateState=updateVisualGate();lastGateState=gateState;updateMetrics(gateState);updateAnalysisFunnel(gateState,dt);updateRoutineAnalysis(gateState,now);
   if (now-lastPitchAt > 80) { lastPitch=detectPitch(timeData.subarray(0,4096),audioContext.sampleRate); lastPitchAt=now; updateNote(lastPitch);lastPolyphonicResult=pitchMode==='polyphonic'?detectPolyphonicPitch(lastPitch):null;renderPolyphonicResult(lastPolyphonicResult); }
   addWaveSlice(gateState);addRawWaveSamples(dt);drawWaveform();drawSpectrum(dt,gateState);
   if(inputMode==='file'){refreshPlaybackPosition();$('timer').textContent=formatTime($('playbackAudio').currentTime*1000);}
@@ -922,7 +954,7 @@ $('playbackButton').addEventListener('click',async()=>{
   if(running)stopInput();await startFileInput();
 });
 $('audioSeek').addEventListener('input',event=>{if(loadedAudioDuration){$('playbackAudio').currentTime=Number(event.target.value)/1000*loadedAudioDuration;refreshPlaybackPosition();}});
-$('downloadRecording').addEventListener('click',event=>{if(event.currentTarget.classList.contains('disabled'))return;trackEvent('recording_downloaded',{duration_bucket:analyticsDurationBucket(loadedAudioDuration)});});
+$('downloadRecording').addEventListener('click',event=>{if(event.currentTarget.classList.contains('disabled')||loadedAudioDownloadTracked)return;loadedAudioDownloadTracked=true;trackEvent('recording_downloaded',{duration_bucket:analyticsDurationBucket(loadedAudioDuration)});});
 $('playbackAudio').addEventListener('timeupdate',refreshPlaybackPosition);
 $('playbackAudio').addEventListener('ended',()=>{if(routineState.active)finishRoutineAnalysis(false);stopInput({skipRoutine:true,routineCancelled:false});});
 $('routineButton').addEventListener('click',startRoutineAnalysis);
@@ -934,15 +966,16 @@ function syncGuideLanguageButtons(){
   $('guideLanguageEn').classList.toggle('active',!zh);$('guideLanguageEn').setAttribute('aria-pressed',String(!zh));
 }
 function openHelpDialog(){const dialog=$('helpDialog');if(dialog.open)return;if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');}
-function closeHelpDialog(){const dialog=$('helpDialog');if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');}
+function closeHelpDialog(){const dialog=$('helpDialog');if(typeof dialog.close==='function')dialog.close();else{dialog.removeAttribute('open');requestAnimationFrame(trackPhraseExposureIfVisible);}}
 $('helpButton').addEventListener('click',openHelpDialog);
 $('helpClose').addEventListener('click',closeHelpDialog);
 $('guideLanguageZh').addEventListener('click',()=>applyLanguage('zh-Hant'));
 $('guideLanguageEn').addEventListener('click',()=>applyLanguage('en'));
-$('helpDialog').addEventListener('click',event=>{if(event.target!==event.currentTarget)return;const dialog=event.currentTarget;if(typeof dialog.close==='function')dialog.close();else dialog.removeAttribute('open');});
+$('helpDialog').addEventListener('click',event=>{if(event.target===event.currentTarget)closeHelpDialog();});
+$('helpDialog').addEventListener('close',()=>requestAnimationFrame(trackPhraseExposureIfVisible));
 $('languageButton').addEventListener('click',()=>applyLanguage(currentLanguage==='zh-Hant'?'en':'zh-Hant'));
-$('pitchMode').addEventListener('change',event=>{pitchMode=event.target.value==='polyphonic'?'polyphonic':'single';secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};lastPolyphonicResult=null;renderPolyphonicResult(null);trackEvent('note_mode_changed',{mode:pitchMode});});
-$('waveDisplayMode').addEventListener('change',event=>{waveDisplayMode=event.target.value==='soundWave'?'soundWave':'threeBand';localStorage.setItem('beatbox-wave-display',waveDisplayMode);drawWaveform();trackEvent('signal_display_mode_changed',{mode:waveDisplayMode});});
+$('pitchMode').addEventListener('change',event=>{pitchMode=event.target.value==='polyphonic'?'polyphonic':'single';secondaryTrack={type:null,frequency:0,harmonic:0,frames:0,misses:0,confidence:0,primaryFrequency:0};lastPolyphonicResult=null;renderPolyphonicResult(null);if(pitchMode==='polyphonic')trackFeatureFirstUsed('poly');});
+$('waveDisplayMode').addEventListener('change',event=>{waveDisplayMode=event.target.value==='soundWave'?'soundWave':'threeBand';localStorage.setItem('beatbox-wave-display',waveDisplayMode);drawWaveform();if(waveDisplayMode==='soundWave')trackFeatureFirstUsed('waveform');});
 $('historyZoom').addEventListener('input',event=>setHistoryZoomIndex(event.target.value));
 $('resetHistoryZoom').addEventListener('click',()=>setHistoryZoomIndex(DEFAULT_HISTORY_ZOOM_INDEX));
 waveCanvas.closest('.canvas-wrap').addEventListener('wheel',event=>{
@@ -963,7 +996,6 @@ document.querySelectorAll('input[name="gateMode"]').forEach(input=>input.addEven
 }));
 $('gateThreshold').addEventListener('input',event=>{manualThreshold=Number(event.target.value);gateMode='manual';$('manualMode').checked=true;$('gateThresholdValue').textContent=`${manualThreshold} dB`;updateGateModeUi();});
 $('formantCount').addEventListener('input',event=>{formantLimit=Number(event.target.value);$('formantCountValue').textContent=String(formantLimit);resonanceBands=resonanceBands.slice(0,formantLimit);});
-$('formantCount').addEventListener('change',()=>trackEvent('spectrum_range_count_changed',{range_count:formantLimit}));
 $('bandTheme').addEventListener('change',event=>applyBandTheme(event.target.value));
 ['lowBandColor','midBandColor','highBandColor'].forEach((id,index)=>$(id).addEventListener('input',event=>{
   bandColors[index]=event.target.value;$('bandTheme').value='custom';updateBandColorUi();
@@ -971,11 +1003,10 @@ $('bandTheme').addEventListener('change',event=>applyBandTheme(event.target.valu
 }));
 document.querySelectorAll('input[name="spectrumColor"]').forEach(input=>input.addEventListener('change',event=>{
   spectrumColor=event.target.value;localStorage.setItem('beatbox-spectrum-color',spectrumColor);
-  trackEvent('spectrum_color_changed',{color:spectrumColor});
 }));
 spectrumCanvas.addEventListener('pointermove',e=>{if(!cursorLocked)updateSpectrumCursor(e.clientX,false)});
 spectrumCanvas.addEventListener('pointerleave',()=>{if(!cursorLocked)$('spectrumCursor').classList.remove('visible')});
-spectrumCanvas.addEventListener('click',e=>{cursorLocked=!cursorLocked;cursorClientX=e.clientX;updateSpectrumCursor(e.clientX,cursorLocked)});
+spectrumCanvas.addEventListener('click',e=>{cursorLocked=!cursorLocked;cursorClientX=e.clientX;updateSpectrumCursor(e.clientX,cursorLocked);trackFeatureFirstUsed('spectrum');});
 window.addEventListener('resize',()=>{if(!running){resizeCanvas(waveCanvas);resizeCanvas(spectrumCanvas)}});
 window.addEventListener('beforeunload',()=>{if(loadedAudioUrl)URL.revokeObjectURL(loadedAudioUrl);});
 resizeCanvas(waveCanvas);resizeCanvas(spectrumCanvas);

@@ -10,34 +10,37 @@
   });
 
   const ALLOWED_EVENTS = new Set([
-    'live_input_started',
+    'input_started',
+    'valid_signal_detected',
+    'analysis_engaged',
+    'analysis_completed',
     'recording_started',
     'recording_completed',
     'recording_downloaded',
-    'audio_file_selected',
-    'audio_playback_started',
-    'routine_analysis_started',
-    'routine_analysis_completed',
-    'routine_analysis_cancelled',
-    'routine_results_viewed',
-    'note_mode_changed',
-    'signal_display_mode_changed',
-    'spectrum_range_count_changed',
-    'spectrum_color_changed',
+    'audio_uploaded',
+    'playback_started',
+    'phrase_analysis_exposed',
+    'phrase_analysis_started',
+    'phrase_analysis_completed',
+    'phrase_analysis_cancelled',
+    'feature_first_used',
     'noise_profile_completed',
-    'metronome_started'
   ]);
 
   const ALLOWED_PROPERTIES = new Set([
     'input_type',
-    'mode',
     'duration_bucket',
-    'analysis_seconds',
-    'analysis_number',
-    'range_count',
-    'color',
+    'features_used_count',
+    'feature',
     'gate_mode'
   ]);
+
+  const ALLOWED_PROPERTY_VALUES = Object.freeze({
+    input_type: new Set(['microphone', 'upload', 'recording']),
+    duration_bucket: new Set(['under_30_seconds', '30_to_59_seconds', '1_to_5_minutes', '5_minutes_plus']),
+    feature: new Set(['poly', 'waveform', 'spectrum', 'metronome']),
+    gate_mode: new Set(['profile', 'manual'])
+  });
 
   const queue = [];
   const enabled = Boolean(CONFIG.websiteId)
@@ -48,18 +51,21 @@
     const safe = {};
     Object.entries(properties).forEach(([key, value]) => {
       if (!ALLOWED_PROPERTIES.has(key)) return;
-      if (typeof value === 'string') safe[key] = value.slice(0, 64);
-      else if (typeof value === 'number' && Number.isFinite(value)) safe[key] = value;
-      else if (typeof value === 'boolean') safe[key] = value;
+      if (typeof value === 'string' && ALLOWED_PROPERTY_VALUES[key]?.has(value)) safe[key] = value;
+      else if (key === 'features_used_count' && typeof value === 'number' && Number.isFinite(value)) safe[key] = Math.max(0, Math.min(5, Math.round(value)));
     });
     return Object.keys(safe).length ? safe : undefined;
   }
 
   function send(name, properties) {
     if (typeof window.umami?.track !== 'function') return false;
-    const safeProperties = sanitizeProperties(properties);
-    if (safeProperties) window.umami.track(name, safeProperties);
-    else window.umami.track(name);
+    try {
+      const safeProperties = sanitizeProperties(properties);
+      if (safeProperties) window.umami.track(name, safeProperties);
+      else window.umami.track(name);
+    } catch (_) {
+      // Analytics must never interrupt audio, recording, or UI behavior.
+    }
     return true;
   }
 
@@ -72,8 +78,10 @@
 
   function trackEvent(name, properties) {
     if (!enabled || !ALLOWED_EVENTS.has(name)) return;
+    const suppliedProperties = properties && typeof properties === 'object' && !Array.isArray(properties) && Object.keys(properties).length > 0;
     const safeProperties = sanitizeProperties(properties);
-    if (!send(name, safeProperties)) queue.push([name, safeProperties]);
+    if (suppliedProperties && !safeProperties) return;
+    if (!send(name, safeProperties) && queue.length < 100) queue.push([name, safeProperties]);
   }
 
   window.BeatboxAnalytics = Object.freeze({
